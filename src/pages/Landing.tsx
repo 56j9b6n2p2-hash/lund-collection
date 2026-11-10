@@ -16,12 +16,44 @@ import {
   TramFront,
 } from "lucide-react";
 import { CinematicVideo } from "@/components/CinematicVideo";
+import { CinematicVideoPlaylist } from "@/components/CinematicVideoPlaylist";
 import { DropSignupForm } from "@/components/DropSignupForm";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { useStorefront } from "@/components/StorefrontLayout";
 import { products } from "@/data/products";
 import { cn } from "@/lib/utils";
+
+const heroClips = [
+  {
+    place: "Domkyrkan",
+    desktopSrc: "/media/video/hero-cathedral-1440.mp4",
+    mobileSrc: "/media/video/hero-cathedral-960.mp4",
+    poster: "/media/video/posters/hero-cathedral.jpg",
+    alt: "Drönarvy över Lunds domkyrka och stadens tak",
+  },
+  {
+    place: "Centrala Lund",
+    desktopSrc: "/media/video/city-tram-1600.mp4",
+    mobileSrc: "/media/video/city-tram-960.mp4",
+    poster: "/media/video/posters/city-tram.jpg",
+    alt: "Grön spårvagn passerar genom centrala Lund",
+  },
+  {
+    place: "St Hans",
+    desktopSrc: "/media/video/st-hans-park-1440.mp4",
+    mobileSrc: "/media/video/st-hans-park-960.mp4",
+    poster: "/media/video/posters/st-hans-park.jpg",
+    alt: "Drönarvy över den gröna parken St Hans i Lund",
+  },
+  {
+    place: "Nattvagnen",
+    desktopSrc: "/media/video/night-tram-1600.mp4",
+    mobileSrc: "/media/video/night-tram-960.mp4",
+    poster: "/media/video/posters/night-tram.jpg",
+    alt: "Grön spårvagn glider genom Lund om natten",
+  },
+];
 
 const stats = [
   {
@@ -124,14 +156,12 @@ export default function Landing() {
           aria-labelledby="hero-title"
           className="relative flex h-[100svh] min-h-[520px] items-end overflow-hidden bg-ink text-bone"
         >
-          <CinematicVideo
+          <CinematicVideoPlaylist
             priority
-            desktopSrc="/media/video/hero-cathedral-1440.mp4"
-            mobileSrc="/media/video/hero-cathedral-960.mp4"
-            poster="/media/video/posters/hero-cathedral.jpg"
-            alt="Drönarvy över Lunds domkyrka och stadens tak"
+            clips={heroClips}
             mediaClassName="video-warm"
             overlayClassName="bg-gradient-to-t from-ink via-ink/35 to-ink/30"
+            showPlaceLabel
           />
           <div
             aria-hidden="true"
