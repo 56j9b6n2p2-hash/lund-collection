@@ -22,7 +22,7 @@ const colorways: Colorway[] = [
   {
     id: "vit",
     label: "Vintervit",
-    hex: "#f2eee6",
+    hex: "#dcd7c1",
     views: [
       {
         src: "/media/hoodie/domkyrkan-vit-1.jpg",
@@ -37,26 +37,26 @@ const colorways: Colorway[] = [
     ],
   },
   {
-    id: "gra",
-    label: "Grå",
-    hex: "#9aa0a6",
+    id: "oliv",
+    label: "Olivgrön",
+    hex: "#5c6048",
     views: [
       {
         src: "/media/hoodie/domkyrkan-gra-1.jpg",
         label: "Fram",
-        alt: "Grå hoodie med julmarknaden på bröstet",
+        alt: "Olivgrön hoodie med julmarknaden på bröstet",
       },
       {
         src: "/media/hoodie/domkyrkan-gra-2.jpg",
         label: "Bak",
-        alt: "Grå hoodie med Lunds domkyrka på ryggen",
+        alt: "Olivgrön hoodie med Lunds domkyrka på ryggen",
       },
     ],
   },
   {
     id: "svart",
     label: "Svart",
-    hex: "#242424",
+    hex: "#24221f",
     views: [
       {
         src: "/media/hoodie/domkyrkan-svart-1.jpg",
@@ -73,7 +73,7 @@ const colorways: Colorway[] = [
   {
     id: "sand",
     label: "Sand",
-    hex: "#c9b18c",
+    hex: "#d2c6b0",
     views: [
       {
         src: "/media/hoodie/domkyrkan-sand-1.jpg",
@@ -90,7 +90,7 @@ const colorways: Colorway[] = [
   {
     id: "rod",
     label: "Vinröd",
-    hex: "#6f2430",
+    hex: "#6e303a",
     views: [
       {
         src: "/media/hoodie/domkyrkan-rod-1.jpg",

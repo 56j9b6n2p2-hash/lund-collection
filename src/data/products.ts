@@ -30,7 +30,7 @@ export const products: Product[] = [
     imageAlt:
       "Vintervit hoodie med julmarknaden på bröstet och Lunds domkyrka på ryggen",
     colorName: "Vintervit",
-    colorHex: "#f2eee6",
+    colorHex: "#dcd7c1",
     material: "Unisex · 271 g/m² · 50/50 bomull/polyester",
     badge: "Juldrop",
     description:
