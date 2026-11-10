@@ -1,0 +1,17 @@
+{
+  "name": "Kollektionen av Lund",
+  "short_name": "Kollektionen",
+  "description": "Kläder inspirerade av Lund. Skapade för att bäras med stolthet.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3ede2",
+  "theme_color": "#101820",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
