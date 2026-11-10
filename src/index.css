@@ -218,11 +218,127 @@
     filter: saturate(0.95) contrast(1.02) brightness(1.06);
   }
 
+  .video-frost {
+    filter: saturate(0.72) contrast(1.08) brightness(0.94) hue-rotate(-8deg);
+  }
+
+  .video-festive {
+    filter: saturate(1.08) contrast(1.03) brightness(1.12) sepia(0.06);
+  }
+
+  .snowfall-layer {
+    position: absolute;
+    inset: 0;
+    background-repeat: repeat;
+    background-size: var(--snow-tile) var(--snow-tile);
+    will-change: background-position;
+    animation: snowfall var(--snow-speed, 22s) linear infinite;
+  }
+
+  .snowfall-layer-far {
+    --snow-tile: 120px;
+    --snow-speed: 26s;
+    background-image:
+      radial-gradient(
+        circle at 18px 24px,
+        rgba(243, 237, 226, 0.85) 0 1px,
+        transparent 1.6px
+      ),
+      radial-gradient(
+        circle at 74px 66px,
+        rgba(243, 237, 226, 0.5) 0 1px,
+        transparent 1.6px
+      ),
+      radial-gradient(
+        circle at 42px 104px,
+        rgba(243, 237, 226, 0.75) 0 1.2px,
+        transparent 1.8px
+      );
+    opacity: 0.55;
+  }
+
+  .snowfall-layer-mid {
+    --snow-tile: 170px;
+    --snow-speed: 18s;
+    background-image:
+      radial-gradient(
+        circle at 34px 42px,
+        rgba(255, 250, 240, 0.9) 0 1.4px,
+        transparent 2px
+      ),
+      radial-gradient(
+        circle at 118px 96px,
+        rgba(255, 250, 240, 0.65) 0 1.1px,
+        transparent 1.7px
+      ),
+      radial-gradient(
+        circle at 88px 146px,
+        rgba(255, 250, 240, 0.8) 0 1.2px,
+        transparent 1.8px
+      );
+    opacity: 0.48;
+  }
+
+  .snowfall-layer-near {
+    --snow-tile: 240px;
+    --snow-speed: 12s;
+    background-image:
+      radial-gradient(
+        circle at 52px 64px,
+        rgba(255, 252, 245, 0.95) 0 2px,
+        transparent 2.8px
+      ),
+      radial-gradient(
+        circle at 168px 132px,
+        rgba(255, 252, 245, 0.7) 0 1.6px,
+        transparent 2.3px
+      ),
+      radial-gradient(
+        circle at 104px 208px,
+        rgba(255, 252, 245, 0.85) 0 1.4px,
+        transparent 2px
+      );
+    opacity: 0.34;
+  }
+
+  .christmas-star {
+    transform-origin: top center;
+    filter: drop-shadow(0 0 28px rgba(201, 161, 90, 0.32));
+    animation: star-glow 9s ease-in-out infinite;
+  }
+
   .no-scrollbar {
     scrollbar-width: none;
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  @keyframes snowfall {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 0 var(--snow-tile);
+    }
+  }
+
+  @keyframes star-glow {
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: translateY(0) scale(0.985);
+    }
+    50% {
+      opacity: 0.88;
+      transform: translateY(-3px) scale(1.015);
+    }
+  }
+
+  @media (width <= 767px) {
+    .snowfall-layer-near {
+      opacity: 0.26;
+    }
   }
 
   @keyframes cue {
@@ -245,6 +361,12 @@
       scroll-behavior: auto;
     }
     .animate-cue {
+      animation: none;
+    }
+    .snowfall-layer {
+      animation: none;
+    }
+    .christmas-star {
       animation: none;
     }
   }

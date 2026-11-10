@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MapPin } from "lucide-react";
+import { MapPin, Snowflake, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type NavigatorWithConnection = Navigator & {
@@ -12,6 +12,8 @@ export type CinematicClip = {
   poster: string;
   alt: string;
   place: string;
+  kind?: "place" | "mood" | "snow";
+  tone?: string;
 };
 
 /**
@@ -172,6 +174,12 @@ export function CinematicVideoPlaylist({
   }, [activeIndex, canPlay, clips.length, interval]);
 
   const activeClip = clips[activeIndex];
+  const PlaceIcon =
+    activeClip.kind === "mood"
+      ? Sparkles
+      : activeClip.kind === "snow"
+        ? Snowflake
+        : MapPin;
 
   return (
     <div
@@ -188,6 +196,7 @@ export function CinematicVideoPlaylist({
         className={cn(
           "absolute inset-0 h-full w-full object-cover",
           mediaClassName,
+          activeClip.tone,
         )}
       />
 
@@ -222,6 +231,7 @@ export function CinematicVideoPlaylist({
                   ? "opacity-100"
                   : "opacity-0",
                 mediaClassName,
+                clip.tone,
               )}
             >
               <source
@@ -242,7 +252,7 @@ export function CinematicVideoPlaylist({
       {showPlaceLabel ? (
         <div className="pointer-events-none absolute right-5 top-24 z-10 flex flex-col items-end gap-2.5 md:right-10 md:top-28">
           <span className="eyebrow flex items-center gap-2 border border-bone/20 bg-ink/45 px-3 py-2 text-[9px] text-bone/85 backdrop-blur-sm">
-            <MapPin
+            <PlaceIcon
               className="size-3 text-gold"
               strokeWidth={1.5}
               aria-hidden="true"

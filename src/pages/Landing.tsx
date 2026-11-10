@@ -11,47 +11,61 @@ import {
   Mail,
   MapPin,
   ShoppingBag,
+  Snowflake,
   Sparkles,
   Star,
   TramFront,
 } from "lucide-react";
+import { ChristmasStar } from "@/components/ChristmasStar";
 import { CinematicVideo } from "@/components/CinematicVideo";
-import { CinematicVideoPlaylist } from "@/components/CinematicVideoPlaylist";
+import {
+  CinematicVideoPlaylist,
+  type CinematicClip,
+} from "@/components/CinematicVideoPlaylist";
 import { DropSignupForm } from "@/components/DropSignupForm";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
+import { Snowfall } from "@/components/Snowfall";
 import { useStorefront } from "@/components/StorefrontLayout";
 import { products } from "@/data/products";
 import { cn } from "@/lib/utils";
 
-const heroClips = [
+const heroClips: CinematicClip[] = [
   {
     place: "Domkyrkan",
+    kind: "place",
+    tone: "video-frost",
     desktopSrc: "/media/video/hero-cathedral-1440.mp4",
     mobileSrc: "/media/video/hero-cathedral-960.mp4",
     poster: "/media/video/posters/hero-cathedral.jpg",
-    alt: "Drönarvy över Lunds domkyrka och stadens tak",
+    alt: "Drönarvy över Lunds domkyrka i vinterljus",
+  },
+  {
+    place: "Snöfall",
+    kind: "snow",
+    tone: "video-frost",
+    desktopSrc: "/media/video/snow-landscape-1440.mp4",
+    mobileSrc: "/media/video/snow-landscape-960.mp4",
+    poster: "/media/video/posters/snow-landscape.jpg",
+    alt: "Snöfall över ett snötäckt vinterlandskap",
   },
   {
     place: "Centrala Lund",
+    kind: "place",
+    tone: "video-frost",
     desktopSrc: "/media/video/city-tram-1600.mp4",
     mobileSrc: "/media/video/city-tram-960.mp4",
     poster: "/media/video/posters/city-tram.jpg",
     alt: "Grön spårvagn passerar genom centrala Lund",
   },
   {
-    place: "St Hans",
-    desktopSrc: "/media/video/st-hans-park-1440.mp4",
-    mobileSrc: "/media/video/st-hans-park-960.mp4",
-    poster: "/media/video/posters/st-hans-park.jpg",
-    alt: "Drönarvy över den gröna parken St Hans i Lund",
-  },
-  {
-    place: "Nattvagnen",
-    desktopSrc: "/media/video/night-tram-1600.mp4",
-    mobileSrc: "/media/video/night-tram-960.mp4",
-    poster: "/media/video/posters/night-tram.jpg",
-    alt: "Grön spårvagn glider genom Lund om natten",
+    place: "Julnatten",
+    kind: "mood",
+    tone: "video-festive",
+    desktopSrc: "/media/video/festive-tram-1440.mp4",
+    mobileSrc: "/media/video/festive-tram-960.mp4",
+    poster: "/media/video/posters/festive-tram.jpg",
+    alt: "Spårvagn passerar en juldekorerad byggnad i kvällsljus",
   },
 ];
 
@@ -159,14 +173,23 @@ export default function Landing() {
           <CinematicVideoPlaylist
             priority
             clips={heroClips}
-            mediaClassName="video-warm"
-            overlayClassName="bg-gradient-to-t from-ink via-ink/35 to-ink/30"
+            overlayClassName="bg-gradient-to-t from-ink via-[#0b1a26]/50 to-[#0b1a26]/30"
             showPlaceLabel
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_75%_18%,rgba(201,161,90,0.16),transparent_55%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_75%_18%,rgba(201,161,90,0.2),transparent_55%)]"
           />
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[22%] top-0 z-[3] hidden h-[7%] flex-col items-center lg:flex"
+          >
+            <span className="h-full w-px bg-gradient-to-b from-transparent via-gold/20 to-gold/60" />
+            <ChristmasStar className="-mt-1 size-24 xl:size-28" />
+          </div>
+
+          <Snowfall className="z-[4]" />
 
           <div className="container-site relative z-10 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-28 md:pb-14">
             <div className="flex items-end justify-between gap-8">
@@ -180,9 +203,8 @@ export default function Landing() {
                 >
                   <span className="h-px w-8 bg-gold/70" />
                   Lund · Skåne · Julen 2026
-                  <Star
+                  <Snowflake
                     className="size-3"
-                    fill="currentColor"
                     strokeWidth={1.5}
                     aria-hidden="true"
                   />
@@ -224,8 +246,8 @@ export default function Landing() {
                 >
                   <p className="max-w-md text-[15px] leading-7 text-bone/80 md:text-base">
                     Ett juldrop från Lund. Fyra plagg, inspirerade av
-                    Domkyrkan, Lundagård och det stilla vinterljuset. Anmäl dig
-                    och få första tillgång den 1 december.
+                    Domkyrkan, Lundagård och snön över Stortorget. Anmäl dig och
+                    få första tillgång den 1 december.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <a
@@ -284,7 +306,7 @@ export default function Landing() {
                 id="manifesto-title"
                 className="mt-6 text-[clamp(2.5rem,5.6vw,5.4rem)] leading-[0.89] text-ink"
               >
-                En stad byggd av ljus, kullersten och kalla morgnar.
+                En stad byggd av ljus, kullersten och snötyngda morgnar.
               </h2>
             </Reveal>
 
@@ -296,12 +318,12 @@ export default function Landing() {
               <p className="mt-6 text-[15px] leading-7 text-ink/70">
                 Lund är inte en stad man passerar. Det är en stad man återvänder
                 till — genom Domkyrkans valv, över Lundagårds grus och längs
-                spårvagnens gröna linje.
+                spårvagnens gröna linje, med julmarknadens ljus i ögonvrån.
               </p>
               <p className="mt-4 text-[15px] leading-7 text-ink/70">
                 I år har vi samlat den i en julkollektion: tidlös, lågmäld och
-                byggd för att bäras länge. Ett litet släpp för kalla dagar och
-                ljusa kvällar.
+                byggd för att bäras länge. Ett litet släpp för snöiga promenader
+                och ljusa kvällar.
               </p>
               <p className="eyebrow mt-8 flex items-center gap-2 text-ink/55">
                 <Star className="size-2.5 text-gold" fill="currentColor" strokeWidth={1.5} />
@@ -369,8 +391,8 @@ export default function Landing() {
                 <p className="text-sm leading-6 text-ink/65">
                   Lågmälda plagg i material som åldras vackert. Varje detalj
                   hämtar sin färg från en plats i Lund — och varje plagg är
-                  namngivet efter den. Gjorda för kalla morgnar och långa,
-                  ljusa kvällar.
+                  namngivet efter den. Gjorda för kalla morgnar, julmarknader och
+                  långa kvällar.
                 </p>
                 <p className="eyebrow mt-5 text-ink/55">
                   Designad i Lund · Tillverkad i Portugal
@@ -423,7 +445,9 @@ export default function Landing() {
             <Star className="h-full w-full" strokeWidth={0.5} />
           </div>
 
-          <div className="container-site relative grid gap-12 py-20 md:grid-cols-12 md:items-center md:gap-10 md:py-28">
+          <Snowfall className="z-[1] opacity-50" />
+
+          <div className="container-site relative z-10 grid gap-12 py-20 md:grid-cols-12 md:items-center md:gap-10 md:py-28">
             <Reveal className="md:col-span-6">
               <p className="eyebrow flex items-center gap-2.5 text-gold">
                 <Sparkles className="size-3.5" strokeWidth={1.5} />
@@ -491,9 +515,11 @@ export default function Landing() {
             mobileSrc="/media/video/city-tram-960.mp4"
             poster="/media/video/posters/city-tram.jpg"
             alt="Grön spårvagn passerar genom centrala Lund"
-            mediaClassName="video-warm"
-            overlayClassName="bg-gradient-to-t from-ink via-ink/30 to-ink/25"
+            mediaClassName="video-frost"
+            overlayClassName="bg-gradient-to-t from-ink via-[#0b1a26]/40 to-[#0b1a26]/25"
           />
+
+          <Snowfall className="z-[4]" />
 
           <div className="container-site relative z-10 pb-12 pt-32 md:pb-16">
             <div className="flex flex-col gap-9 md:flex-row md:items-end md:justify-between">
@@ -511,15 +537,15 @@ export default function Landing() {
                     <br />
                     Spårvagn.
                     <br />
-                    Vinterljus.
+                    Snöfall.
                   </h2>
                 </Reveal>
               </div>
 
               <Reveal className="max-w-sm pb-1" delay={0.15}>
                 <p className="text-sm leading-7 text-bone/75">
-                  En grön linje genom grå vintermorgnar. Lund är en stad som rör
-                  sig långsamt — men aldrig står still.
+                  En grön linje genom snötunga vintermorgnar. Lund är en stad som
+                  rör sig långsamt — men aldrig står still.
                 </p>
                 <a
                   href="#platser"
@@ -532,7 +558,7 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="absolute right-5 top-24 hidden items-center gap-2 border border-bone/20 bg-ink/25 px-3 py-2 backdrop-blur-sm md:flex">
+          <div className="absolute right-5 top-24 z-10 hidden items-center gap-2 border border-bone/20 bg-ink/25 px-3 py-2 backdrop-blur-sm md:flex">
             <span className="size-1.5 rounded-full bg-gold" />
             <span className="eyebrow text-[9px] text-bone/70">
               Spelar in · Lund
@@ -581,8 +607,8 @@ export default function Landing() {
                 över Lund
               </h2>
               <p className="mt-6 text-sm leading-7 text-bone/65">
-                När biblioteken släcker och kullerstenen blanker av regn finns
-                Lund kvar i sitt eget ljus: spårvagnen, skyltfönstren,
+                När biblioteken släcker och kullerstenen blanker av snö finns
+                Lund kvar i sitt eget ljus: spårvagnen, julskyltfönstren,
                 cyklarnas lampor genom Lundagård.
               </p>
 
@@ -644,7 +670,8 @@ export default function Landing() {
               <p className="text-sm leading-6 text-ink/65">
                 Domkyrkans romanska valv, Lundagårds grus, Stortorgets ljus och
                 kunskapens hus. Platserna som gav kollektionen dess namn — och
-                dess känsla. I december blir de ännu svårare att lämna.
+                dess känsla. I december, när snön ligger över taken, blir de
+                ännu svårare att lämna.
               </p>
             </Reveal>
           </div>
