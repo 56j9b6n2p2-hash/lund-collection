@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
   <url>
     <loc>https://kollektionenavlund.se/</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/video/posters/winter-drone.jpg</image:loc>
+      <image:title>Vinter i Lund — Kollektionen av Lund</image:title>
+      <image:caption>Drönarvy över ett snötäckt Lund i vinterljus.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://kollektionenavlund.se/shop</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/domkyrkan-vit-1.jpg</image:loc>
+      <image:title>Domkyrkan Hoodie — Vintervit</image:title>
+      <image:caption>Vintervit hoodie med julmarknaden på bröstet.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://kollektionenavlund.se/shop/domkyrkan-hoodie</loc>
     <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/shop/lundagard-tee</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/shop/stortorget-cap</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/shop/nattvandring-beanie</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/domkyrkan-vit-1.jpg</image:loc>
+      <image:title>Domkyrkan Hoodie — Vintervit</image:title>
+      <image:caption>Vintervit hoodie med julmarknaden på bröstet och Lunds domkyrka på ryggen.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/domkyrkan-svart-1.jpg</image:loc>
+      <image:title>Domkyrkan Hoodie — Svart</image:title>
+      <image:caption>Svart hoodie med julmarknaden på bröstet.</image:caption>
+    </image:image>
   </url>
 </urlset>

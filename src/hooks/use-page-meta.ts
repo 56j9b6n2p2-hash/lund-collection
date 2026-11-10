@@ -1,81 +1,99 @@
 import { useEffect } from "react";
 
+const SITE_URL = "https://kollektionenavlund.se";
+const DEFAULT_IMAGE = "/media/video/posters/winter-drone.jpg";
+
 type PageMeta = {
   title: string;
   description: string;
   path: string;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  type?: "website" | "product";
+  noindex?: boolean;
 };
 
-export function usePageMeta({ title, description, path }: PageMeta) {
+function absoluteUrl(value: string) {
+  if (/^https?:\/\//i.test(value)) return value;
+  return `${SITE_URL}${value.startsWith("/") ? value : `/${value}`}`;
+}
+
+function setMeta(
+  attribute: "name" | "property",
+  key: string,
+  content: string,
+) {
+  const selector = `meta[${attribute}="${key}"]`;
+  let element = document.head.querySelector<HTMLMetaElement>(selector);
+
+  if (!element) {
+    element = document.createElement("meta");
+    element.setAttribute(attribute, key);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute("content", content);
+}
+
+function setCanonical(href: string) {
+  let element =
+    document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+
+  if (!element) {
+    element = document.createElement("link");
+    element.setAttribute("rel", "canonical");
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute("href", href);
+}
+
+export function usePageMeta({
+  title,
+  description,
+  path,
+  image = DEFAULT_IMAGE,
+  imageAlt,
+  imageWidth = 1440,
+  imageHeight = 810,
+  type = "website",
+  noindex = false,
+}: PageMeta) {
   useEffect(() => {
-    const metaDescription = document.querySelector<HTMLMetaElement>(
-      'meta[name="description"]',
-    );
-    const ogTitle = document.querySelector<HTMLMetaElement>(
-      'meta[property="og:title"]',
-    );
-    const ogDescription = document.querySelector<HTMLMetaElement>(
-      'meta[property="og:description"]',
-    );
-    const ogUrl = document.querySelector<HTMLMetaElement>(
-      'meta[property="og:url"]',
-    );
-    const twitterTitle = document.querySelector<HTMLMetaElement>(
-      'meta[name="twitter:title"]',
-    );
-    const twitterDescription = document.querySelector<HTMLMetaElement>(
-      'meta[name="twitter:description"]',
-    );
-    const canonical =
-      document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    const url = absoluteUrl(path);
+    const imageUrl = absoluteUrl(image);
+    const imageDescription = imageAlt ?? title;
 
-    const previous = {
-      title: document.title,
-      description: metaDescription?.content,
-      ogTitle: ogTitle?.content,
-      ogDescription: ogDescription?.content,
-      ogUrl: ogUrl?.content,
-      twitterTitle: twitterTitle?.content,
-      twitterDescription: twitterDescription?.content,
-      canonical: canonical?.href,
-    };
-
-    const url = `https://kollektionenavlund.se${path}`;
     document.title = title;
-    metaDescription?.setAttribute("content", description);
-    ogTitle?.setAttribute("content", title);
-    ogDescription?.setAttribute("content", description);
-    ogUrl?.setAttribute("content", url);
-    twitterTitle?.setAttribute("content", title);
-    twitterDescription?.setAttribute("content", description);
-    canonical?.setAttribute("href", url);
+    setMeta("name", "description", description);
+    setMeta("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
 
-    return () => {
-      document.title = previous.title;
-      if (previous.description !== undefined) {
-        metaDescription?.setAttribute("content", previous.description);
-      }
-      if (previous.ogTitle !== undefined) {
-        ogTitle?.setAttribute("content", previous.ogTitle);
-      }
-      if (previous.ogDescription !== undefined) {
-        ogDescription?.setAttribute("content", previous.ogDescription);
-      }
-      if (previous.ogUrl !== undefined) {
-        ogUrl?.setAttribute("content", previous.ogUrl);
-      }
-      if (previous.twitterTitle !== undefined) {
-        twitterTitle?.setAttribute("content", previous.twitterTitle);
-      }
-      if (previous.twitterDescription !== undefined) {
-        twitterDescription?.setAttribute(
-          "content",
-          previous.twitterDescription,
-        );
-      }
-      if (previous.canonical !== undefined) {
-        canonical?.setAttribute("href", previous.canonical);
-      }
-    };
-  }, [title, description, path]);
+    setMeta("property", "og:type", type);
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:url", url);
+    setMeta("property", "og:image", imageUrl);
+    setMeta("property", "og:image:alt", imageDescription);
+    setMeta("property", "og:image:width", String(imageWidth));
+    setMeta("property", "og:image:height", String(imageHeight));
+
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", imageUrl);
+    setMeta("name", "twitter:image:alt", imageDescription);
+
+    setCanonical(url);
+  }, [
+    title,
+    description,
+    path,
+    image,
+    imageAlt,
+    imageWidth,
+    imageHeight,
+    type,
+    noindex,
+  ]);
 }

@@ -12,10 +12,14 @@ export default function Shop() {
   const [query, setQuery] = useState("");
 
   usePageMeta({
-    title: "Julkollektionen 2026 — Kollektionen av Lund",
+    title: "Julkollektionen 2026 — Domkyrkan Hoodie | Kollektionen av Lund",
     description:
-      "Utforska julkollektionen 2026 från Kollektionen av Lund. En tung hoodie inspirerad av Domkyrkan och vinterkvällarna i Lund. Sök efter färg eller material.",
+      "Domkyrkan Hoodie från julkollektionen 2026: tung, borstad bomullsblandning med julmarknaden på bröstet och Lunds domkyrka på ryggen. Fem färger, S–XXL.",
     path: "/shop",
+    image: "/media/hoodie/domkyrkan-vit-1.jpg",
+    imageAlt: "Vintervit Domkyrkan Hoodie med julmarknadstryck",
+    imageWidth: 1200,
+    imageHeight: 1200,
   });
 
   const filtered = useMemo(() => {

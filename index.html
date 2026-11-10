@@ -10,10 +10,10 @@
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
-    <title>Kollektionen av Lund — Julkollektionen 2026</title>
+    <title>Kollektionen av Lund — Domkyrkan Hoodie | Julen 2026</title>
     <meta
       name="description"
-      content="Julkollektionen 2026 från Lund. Fyra tidlösa plagg inspirerade av Domkyrkan, Lundagård och Stortorget. Anmäl dig till juldroppet den 1 december."
+      content="En tung vinterhoodie från Lund med julmarknaden på bröstet och Domkyrkan på ryggen. Anmäl dig till juldroppet den 1 december 2026."
     />
     <meta name="theme-color" content="#101820" />
     <meta name="robots" content="index, follow" />
@@ -26,39 +26,39 @@
     <meta property="og:site_name" content="Kollektionen av Lund" />
     <meta
       property="og:title"
-      content="Kollektionen av Lund — Julkollektionen 2026"
+      content="Kollektionen av Lund — Domkyrkan Hoodie | Julen 2026"
     />
     <meta
       property="og:description"
-      content="Fyra tidlösa plagg för julen i Lund. Anmäl dig till juldroppet den 1 december och få första tillgång."
+      content="En tung vinterhoodie från Lund med julmarknaden på bröstet och Domkyrkan på ryggen. Anmäl dig till juldroppet den 1 december 2026."
     />
     <meta property="og:url" content="https://kollektionenavlund.se/" />
     <meta
       property="og:image"
-      content="https://kollektionenavlund.se/media/video/posters/hero-cathedral.jpg"
+      content="https://kollektionenavlund.se/media/video/posters/winter-drone.jpg"
     />
     <meta
       property="og:image:alt"
-      content="Drönarvy över Lunds domkyrka och stadens tak"
+      content="Drönarvy över ett snötäckt Lund i vinterljus"
     />
     <meta property="og:image:width" content="1440" />
     <meta property="og:image:height" content="810" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Kollektionen av Lund — Julkollektionen 2026"
+      content="Kollektionen av Lund — Domkyrkan Hoodie | Julen 2026"
     />
     <meta
       name="twitter:description"
-      content="Fyra tidlösa plagg för julen i Lund. Anmäl dig till juldroppet den 1 december."
+      content="En tung vinterhoodie från Lund med julmarknaden på bröstet och Domkyrkan på ryggen. Anmäl dig till juldroppet den 1 december 2026."
     />
     <meta
       name="twitter:image"
-      content="https://kollektionenavlund.se/media/video/posters/hero-cathedral.jpg"
+      content="https://kollektionenavlund.se/media/video/posters/winter-drone.jpg"
     />
     <meta
       name="twitter:image:alt"
-      content="Drönarvy över Lunds domkyrka och stadens tak"
+      content="Drönarvy över ett snötäckt Lund i vinterljus"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -70,47 +70,64 @@
     <link
       rel="preload"
       as="image"
-      href="/media/video/posters/hero-cathedral.jpg"
+      href="/media/video/posters/winter-drone.jpg"
       fetchpriority="high"
     />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "ClothingStore",
-        "name": "Kollektionen av Lund",
-        "description": "Julkollektionen 2026 från Lund. Fyra tidlösa plagg, inspirerade av Domkyrkan, Lundagård och Stortorget.",
-        "url": "https://kollektionenavlund.se/",
-        "image": "https://kollektionenavlund.se/media/video/posters/hero-cathedral.jpg",
-        "priceRange": "390–1290 SEK",
-        "currenciesAccepted": "SEK",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Stortorget 7",
-          "postalCode": "222 23",
-          "addressLocality": "Lund",
-          "addressRegion": "Skåne",
-          "addressCountry": "SE"
-        },
-        "areaServed": "Lund",
-        "openingHoursSpecification": [
+        "@graph": [
           {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "11:00",
-            "closes": "18:00"
+            "@type": "WebSite",
+            "@id": "https://kollektionenavlund.se/#website",
+            "url": "https://kollektionenavlund.se/",
+            "name": "Kollektionen av Lund",
+            "inLanguage": "sv-SE",
+            "publisher": { "@id": "https://kollektionenavlund.se/#store" }
           },
           {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": "Saturday",
-            "opens": "10:00",
-            "closes": "16:00"
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": "Sunday",
-            "opens": "12:00",
-            "closes": "16:00"
+            "@type": "ClothingStore",
+            "@id": "https://kollektionenavlund.se/#store",
+            "name": "Kollektionen av Lund",
+            "description": "Julkollektionen 2026 från Lund: en tung hoodie inspirerad av Domkyrkan och vinterkvällarna i Lund.",
+            "url": "https://kollektionenavlund.se/",
+            "image": "https://kollektionenavlund.se/media/video/posters/winter-drone.jpg",
+            "logo": "https://kollektionenavlund.se/logo.svg",
+            "priceRange": "1290 SEK",
+            "currenciesAccepted": "SEK",
+            "sameAs": [
+              "https://www.instagram.com/kollektionenavlund.se/"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Stortorget 7",
+              "postalCode": "222 23",
+              "addressLocality": "Lund",
+              "addressRegion": "Skåne",
+              "addressCountry": "SE"
+            },
+            "areaServed": "Lund",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "11:00",
+                "closes": "18:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "10:00",
+                "closes": "16:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "12:00",
+                "closes": "16:00"
+              }
+            ]
           }
         ]
       }

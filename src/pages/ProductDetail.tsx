@@ -9,6 +9,7 @@ import {
   Truck,
 } from "lucide-react";
 import { formatSek, getProduct } from "@/data/products";
+import { ProductStructuredData } from "@/components/ProductStructuredData";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { useStorefront } from "@/components/StorefrontLayout";
 
@@ -19,12 +20,18 @@ export default function ProductDetail() {
 
   usePageMeta({
     title: product
-      ? `${product.name} — Kollektionen av Lund`
+      ? `${product.name} — ${product.colorName} | Kollektionen av Lund`
       : "Plagget hittades inte — Kollektionen av Lund",
     description: product
-      ? `${product.subtitle}. ${product.description.slice(0, 120)}`
+      ? `${product.colorName} Domkyrkan Hoodie med julmarknaden på bröstet och Lunds domkyrka på ryggen. 271 g/m², unisex S–XXL. Reservera inför juldroppet den 1 december.`
       : "Plagget finns inte i julkollektionen. Utforska hela kollektionen från Kollektionen av Lund.",
     path: `/shop/${id ?? ""}`,
+    image: product?.image ?? "/media/video/posters/winter-drone.jpg",
+    imageAlt: product?.imageAlt ?? "Vinter i Lund",
+    imageWidth: product ? 1200 : 1440,
+    imageHeight: product ? 1200 : 810,
+    type: "product",
+    noindex: !product,
   });
 
   function handleAdd(productId: string) {
@@ -58,6 +65,7 @@ export default function ProductDetail() {
 
   return (
     <>
+      <ProductStructuredData product={product} />
       <div className="bg-background pt-20">
         <div className="container-site border-b border-ink/10 py-5">
           <nav

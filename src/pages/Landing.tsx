@@ -25,6 +25,7 @@ import {
 import { DropSignupForm } from "@/components/DropSignupForm";
 import { HoodieShowcase } from "@/components/HoodieShowcase";
 import { Reveal } from "@/components/Reveal";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { cn } from "@/lib/utils";
 
 const heroClips: CinematicClip[] = [
@@ -148,6 +149,15 @@ const places = [
 export default function Landing() {
   const reduceMotion = useReducedMotion();
   const location = useLocation();
+
+  usePageMeta({
+    title: "Kollektionen av Lund — Domkyrkan Hoodie | Julen 2026",
+    description:
+      "En tung vinterhoodie från Lund med julmarknaden på bröstet och Domkyrkan på ryggen. Anmäl dig till juldroppet den 1 december 2026.",
+    path: "/",
+    image: "/media/video/posters/winter-drone.jpg",
+    imageAlt: "Drönarvy över ett snötäckt Lund i vinterljus",
+  });
 
   useEffect(() => {
     if (!location.hash) return;

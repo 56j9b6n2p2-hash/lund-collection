@@ -1,6 +1,18 @@
 import { motion } from "framer-motion";
+import { useLocation } from "react-router";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 export default function NotFound() {
+  const { pathname } = useLocation();
+
+  usePageMeta({
+    title: "Sidan hittades inte — Kollektionen av Lund",
+    description:
+      "Sidan finns inte. Gå till Kollektionen av Lund och utforska julkollektionen 2026.",
+    path: pathname,
+    noindex: true,
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
