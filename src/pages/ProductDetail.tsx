@@ -20,10 +20,10 @@ export default function ProductDetail() {
 
   usePageMeta({
     title: product
-      ? `${product.name} — ${product.colorName} | Kollektionen av Lund`
+      ? `${product.name} — Lund hoodie | Kollektionen av Lund`
       : "Plagget hittades inte — Kollektionen av Lund",
     description: product
-      ? `${product.colorName} Domkyrkan Hoodie med julmarknaden på bröstet och Lunds domkyrka på ryggen. 271 g/m², unisex S–XXL. Reservera inför juldroppet den 1 december.`
+      ? `Lund hoodie i ${product.colorName.toLowerCase()} med julmarknaden på bröstet och Lunds domkyrka på ryggen. Tung, borstad bomullsblandning, unisex S–XXL. Reservera inför juldroppet.`
       : "Plagget finns inte i julkollektionen. Utforska hela kollektionen från Kollektionen av Lund.",
     path: `/shop/${id ?? ""}`,
     image: product?.image ?? "/media/video/posters/winter-drone.jpg",

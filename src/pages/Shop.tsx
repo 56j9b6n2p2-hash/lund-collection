@@ -12,12 +12,12 @@ export default function Shop() {
   const [query, setQuery] = useState("");
 
   usePageMeta({
-    title: "Julkollektionen 2026 — Domkyrkan Hoodie | Kollektionen av Lund",
+    title: "Lund merch, Lund kläder & hoodie | Kollektionen av Lund",
     description:
-      "Domkyrkan Hoodie från julkollektionen 2026: tung, borstad bomullsblandning med julmarknaden på bröstet och Lunds domkyrka på ryggen. Fem färger, S–XXL.",
+      "Lund merch och Lund kläder i små serier. Domkyrkan Hoodie är en tung Lund hoodie i fem färger, S–XXL. Reservera inför juldroppet 1 december.",
     path: "/shop",
     image: "/media/hoodie/domkyrkan-vit-1.jpg",
-    imageAlt: "Vintervit Domkyrkan Hoodie med julmarknadstryck",
+    imageAlt: "Vintervit Lund hoodie — Domkyrkan Hoodie",
     imageWidth: 1200,
     imageHeight: 1200,
   });
@@ -82,9 +82,9 @@ export default function Shop() {
                 hoodie<span className="text-gold">.</span>
               </h1>
               <p className="mt-6 max-w-md text-sm leading-7 text-bone/65">
-                En tung hoodie för kalla morgnar, sena kvällar och allt
-                däremellan. Läs om plagget och reservera din storlek inför
-                juldroppet.
+                Lund merch och Lund kläder från Kollektionen av Lund. En tung
+                Lund hoodie för kalla morgnar, sena kvällar och allt däremellan.
+                Läs om plagget och reservera din storlek inför juldroppet.
               </p>
             </div>
 
@@ -175,6 +175,46 @@ export default function Shop() {
             </button>
           </div>
         )}
+      </section>
+
+      <section
+        aria-labelledby="lund-merch-title"
+        className="container-site py-14 md:py-20"
+      >
+        <div className="grid gap-8 border-t border-ink/10 pt-10 md:grid-cols-12 md:gap-10 md:pt-14">
+          <div className="md:col-span-5">
+            <p className="eyebrow text-gold-deep">Lund merch</p>
+            <h2
+              id="lund-merch-title"
+              className="mt-4 text-[clamp(2.3rem,4.8vw,4rem)] leading-[0.9] text-ink"
+            >
+              Merch från Lund.
+              <br />
+              Kläder för vintern.
+            </h2>
+          </div>
+          <div className="md:col-span-6 md:col-start-7">
+            <p className="text-sm leading-7 text-ink/70">
+              Letar du efter Lund merch, Lund kläder eller en Lund hoodie?
+              Kollektionen av Lund gör små serier med motiv från staden:
+              Domkyrkan, Stortorget och julmarknaden. Vår hoodie är tung, mjuk
+              och tryckt på beställning.
+            </p>
+            <p className="mt-4 text-sm leading-7 text-ink/70">
+              Lund hoodien finns i fem färger och storlekarna S–XXL. Beställ
+              online och få den skickad från Lund inom 2–4 arbetsdagar.
+            </p>
+            <Link
+              to="/shop/domkyrkan-hoodie"
+              className="eyebrow group mt-6 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-ink transition-colors hover:border-gold hover:text-ink/70"
+            >
+              Se Lund hoodien
+              <span className="transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </Link>
+          </div>
+        </div>
       </section>
 
       <section className="bg-pine text-bone">

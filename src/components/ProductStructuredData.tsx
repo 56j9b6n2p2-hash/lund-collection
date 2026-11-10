@@ -15,6 +15,7 @@ export function ProductStructuredData({ product }: { product: Product }) {
           "@type": "Product",
           "@id": `${SITE_URL}/shop/${product.id}#product`,
           name: product.name,
+          alternateName: ["Lund hoodie", "Lund merch hoodie"],
           image: [`${SITE_URL}${product.image}`],
           description: product.description,
           sku: product.id,

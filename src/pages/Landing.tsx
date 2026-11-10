@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowDown,
@@ -151,9 +151,9 @@ export default function Landing() {
   const location = useLocation();
 
   usePageMeta({
-    title: "Kollektionen av Lund — Domkyrkan Hoodie | Julen 2026",
+    title: "Lund merch & Lund hoodie | Kollektionen av Lund",
     description:
-      "En tung vinterhoodie från Lund med julmarknaden på bröstet och Domkyrkan på ryggen. Anmäl dig till juldroppet den 1 december 2026.",
+      "Lund merch och Lund kläder från Kollektionen av Lund. Domkyrkan Hoodie är en tung Lund hoodie med julmarknadstryck. Se kollektionen och juldroppet 1 december.",
     path: "/",
     image: "/media/video/posters/winter-drone.jpg",
     imageAlt: "Drönarvy över ett snötäckt Lund i vinterljus",
@@ -230,7 +230,7 @@ export default function Landing() {
 
                 <motion.h1
                   id="hero-title"
-                  aria-label="En känsla. En stad. En kollektion."
+                  aria-label="Lund merch. En stad. En kollektion."
                   className="hero-neon mt-5 max-w-full break-words font-display text-[clamp(2.35rem,10.4vw,11.5rem)] leading-[1.05] text-bone"
                   initial={reduceMotion ? false : "hidden"}
                   animate={reduceMotion ? undefined : "show"}
@@ -244,7 +244,7 @@ export default function Landing() {
                     },
                   }}
                 >
-                  {["En känsla", "En stad", "En kollektion"].map((line) => (
+                  {["Lund merch", "En stad", "En kollektion"].map((line) => (
                     <motion.span
                       key={line}
                       className="block"
@@ -263,9 +263,9 @@ export default function Landing() {
                   transition={{ delay: 0.7, duration: 0.9, ease: "easeOut" }}
                 >
                   <p className="max-w-md text-[15px] leading-7 text-bone/80 md:text-base">
-                    Ett juldrop från Lund. En hoodie, inspirerad av Domkyrkan
-                    och snön över Stortorget. Anmäl dig och få första tillgång
-                    den 1 december.
+                    Lund merch från Kollektionen av Lund. En tung vinterhoodie
+                    inspirerad av Domkyrkan och snön över Stortorget. Anmäl dig
+                    och få första tillgång den 1 december.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <a
@@ -705,25 +705,26 @@ export default function Landing() {
             >
               <p className="eyebrow flex items-center gap-3 text-gold-deep">
                 <span className="h-px w-8 bg-gold/70" />
-                Om oss
+                Lund merch
               </p>
               <h2
                 id="about-title"
                 className="mt-5 text-[clamp(2.5rem,5vw,4.7rem)] leading-[0.88] text-ink"
               >
-                Designat i Lund.
+                Lund kläder.
                 <br />
-                Buret överallt.
+                Designat i Lund.
               </h2>
               <p className="mt-6 text-[15px] leading-7 text-ink/70">
-                Kollektionen av Lund föddes ur en enkel idé: att göra kläder som
-                känns lika självklara som staden de kommer från. Vi arbetar i
-                små serier med material som tål att användas — en tung,
+                Kollektionen av Lund föddes ur en enkel idé: att göra Lund merch
+                som känns lika självklar som staden den kommer från. Vi arbetar
+                i små serier med material som tål att användas — en tung,
                 borstad bomullsblandning med mjuk insida.
               </p>
               <p className="mt-4 text-[15px] leading-7 text-ink/70">
-                Hoodien är en hyllning till Domkyrkan och vinterkvällarna i
-                Lund. Bär den under julen, slit den länge och lämna den vidare.
+                Vår Lund hoodie är en hyllning till Domkyrkan och
+                vinterkvällarna i Lund. Bär den under julen, slit den länge och
+                lämna den vidare.
               </p>
 
               <ul className="mt-8 space-y-3 border-t border-ink/10 pt-6">
@@ -742,13 +743,22 @@ export default function Landing() {
                 ))}
               </ul>
 
-              <a
-                href="mailto:hej@kollektionenavlund.se?subject=Fr%C3%A5ga%20till%20Kollektionen%20av%20Lund"
-                className="eyebrow group mt-8 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-ink transition-colors hover:border-gold hover:text-ink/70"
-              >
-                Prata med oss
-                <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <Link
+                  to="/shop/domkyrkan-hoodie"
+                  className="eyebrow group inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-ink transition-colors hover:border-gold hover:text-ink/70"
+                >
+                  Se Lund hoodien
+                  <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+                <a
+                  href="mailto:hej@kollektionenavlund.se?subject=Fr%C3%A5ga%20till%20Kollektionen%20av%20Lund"
+                  className="eyebrow group inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-ink transition-colors hover:border-gold hover:text-ink/70"
+                >
+                  Prata med oss
+                  <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
+              </div>
             </Reveal>
           </div>
         </section>
