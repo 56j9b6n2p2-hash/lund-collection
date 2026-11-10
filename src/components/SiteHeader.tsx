@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { Menu, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,10 +13,11 @@ import {
 import { Wordmark } from "@/components/Wordmark";
 
 const navItems = [
-  { label: "Shop", href: "#kollektionen" },
-  { label: "Staden", href: "#staden" },
-  { label: "Om oss", href: "#om-oss" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Shop", to: "/shop" },
+  { label: "Juldroppet", to: "/#juldroppet" },
+  { label: "Staden", to: "/#staden" },
+  { label: "Om oss", to: "/#om-oss" },
+  { label: "Kontakt", to: "/#kontakt" },
 ];
 
 export function SiteHeader({
@@ -31,25 +33,26 @@ export function SiteHeader({
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-bone/10 bg-navy/95 backdrop-blur-md">
       <div className="container-site flex h-20 items-center justify-between gap-4">
-        <a
-          href="#top"
-          aria-label="Kollektionen av Lund – till toppen"
+        <Link
+          to="/"
+          aria-label="Kollektionen av Lund – till startsidan"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="shrink-0 py-2 transition-opacity hover:opacity-85"
         >
           <Wordmark />
-        </a>
+        </Link>
 
-        <div className="flex items-center gap-2 md:gap-9">
+        <div className="flex items-center gap-2 md:gap-6 lg:gap-9">
           <nav aria-label="Huvudmeny" className="hidden md:block">
-            <ul className="flex items-center gap-8">
+            <ul className="flex items-center gap-5 lg:gap-6">
               {navItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
                     className="eyebrow relative py-2 text-bone/80 transition-colors after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:text-gold hover:after:w-full"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -62,7 +65,7 @@ export function SiteHeader({
             className="group relative flex h-11 items-center gap-2.5 border border-bone/20 px-3 text-bone transition-colors hover:border-gold hover:text-gold sm:px-4"
           >
             <ShoppingBag className="size-[17px]" strokeWidth={1.6} />
-            <span className="eyebrow hidden sm:inline">Varukorg</span>
+            <span className="eyebrow hidden lg:inline">Varukorg</span>
             <span
               className={`flex size-5 items-center justify-center rounded-full text-[10px] font-bold tabular-nums transition-colors ${
                 cartCount > 0
@@ -100,9 +103,9 @@ export function SiteHeader({
 
               <nav aria-label="Mobilmeny" className="flex flex-col px-6">
                 {navItems.map((item, index) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
+                  <Link
+                    key={item.to}
+                    to={item.to}
                     onClick={() => setMenuOpen(false)}
                     className="group flex items-center justify-between border-b border-bone/10 py-5"
                   >
@@ -112,7 +115,7 @@ export function SiteHeader({
                     <span className="eyebrow text-bone/30">
                       0{index + 1}
                     </span>
-                  </a>
+                  </Link>
                 ))}
               </nav>
 

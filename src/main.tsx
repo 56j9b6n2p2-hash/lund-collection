@@ -1,6 +1,7 @@
 import '@vly-ai/integrations';
 import { Toaster } from "@/components/ui/sonner";
 import { RequireAuth } from "@/components/RequireAuth";
+import { StorefrontLayout } from "@/components/StorefrontLayout";
 import { VlyToolbar } from "../vly-toolbar-readonly.tsx";
 import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexReactClient } from "convex/react";
@@ -11,6 +12,8 @@ import "./index.css";
 
 // Lazy load route components for better code splitting
 const Landing = lazy(() => import("./pages/Landing.tsx"));
+const Shop = lazy(() => import("./pages/Shop.tsx"));
+const ProductDetail = lazy(() => import("./pages/ProductDetail.tsx"));
 const AuthPage = lazy(() => import("./pages/Auth.tsx"));
 const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
@@ -86,6 +89,17 @@ const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 
 
+function ScrollManager() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) return;
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname, hash]);
+
+  return null;
+}
+
 function RouteSyncer() {
   const location = useLocation();
   useEffect(() => {
@@ -119,9 +133,14 @@ createRoot(document.getElementById("root")!).render(
       <ConvexAuthProvider client={convex}>
         <BrowserRouter>
           <RouteSyncer />
+          <ScrollManager />
           <Suspense fallback={<RouteLoading />}>
             <Routes>
-              <Route path="/" element={<Landing />} />
+              <Route element={<StorefrontLayout />}>
+                <Route path="/" element={<Landing />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/shop/:id" element={<ProductDetail />} />
+              </Route>
               <Route
                 path="/auth"
                 element={<AuthPage redirectAfterAuth="/dashboard" />}

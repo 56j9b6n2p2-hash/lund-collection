@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { useMutation } from "convex/react";
 import {
   ArrowLeft,
@@ -105,7 +106,7 @@ export function CartDrawer({
       setMode("done");
     } catch {
       setError(
-        "Beställningen kunde inte skickas just nu. Försök igen eller mejla hej@kollektionenavlund.se.",
+        "Reservationen kunde inte skickas just nu. Försök igen eller mejla hej@kollektionenavlund.se.",
       );
     } finally {
       setSubmitting(false);
@@ -122,23 +123,23 @@ export function CartDrawer({
       >
         <SheetHeader className="shrink-0 border-b border-sand px-6 py-6 pr-14 text-left">
           <p className="eyebrow mb-2 text-gold-deep">
-            {mode === "done" ? "Beställning mottagen" : "Kollektionen av Lund"}
+            {mode === "done" ? "Reservation mottagen" : "Kollektionen av Lund"}
           </p>
           <SheetTitle asChild>
             <h2 className="font-display text-3xl uppercase leading-none text-ink">
               {mode === "cart"
                 ? "Din varukorg"
                 : mode === "checkout"
-                  ? "Kassa"
+                  ? "Reservation"
                   : "Tack"}
             </h2>
           </SheetTitle>
           <SheetDescription className="mt-2 text-sm text-muted-foreground">
             {mode === "cart"
-              ? `${cart.count} ${itemLabel} · Fri frakt över 1 500 kr`
+              ? `${cart.count} ${itemLabel} · Kostnadsfri reservation`
               : mode === "checkout"
-                ? "Ingen betalning dras nu. Vi återkommer med betalning och leverans."
-                : `Din beställning är registrerad, ${firstName}.`}
+                ? "Ingen betalning dras nu. Vi återkommer inför den 1 december."
+                : `Din reservation är registrerad, ${firstName}.`}
           </SheetDescription>
         </SheetHeader>
 
@@ -148,17 +149,17 @@ export function CartDrawer({
               <Check className="size-6" strokeWidth={1.8} />
             </div>
             <h3 className="mt-6 font-display text-2xl uppercase leading-none text-ink">
-              Välkommen till Lund.
+              Välkommen till julen i Lund.
             </h3>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">
-              Vi har tagit emot din beställning på {placed.itemCount} plagg. Vi
+              Vi har tagit emot din reservation på {placed.itemCount} plagg. Vi
               kontaktar dig på{" "}
-              <span className="font-semibold text-ink">{placed.email}</span> för
-              betalning och leverans.
+              <span className="font-semibold text-ink">{placed.email}</span>{" "}
+              inför släppet den 1 december.
             </p>
             <dl className="mt-8 divide-y divide-sand border-y border-sand text-sm">
               <div className="flex items-center justify-between py-3">
-                <dt className="text-muted-foreground">Ordernummer</dt>
+                <dt className="text-muted-foreground">Reservationsnummer</dt>
                 <dd className="font-semibold tracking-wide">
                   {placed.reference}
                 </dd>
@@ -169,11 +170,12 @@ export function CartDrawer({
               </div>
               <div className="flex items-center justify-between py-3">
                 <dt className="text-muted-foreground">Leverans</dt>
-                <dd>2–4 arbetsdagar</dd>
+                <dd>Efter 1 december</dd>
               </div>
             </dl>
             <p className="mt-3 text-[11px] leading-5 text-muted-foreground">
-              Frakt tillkommer. Vi återkommer med totalsumma och betalning.
+              Frakt tillkommer. Vi återkommer med totalsumma och betalning inför
+              den 1 december.
             </p>
             <button
               type="button"
@@ -195,14 +197,14 @@ export function CartDrawer({
               Fyra plagg inspirerade av Domkyrkan, Lundagård, Stortorget och
               nätterna över Lund.
             </p>
-            <a
-              href="#kollektionen"
+            <Link
+              to="/shop"
               onClick={() => handleOpenChange(false)}
               className="eyebrow mt-8 flex h-12 items-center gap-2 border border-ink/20 px-6 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bone"
             >
               Utforska kollektionen
               <ArrowRight className="size-3.5" />
-            </a>
+            </Link>
           </div>
         ) : mode === "cart" ? (
           <>
@@ -279,21 +281,21 @@ export function CartDrawer({
 
             <div className="shrink-0 border-t border-sand bg-[#f8f3e9] px-6 py-6">
               <div className="flex items-baseline justify-between">
-                <span className="eyebrow text-muted-foreground">Summa</span>
+                <span className="eyebrow text-muted-foreground">Delsumma</span>
                 <span className="font-display text-2xl leading-none text-ink">
                   {formatSek(cart.subtotal)}
                 </span>
               </div>
               <p className="mt-2 text-[11px] leading-5 text-muted-foreground">
-                Frakt tillkommer. Fri frakt över 1 500 kr. Leverans 2–4
-                arbetsdagar inom Sverige.
+                Frakt tillkommer. Fri frakt över 1 500 kr. Reservationen är
+                kostnadsfri och ingen betalning dras nu.
               </p>
               <button
                 type="button"
                 onClick={() => setMode("checkout")}
                 className="eyebrow mt-5 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone"
               >
-                Till kassan
+                Till reservationen
                 <ArrowRight className="size-3.5" />
               </button>
               <button
@@ -386,7 +388,7 @@ export function CartDrawer({
                 </>
               ) : (
                 <>
-                  Skicka beställning
+                  Skicka reservation
                   <ArrowRight className="size-3.5" />
                 </>
               )}
@@ -403,7 +405,7 @@ export function CartDrawer({
               Tillbaka till varukorgen
             </button>
             <p className="mt-5 text-center text-[11px] leading-5 text-muted-foreground">
-              Säker beställning · Designat i Lund, Sverige
+              Kostnadsfri reservation · Designat i Lund, Sverige
             </p>
           </form>
         )}

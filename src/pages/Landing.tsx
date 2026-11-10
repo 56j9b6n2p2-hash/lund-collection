@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowDown,
@@ -9,17 +10,17 @@ import {
   Landmark,
   Mail,
   MapPin,
-  Plus,
   ShoppingBag,
+  Sparkles,
+  Star,
   TramFront,
 } from "lucide-react";
-import { CartDrawer } from "@/components/CartDrawer";
 import { CinematicVideo } from "@/components/CinematicVideo";
+import { DropSignupForm } from "@/components/DropSignupForm";
+import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
-import { SiteHeader } from "@/components/SiteHeader";
-import { Wordmark } from "@/components/Wordmark";
-import { formatSek, products, type Product } from "@/data/products";
-import { useCart } from "@/hooks/use-cart";
+import { useStorefront } from "@/components/StorefrontLayout";
+import { products } from "@/data/products";
 import { cn } from "@/lib/utils";
 
 const stats = [
@@ -83,93 +84,27 @@ const places = [
   },
 ];
 
-function ProductCard({
-  product,
-  onAdd,
-  index,
-}: {
-  product: Product;
-  onAdd: (id: string) => void;
-  index: number;
-}) {
-  return (
-    <article className="group flex h-full flex-col rounded-2xl border border-sand/80 bg-card p-2.5 shadow-[0_1px_2px_rgba(16,24,32,0.03),0_24px_50px_-40px_rgba(16,24,32,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_1px_2px_rgba(16,24,32,0.04),0_30px_60px_-35px_rgba(16,24,32,0.45)]">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-sand">
-        <img
-          src={product.image}
-          alt={product.imageAlt}
-          width={900}
-          height={1125}
-          loading="lazy"
-          sizes="(min-width: 1024px) 24vw, (min-width: 640px) 45vw, 90vw"
-          className="h-full w-full object-cover grayscale-[0.45] sepia-[0.06] transition-all duration-700 group-hover:scale-[1.03] group-hover:grayscale-0 group-hover:sepia-0"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent opacity-60"
-        />
-        {product.badge ? (
-          <span className="eyebrow absolute left-3 top-3 rounded-full bg-bone/95 px-2.5 py-1.5 text-[9px] text-ink">
-            {product.badge}
-          </span>
-        ) : null}
-        <span className="eyebrow absolute right-3 top-3 text-[9px] text-bone/90">
-          0{index + 1}
-        </span>
-      </div>
-
-      <div className="flex flex-1 flex-col px-2 pb-1.5 pt-4">
-        <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
-          <div className="min-w-0">
-            <h3 className="font-sans text-[15px] font-semibold normal-case leading-5 tracking-normal text-ink">
-              {product.name}
-            </h3>
-            <p className="mt-1 text-xs leading-5 text-muted-foreground">
-              {product.subtitle}
-            </p>
-          </div>
-          <p className="shrink-0 text-sm font-semibold tabular-nums text-ink">
-            {formatSek(product.price)}
-          </p>
-        </div>
-
-        <div className="mt-4 flex items-center justify-between border-t border-sand/80 pt-3">
-          <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-            <span
-              aria-hidden="true"
-              className="inline-block size-2.5 rounded-full border border-ink/10"
-              style={{ backgroundColor: product.colorHex }}
-            />
-            {product.colorName}
-          </span>
-          <span className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-            {product.material.split(" · ")[0]}
-          </span>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => onAdd(product.id)}
-          aria-label={`Lägg ${product.name} i varukorgen`}
-          className="mt-4 flex h-10 w-full items-center justify-between border border-ink/15 px-3 text-[9px] font-semibold uppercase tracking-[0.12em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bone sm:text-[10px] sm:tracking-[0.16em]"
-        >
-          Lägg i varukorg
-          <Plus className="size-3.5" strokeWidth={1.8} />
-        </button>
-      </div>
-    </article>
-  );
-}
-
 export default function Landing() {
-  const cart = useCart();
-  const [cartOpen, setCartOpen] = useState(false);
+  const { cart, openCart } = useStorefront();
   const reduceMotion = useReducedMotion();
+  const location = useLocation();
 
   const handleAdd = (id: string) => {
     cart.addItem(id);
-    setCartOpen(true);
+    openCart();
   };
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const targetId = decodeURIComponent(location.hash.slice(1));
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(targetId)?.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [location.hash, location.key, reduceMotion]);
 
   const heroVariants = reduceMotion
     ? undefined
@@ -183,18 +118,7 @@ export default function Landing() {
       };
 
   return (
-    <div id="top" className="min-h-screen bg-background text-foreground">
-      <a
-        href="#kollektionen"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-bone focus:px-4 focus:py-3 focus:text-ink"
-      >
-        Hoppa till kollektionen
-      </a>
-
-      <SiteHeader cartCount={cart.count} onOpenCart={() => setCartOpen(true)} />
-      <CartDrawer open={cartOpen} onOpenChange={setCartOpen} cart={cart} />
-
-      <main>
+    <>
         {/* Hero */}
         <section
           aria-labelledby="hero-title"
@@ -225,7 +149,13 @@ export default function Landing() {
                   transition={{ delay: 0.1 }}
                 >
                   <span className="h-px w-8 bg-gold/70" />
-                  Lund · Skåne · Vinter 2026
+                  Lund · Skåne · Julen 2026
+                  <Star
+                    className="size-3"
+                    fill="currentColor"
+                    strokeWidth={1.5}
+                    aria-hidden="true"
+                  />
                 </motion.p>
 
                 <motion.h1
@@ -263,24 +193,25 @@ export default function Landing() {
                   transition={{ delay: 0.7, duration: 0.9, ease: "easeOut" }}
                 >
                   <p className="max-w-md text-[15px] leading-7 text-bone/80 md:text-base">
-                    Lund rör sig tillsammans — från Domkyrkans skugga till
-                    spårvagnen genom staden, i ljuset av en skånsk vinter.
+                    Ett juldrop från Lund. Fyra plagg, inspirerade av
+                    Domkyrkan, Lundagård och det stilla vinterljuset. Anmäl dig
+                    och få första tillgång den 1 december.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <a
-                      href="#kollektionen"
+                      href="#juldroppet"
                       className="eyebrow group inline-flex h-14 items-center gap-3 bg-gold px-6 text-ink transition-colors hover:bg-bone md:px-8"
                     >
-                      Se vinterkollektionen
+                      Anmäl dig till juldroppet
                       <ArrowDown className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
                     </a>
-                    <a
-                      href="#om-oss"
+                    <Link
+                      to="/shop"
                       className="eyebrow hidden h-14 items-center gap-2 border border-bone/25 px-6 text-bone/80 transition-colors hover:border-bone/60 hover:text-bone sm:inline-flex"
                     >
-                      Vår historia
+                      Se kollektionen
                       <ArrowRight className="size-3.5" />
-                    </a>
+                    </Link>
                   </div>
                 </motion.div>
               </div>
@@ -291,12 +222,18 @@ export default function Landing() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 1 }}
               >
-                <span className="eyebrow text-bone/55">Inspelat i Lund</span>
+                <span className="eyebrow flex items-center gap-2 text-bone/55">
+                  <Star className="size-2.5 text-gold" fill="currentColor" strokeWidth={1.5} />
+                  Julen i Lund
+                </span>
                 <span className="flex items-center gap-2 text-[11px] text-bone/70">
                   <span className="size-1.5 animate-pulse rounded-full bg-gold motion-reduce:animate-none" />
-                  Domkyrkan · 07:42
+                  Juldroppet · 1 december
                 </span>
-                <span className="mt-3 h-20 w-px bg-gradient-to-b from-bone/40 to-transparent" />
+                <span className="mt-1 font-display text-4xl leading-none text-gold">
+                  01.12
+                </span>
+                <span className="mt-2 h-16 w-px bg-gradient-to-b from-bone/40 to-transparent" />
               </motion.div>
             </div>
           </div>
@@ -332,11 +269,13 @@ export default function Landing() {
                 spårvagnens gröna linje.
               </p>
               <p className="mt-4 text-[15px] leading-7 text-ink/70">
-                Kollektionen av Lund är vår tolkning av den känslan: tidlös,
-                lågmäld och byggd för att bäras länge.
+                I år har vi samlat den i en julkollektion: tidlös, lågmäld och
+                byggd för att bäras länge. Ett litet släpp för kalla dagar och
+                ljusa kvällar.
               </p>
-              <p className="eyebrow mt-8 text-ink/55">
-                Kollektionen av Lund · Est. 2026
+              <p className="eyebrow mt-8 flex items-center gap-2 text-ink/55">
+                <Star className="size-2.5 text-gold" fill="currentColor" strokeWidth={1.5} />
+                Julkollektionen 2026 · Kollektionen av Lund
               </p>
             </Reveal>
           </div>
@@ -379,7 +318,13 @@ export default function Landing() {
               <Reveal>
                 <p className="eyebrow flex items-center gap-3 text-ink/55">
                   <span className="h-px w-8 bg-gold" />
-                  Kollektionen · Vinter 2026
+                  Julkollektionen · 2026
+                  <Star
+                    className="size-3 text-gold"
+                    fill="currentColor"
+                    strokeWidth={1.5}
+                    aria-hidden="true"
+                  />
                 </p>
                 <h2
                   id="collection-title"
@@ -387,18 +332,26 @@ export default function Landing() {
                 >
                   Fyra plagg.
                   <br />
-                  En stad.
+                  Ett juldrop.
                 </h2>
               </Reveal>
               <Reveal className="max-w-sm" delay={0.1}>
                 <p className="text-sm leading-6 text-ink/65">
                   Lågmälda plagg i material som åldras vackert. Varje detalj
                   hämtar sin färg från en plats i Lund — och varje plagg är
-                  namngivet efter den.
+                  namngivet efter den. Gjorda för kalla morgnar och långa,
+                  ljusa kvällar.
                 </p>
                 <p className="eyebrow mt-5 text-ink/55">
                   Designad i Lund · Tillverkad i Portugal
                 </p>
+                <Link
+                  to="/shop"
+                  className="eyebrow group mt-5 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-ink transition-colors hover:border-gold hover:text-gold-deep"
+                >
+                  Sök i hela kollektionen
+                  <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
               </Reveal>
             </div>
 
@@ -415,9 +368,85 @@ export default function Landing() {
             </div>
 
             <div className="mt-8 flex flex-col gap-2 border-t border-ink/10 pt-5 text-[10px] uppercase tracking-[0.12em] text-ink/65 sm:flex-row sm:items-center sm:justify-between">
-              <p>Fri frakt över 1 500 kr · Leverans 2–4 arbetsdagar</p>
-              <p>30 dagars öppet köp · Skickas från Lund</p>
+              <p>Julkollektionen · 1 december</p>
+              <p>Fri frakt över 1 500 kr · Skickas från Lund</p>
             </div>
+          </div>
+        </section>
+
+        {/* Christmas drop signup */}
+        <section
+          id="juldroppet"
+          aria-labelledby="juldroppet-title"
+          className="relative scroll-mt-24 overflow-hidden border-y border-gold/15 bg-pine text-bone"
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-20 -top-24 size-[28rem] text-gold/[0.08] md:size-[38rem]"
+          >
+            <Star className="h-full w-full" strokeWidth={0.5} />
+          </div>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-24 -left-16 size-64 text-gold/[0.06] md:size-80"
+          >
+            <Star className="h-full w-full" strokeWidth={0.5} />
+          </div>
+
+          <div className="container-site relative grid gap-12 py-20 md:grid-cols-12 md:items-center md:gap-10 md:py-28">
+            <Reveal className="md:col-span-6">
+              <p className="eyebrow flex items-center gap-2.5 text-gold">
+                <Sparkles className="size-3.5" strokeWidth={1.5} />
+                Save the date
+              </p>
+              <h2
+                id="juldroppet-title"
+                className="mt-5 text-[clamp(3rem,7vw,6.4rem)] leading-[0.84] text-bone"
+              >
+                Juldroppet
+                <br />
+                <span className="text-gold">1 december</span>
+              </h2>
+              <p className="mt-6 max-w-md text-sm leading-7 text-bone/70">
+                Fyra plagg, en stad och en kväll som hör vintern till. Anmäl dig
+                så hör vi av oss inför släppet — och du slipper undra när
+                dörrarna öppnar.
+              </p>
+
+              <dl className="mt-9 grid max-w-md grid-cols-3 gap-4 border-t border-bone/15 pt-5">
+                <div>
+                  <dt className="eyebrow text-[9px] text-bone/55">Datum</dt>
+                  <dd className="mt-1.5 font-display text-4xl leading-none text-gold">
+                    01.12
+                  </dd>
+                </div>
+                <div>
+                  <dt className="eyebrow text-[9px] text-bone/55">År</dt>
+                  <dd className="mt-1.5 font-display text-4xl leading-none text-bone">
+                    2026
+                  </dd>
+                </div>
+                <div>
+                  <dt className="eyebrow text-[9px] text-bone/55">Plats</dt>
+                  <dd className="mt-1.5 font-display text-4xl leading-none text-bone">
+                    Lund
+                  </dd>
+                </div>
+              </dl>
+            </Reveal>
+
+            <Reveal className="md:col-span-5 md:col-start-8" delay={0.12}>
+              <div className="rounded-2xl border border-gold/25 bg-bone/[0.06] p-6 backdrop-blur-sm md:p-8">
+                <p className="eyebrow text-gold">Första tillgång</p>
+                <h3 className="mt-3 font-display text-3xl uppercase leading-none text-bone">
+                  Stå på listan.
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-bone/65">
+                  Lämna din e-post, så hör vi av oss innan den 1 december.
+                </p>
+                <DropSignupForm source="landing" />
+              </div>
+            </Reveal>
           </div>
         </section>
 
@@ -585,7 +614,7 @@ export default function Landing() {
               <p className="text-sm leading-6 text-ink/65">
                 Domkyrkans romanska valv, Lundagårds grus, Stortorgets ljus och
                 kunskapens hus. Platserna som gav kollektionen dess namn — och
-                dess känsla.
+                dess känsla. I december blir de ännu svårare att lämna.
               </p>
             </Reveal>
           </div>
@@ -687,9 +716,9 @@ export default function Landing() {
                 borstad fleece och europeisk merinoull.
               </p>
               <p className="mt-4 text-[15px] leading-7 text-ink/70">
-                Varje plagg är namngivet efter en plats i Lund. Domkyrkan.
-                Lundagård. Stortorget. Nattvandringen. Bär dem, slit dem, lämna
-                dem vidare.
+                Julkollektionen är namngiven efter platser i Lund. Domkyrkan.
+                Lundagård. Stortorget. Nattvandringen. Bär dem under julen, slit
+                dem länge och lämna dem vidare.
               </p>
 
               <ul className="mt-8 space-y-3 border-t border-ink/10 pt-6">
@@ -752,7 +781,7 @@ export default function Landing() {
                 Bär din stad<span className="text-gold">.</span>
               </h2>
               <p className="mt-6 max-w-md text-sm leading-7 text-bone/70">
-                Frågor om storlek, material eller din beställning? Vi finns i
+                Frågor om juldroppet, storlek eller din beställning? Vi finns i
                 Lund — och svarar oftast samma dag.
               </p>
               <a
@@ -839,104 +868,6 @@ export default function Landing() {
             </Reveal>
           </div>
         </section>
-      </main>
-
-      <footer className="bg-ink text-bone">
-        <div className="container-site grid gap-12 py-16 md:grid-cols-12 md:py-20">
-          <div className="md:col-span-5">
-            <Wordmark size="large" />
-            <p className="mt-6 max-w-sm text-sm leading-6 text-bone/55">
-              Kläder inspirerade av Lund. Skapade för att bäras med stolthet —
-              i katedralens skugga och på väg mot nästa föreläsning.
-            </p>
-            <p className="eyebrow mt-8 text-[9px] text-bone/50">
-              Est. 2026 · Lund, Skåne
-            </p>
-          </div>
-
-          <nav aria-label="Butik" className="md:col-span-3">
-            <p className="eyebrow mb-5 text-bone/55">Butik</p>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a
-                  href="#kollektionen"
-                  className="text-bone/70 transition-colors hover:text-gold"
-                >
-                  Hela kollektionen
-                </a>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => setCartOpen(true)}
-                  className="text-bone/70 transition-colors hover:text-gold"
-                >
-                  Varukorg ({cart.count})
-                </button>
-              </li>
-              <li>
-                <a
-                  href="#platser"
-                  className="text-bone/70 transition-colors hover:text-gold"
-                >
-                  Platserna i Lund
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <nav aria-label="Information" className="md:col-span-2">
-            <p className="eyebrow mb-5 text-bone/55">Information</p>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a
-                  href="#om-oss"
-                  className="text-bone/70 transition-colors hover:text-gold"
-                >
-                  Om oss
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#kontakt"
-                  className="text-bone/70 transition-colors hover:text-gold"
-                >
-                  Kontakt
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:hej@kollektionenavlund.se"
-                  className="text-bone/70 transition-colors hover:text-gold"
-                >
-                  Mejla oss
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <div className="md:col-span-2">
-            <p className="eyebrow mb-5 text-bone/55">Hitta hit</p>
-            <address className="text-sm not-italic leading-6 text-bone/70">
-              Stortorget 7
-              <br />
-              222 23 Lund
-              <br />
-              Sverige
-            </address>
-            <p className="mt-4 text-[10px] tracking-[0.08em] text-bone/55">
-              55.7047° N · 13.1910° E
-            </p>
-          </div>
-        </div>
-
-        <div className="border-t border-bone/10">
-          <div className="container-site flex flex-col gap-2 py-6 text-[11px] text-bone/55 md:flex-row md:items-center md:justify-between">
-            <p>© 2026 Kollektionen av Lund</p>
-            <p>Designat i Lund, Sverige · 55.7047° N, 13.1910° E</p>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 }

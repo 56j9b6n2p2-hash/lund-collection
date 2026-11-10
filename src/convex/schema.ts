@@ -47,7 +47,14 @@ const schema = defineSchema(
       total: v.number(),
       status: v.union(v.literal("new"), v.literal("confirmed")),
       createdAt: v.number(),
-    }).index("by_email", ["email"])
+    }).index("by_email", ["email"]),
+
+    // people who want a reminder for the 1 December Christmas drop
+    dropSignups: defineTable({
+      email: v.string(),
+      source: v.optional(v.string()),
+      createdAt: v.number(),
+    }).index("by_email", ["email"]),
   },
   {
     schemaValidation: false,
