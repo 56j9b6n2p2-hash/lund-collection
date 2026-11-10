@@ -144,15 +144,14 @@ export function HoodieShowcase() {
       className="relative scroll-mt-24 overflow-hidden bg-ink text-bone"
     >
       <img
-        src="/media/hoodie/jul-poster.jpg"
+        src="/media/hoodie/snow-poster.jpg"
         alt=""
         aria-hidden="true"
         className="absolute inset-0 h-full w-full scale-110 object-cover blur-[6px] saturate-150 brightness-[0.8]"
       />
       {!reduceMotion ? (
         <video
-          src="/media/hoodie/jul-bakgrund-loop.mp4"
-          poster="/media/hoodie/jul-poster.jpg"
+          poster="/media/hoodie/snow-poster.jpg"
           autoPlay
           muted
           loop
@@ -160,7 +159,14 @@ export function HoodieShowcase() {
           preload="metadata"
           aria-hidden="true"
           className="absolute inset-0 h-full w-full scale-110 object-cover blur-[6px] saturate-150 brightness-[0.8]"
-        />
+        >
+          <source
+            src="/media/hoodie/snow-960.mp4"
+            media="(max-width: 767px)"
+            type="video/mp4"
+          />
+          <source src="/media/hoodie/snow-1440.mp4" type="video/mp4" />
+        </video>
       ) : null}
 
       <div aria-hidden="true" className="absolute inset-0 bg-ink/60" />
@@ -183,11 +189,11 @@ export function HoodieShowcase() {
               </p>
               <h2
                 id="collection-title"
-                className="mt-5 text-[clamp(2.8rem,7vw,6.4rem)] leading-[0.86] text-bone"
+                className="mt-6 text-[clamp(2.8rem,7vw,6.4rem)] leading-[0.86] text-bone"
               >
                 Jul i Lund
               </h2>
-              <p className="mt-6 max-w-xl text-sm leading-7 text-bone/65">
+              <p className="mt-8 max-w-xl text-sm leading-8 text-bone/65">
                 Inspirerad av Stortorget i Lund under julen. En stad som rör
                 sig tillsammans, under en period av mörker där gemenskap
                 behövs som mest.
@@ -195,7 +201,7 @@ export function HoodieShowcase() {
             </div>
             <p className="eyebrow max-w-xs text-gold/80 md:text-right">
               1 december
-              <span className="mt-2 block font-sans text-[11px] normal-case leading-5 tracking-normal text-bone/50">
+              <span className="mt-3 block font-sans text-[11px] normal-case leading-6 tracking-normal text-bone/50">
                 En hoodie. Fem färger. Byggd för kalla promenader mellan
                 Stortorget och Domkyrkan.
               </span>
@@ -204,20 +210,20 @@ export function HoodieShowcase() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-10 grid gap-8 border border-bone/20 bg-ink/40 p-5 backdrop-blur-xl md:mt-12 md:p-10 lg:grid-cols-12">
-            <div className="flex flex-col justify-between gap-8 lg:col-span-4">
+          <div className="mt-12 grid gap-10 border border-bone/20 bg-ink/40 p-6 backdrop-blur-xl md:mt-16 md:p-12 lg:grid-cols-12">
+            <div className="flex flex-col justify-between gap-10 lg:col-span-4">
               <div>
                 <p className="eyebrow text-bone/55">
                   Hoodie — {activeColor.label}
                 </p>
-                <h3 className="mt-4 text-[clamp(2.2rem,4.6vw,3.6rem)] leading-[0.9] text-bone">
+                <h3 className="mt-6 text-[clamp(2.2rem,4.6vw,3.6rem)] leading-[0.9] text-bone">
                   Julklappsträdet
                 </h3>
-                <p className="mt-6 max-w-sm text-sm leading-7 text-bone/75">
+                <p className="mt-8 max-w-sm text-sm leading-8 text-bone/75">
                   Snö över Stortorget, julbodar som lyser och ett träd fullt av
                   paket. En hyllning till Lund i december.
                 </p>
-                <p className="mt-4 max-w-sm text-sm leading-7 text-bone/55">
+                <p className="mt-6 max-w-sm text-sm leading-8 text-bone/55">
                   Julklappsträdet på bröstet och en inramad julmarknad på
                   ryggen. Tung fleece, mjuk insida och en passform som rymmer
                   både tjock tröja och vinterluft.
@@ -250,9 +256,9 @@ export function HoodieShowcase() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-6 lg:col-span-3">
+            <div className="flex flex-col gap-8 lg:col-span-3">
               <div>
-                <p className="eyebrow mb-3 text-bone/55">Vyer</p>
+                <p className="eyebrow mb-4 text-bone/55">Vyer</p>
                 <div
                   className="grid grid-cols-2 gap-2"
                   role="group"
@@ -286,7 +292,7 @@ export function HoodieShowcase() {
               </div>
 
               <div>
-                <p className="eyebrow mb-3 text-bone/55">Färg</p>
+                <p className="eyebrow mb-4 text-bone/55">Färg</p>
                 <div
                   className="flex flex-wrap gap-2"
                   role="group"
@@ -317,7 +323,7 @@ export function HoodieShowcase() {
               </div>
 
               <div>
-                <p className="eyebrow mb-3 text-bone/55">Storlek</p>
+                <p className="eyebrow mb-4 text-bone/55">Storlek</p>
                 <div
                   className="grid grid-cols-5 gap-1.5"
                   role="group"
@@ -351,15 +357,15 @@ export function HoodieShowcase() {
               </a>
             </div>
 
-            <div className="border-t border-bone/15 pt-3 lg:col-span-12">
-              <div className="grid gap-x-10 md:grid-cols-3">
+            <div className="border-t border-bone/15 pt-5 lg:col-span-12">
+              <div className="grid gap-x-12 gap-y-2 md:grid-cols-3">
                 {details.map((detail) => (
-                  <details key={detail.title} className="group border-b border-bone/15 py-4">
+                  <details key={detail.title} className="group border-b border-bone/15 py-5">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-xs font-semibold text-bone/80 [&::-webkit-details-marker]:hidden">
                       {detail.title}
                       <ChevronDown className="size-3.5 shrink-0 text-gold transition-transform group-open:rotate-180" />
                     </summary>
-                    <p className="mt-3 text-xs leading-6 text-bone/55">
+                    <p className="mt-4 text-xs leading-7 text-bone/55">
                       {detail.copy}
                     </p>
                   </details>
