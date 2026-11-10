@@ -54,19 +54,53 @@ const colorways: Colorway[] = [
     ],
   },
   {
-    id: "marinbla",
-    label: "Marinblå",
-    hex: "#1d2c3d",
+    id: "svart",
+    label: "Svart",
+    hex: "#242424",
     views: [
       {
-        src: "/media/hoodie/domkyrkan-marinbla-1.jpg",
+        src: "/media/hoodie/domkyrkan-svart-1.jpg",
         label: "Fram",
-        alt: "Marinblå hoodie med julmarknaden på bröstet",
+        alt: "Svart hoodie med julmarknaden på bröstet",
       },
       {
-        src: "/media/hoodie/domkyrkan-marinbla-2.jpg",
+        src: "/media/hoodie/domkyrkan-svart-2.jpg",
         label: "Bak",
-        alt: "Marinblå hoodie med Lunds domkyrka på ryggen",
+        alt: "Svart hoodie med Lunds domkyrka på ryggen",
+      },
+    ],
+  },
+  {
+    id: "sand",
+    label: "Sand",
+    hex: "#c9b18c",
+    views: [
+      {
+        src: "/media/hoodie/domkyrkan-sand-1.jpg",
+        label: "Fram",
+        alt: "Sandfärgad hoodie med julmarknaden på bröstet",
+      },
+      {
+        src: "/media/hoodie/domkyrkan-sand-2.jpg",
+        label: "Bak",
+        alt: "Sandfärgad hoodie med Lunds domkyrka på ryggen",
+      },
+    ],
+  },
+  {
+    id: "rod",
+    label: "Vinröd",
+    hex: "#6f2430",
+    views: [
+      {
+        src: "/media/hoodie/domkyrkan-rod-1.jpg",
+        label: "Fram",
+        alt: "Vinröd hoodie med julmarknaden på bröstet",
+      },
+      {
+        src: "/media/hoodie/domkyrkan-rod-2.jpg",
+        label: "Bak",
+        alt: "Vinröd hoodie med Lunds domkyrka på ryggen",
       },
     ],
   },
@@ -168,7 +202,7 @@ export function HoodieShowcase() {
             <p className="eyebrow max-w-xs text-gold/80 md:text-right">
               1 december
               <span className="mt-3 block font-sans text-[11px] normal-case leading-6 tracking-normal text-bone/50">
-                En hoodie. Tre färger. Byggd för kalla promenader mellan
+                En hoodie. Fem färger. Byggd för kalla promenader mellan
                 Stortorget och Domkyrkan.
               </span>
             </p>
@@ -214,7 +248,7 @@ export function HoodieShowcase() {
                   width={1200}
                   height={1200}
                   loading="lazy"
-                  className="h-full w-full object-cover brightness-[0.88] saturate-[0.94]"
+                  className="h-full w-full object-cover"
                 />
                 <span className="eyebrow absolute bottom-4 left-4 bg-ink/70 px-3 py-2 text-[9px] text-bone/80 backdrop-blur-md">
                   {activeView.label}
@@ -250,7 +284,7 @@ export function HoodieShowcase() {
                         width={240}
                         height={240}
                         loading="lazy"
-                        className="h-full w-full object-cover brightness-[0.9] saturate-[0.94]"
+                        className="h-full w-full object-cover"
                       />
                     </button>
                   ))}
