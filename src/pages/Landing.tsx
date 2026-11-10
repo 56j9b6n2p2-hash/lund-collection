@@ -25,7 +25,6 @@ import {
 import { DropSignupForm } from "@/components/DropSignupForm";
 import { HoodieShowcase } from "@/components/HoodieShowcase";
 import { Reveal } from "@/components/Reveal";
-import { Snowfall } from "@/components/Snowfall";
 import { cn } from "@/lib/utils";
 
 const heroClips: CinematicClip[] = [
@@ -37,6 +36,15 @@ const heroClips: CinematicClip[] = [
     mobileSrc: "/media/video/hero-cathedral-960.mp4",
     poster: "/media/video/posters/hero-cathedral.jpg",
     alt: "Drönarvy över Lunds domkyrka i vinterljus",
+  },
+  {
+    place: "Domkyrkan · kväll",
+    kind: "place",
+    tone: "video-evening",
+    desktopSrc: "/media/video/cathedral-evening-1440.mp4",
+    mobileSrc: "/media/video/cathedral-evening-960.mp4",
+    poster: "/media/video/posters/cathedral-evening.jpg",
+    alt: "Lunds domkyrka i snö och kvällsljus",
   },
   {
     place: "Snöfall",
@@ -165,7 +173,7 @@ export default function Landing() {
           <CinematicVideoPlaylist
             priority
             clips={heroClips}
-            overlayClassName="bg-gradient-to-t from-ink via-[#0b1a26]/50 to-[#0b1a26]/30"
+            overlayClassName="bg-gradient-to-t from-ink via-[#07131c]/65 to-[#07131c]/40"
             showPlaceLabel
           />
           <div
@@ -180,8 +188,6 @@ export default function Landing() {
             <span className="h-full w-px bg-gradient-to-b from-transparent via-gold/20 to-gold/60" />
             <ChristmasStar className="-mt-1 size-24 xl:size-28" />
           </div>
-
-          <Snowfall className="z-[4]" />
 
           <div className="container-site relative z-10 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-28 md:pb-14">
             <div className="flex items-end justify-between gap-8">
@@ -372,8 +378,6 @@ export default function Landing() {
             <Star className="h-full w-full" strokeWidth={0.5} />
           </div>
 
-          <Snowfall className="z-[1] opacity-50" />
-
           <div className="container-site relative z-10 grid gap-12 py-20 md:grid-cols-12 md:items-center md:gap-10 md:py-28">
             <Reveal className="md:col-span-6">
               <p className="eyebrow flex items-center gap-2.5 text-gold">
@@ -443,10 +447,8 @@ export default function Landing() {
             poster="/media/video/posters/city-tram.jpg"
             alt="Grön spårvagn passerar genom centrala Lund"
             mediaClassName="video-frost"
-            overlayClassName="bg-gradient-to-t from-ink via-[#0b1a26]/40 to-[#0b1a26]/25"
+            overlayClassName="bg-gradient-to-t from-ink via-[#07131c]/55 to-[#07131c]/35"
           />
-
-          <Snowfall className="z-[4]" />
 
           <div className="container-site relative z-10 pb-12 pt-32 md:pb-16">
             <div className="flex flex-col gap-9 md:flex-row md:items-end md:justify-between">
@@ -504,7 +506,7 @@ export default function Landing() {
                   poster="/media/video/posters/night-tram.jpg"
                   alt="Grön spårvagn glider genom Lund om natten"
                   mediaClassName="video-night"
-                  overlayClassName="bg-gradient-to-t from-ink/55 via-transparent to-transparent"
+                  overlayClassName="bg-gradient-to-t from-ink/70 via-ink/10 to-transparent"
                 />
                 <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 p-5">
                   <div>
@@ -620,7 +622,7 @@ export default function Landing() {
                   width={1200}
                   height={800}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
+                  className="absolute inset-0 h-full w-full object-cover brightness-[0.8] saturate-[0.9] transition-transform duration-[900ms] group-hover:scale-[1.04]"
                 />
                 <div
                   aria-hidden="true"
@@ -665,7 +667,7 @@ export default function Landing() {
                     width={1200}
                     height={1500}
                     loading="lazy"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover brightness-[0.82] saturate-[0.9]"
                   />
                 </div>
                 <div className="surface-card mt-4 rounded-xl p-5 md:absolute md:-bottom-6 md:right-6 md:mt-0 md:max-w-[250px]">

@@ -147,7 +147,7 @@ export function HoodieShowcase() {
         src="/media/hoodie/snow-poster.jpg"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full scale-110 object-cover blur-[6px] saturate-150 brightness-[0.8]"
+        className="absolute inset-0 h-full w-full scale-110 object-cover blur-[6px] saturate-[1.2] brightness-[0.62]"
       />
       {!reduceMotion ? (
         <video
@@ -158,7 +158,7 @@ export function HoodieShowcase() {
           playsInline
           preload="metadata"
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full scale-110 object-cover blur-[6px] saturate-150 brightness-[0.8]"
+          className="absolute inset-0 h-full w-full scale-110 object-cover blur-[6px] saturate-[1.2] brightness-[0.62]"
         >
           <source
             src="/media/hoodie/snow-960.mp4"
@@ -169,10 +169,10 @@ export function HoodieShowcase() {
         </video>
       ) : null}
 
-      <div aria-hidden="true" className="absolute inset-0 bg-ink/60" />
+      <div aria-hidden="true" className="absolute inset-0 bg-ink/70" />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(8,5,15,0.8)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(8,5,15,0.86)_100%)]"
       />
       <div
         aria-hidden="true"
@@ -248,7 +248,7 @@ export function HoodieShowcase() {
                   width={1200}
                   height={1200}
                   loading="lazy"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover brightness-[0.88] saturate-[0.94]"
                 />
                 <span className="eyebrow absolute bottom-4 left-4 bg-ink/70 px-3 py-2 text-[9px] text-bone/80 backdrop-blur-md">
                   {activeView.label}
@@ -284,7 +284,7 @@ export function HoodieShowcase() {
                         width={240}
                         height={240}
                         loading="lazy"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover brightness-[0.9] saturate-[0.94]"
                       />
                     </button>
                   ))}
