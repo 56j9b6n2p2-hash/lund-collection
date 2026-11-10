@@ -1,5 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kollektionen av Lund">
-  <rect width="64" height="64" rx="12" fill="#101820"/>
-  <path d="M18 14h8v14.4L38.2 14H48L34.6 29.6 48.8 50H38.8L28.4 35.2 26 37.9V50h-8V14Z" fill="#C9A15A"/>
-  <path d="M16 54h32" stroke="#C9A15A" stroke-opacity=".55" stroke-width="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512" role="img" aria-label="Kollektionen av Lund">
+  <defs>
+    <radialGradient id="favicon-sky" cx="50%" cy="38%" r="72%">
+      <stop offset="0%" stop-color="#3d352e" />
+      <stop offset="58%" stop-color="#18212a" />
+      <stop offset="100%" stop-color="#0b1118" />
+    </radialGradient>
+  </defs>
+
+  <rect width="64" height="64" fill="#0b1118" />
+  <circle cx="32" cy="32" r="32" fill="url(#favicon-sky)" />
+  <circle
+    cx="32"
+    cy="32"
+    r="30.1"
+    fill="none"
+    stroke="#f6f1e8"
+    stroke-width="1.6"
+  />
+
+  <g fill="#f6f1e8">
+    <path d="M18.5 24h6v23h-6z" />
+    <path d="M17.5 24 21.5 13 25.5 24z" />
+    <path d="M39.5 24h6v23h-6z" />
+    <path d="M38.5 24 42.5 13 46.5 24z" />
+    <path d="M27 28h10v19H27z" />
+    <path d="M25.5 28 32 19.5 38.5 28z" />
+    <path d="M17 50h30" stroke="#f6f1e8" stroke-width="1.6" />
+    <path
+      d="M21.5 8.5v5M19 11h5M42.5 8.5v5M40 11h5"
+      fill="none"
+      stroke="#f6f1e8"
+      stroke-linecap="round"
+      stroke-width="1.6"
+    />
+  </g>
+
+  <path
+    d="M29.5 47v-7.5c0-1.6 1.2-2.8 2.5-2.8s2.5 1.2 2.5 2.8V47z"
+    fill="#0b1118"
+  />
+  <rect x="20.5" y="30" width="2" height="5" rx="1" fill="#0b1118" />
+  <rect x="41.5" y="30" width="2" height="5" rx="1" fill="#0b1118" />
 </svg>
