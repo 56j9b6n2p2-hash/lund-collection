@@ -58,6 +58,7 @@ export default function ProductDetail() {
   const related = products
     .filter((item) => item.id !== product.id)
     .slice(0, 3);
+  const isSquareProduct = product.id === "domkyrkan-hoodie";
 
   return (
     <>
@@ -89,11 +90,15 @@ export default function ProductDetail() {
               <img
                 src={product.image}
                 alt={product.imageAlt}
-                width={900}
-                height={1125}
+                width={isSquareProduct ? 1200 : 900}
+                height={isSquareProduct ? 1200 : 1125}
                 loading="eager"
                 fetchPriority="high"
-                className="aspect-[4/5] h-full w-full object-cover grayscale-[0.25]"
+                className={`h-full w-full object-cover ${
+                  isSquareProduct
+                    ? "aspect-square"
+                    : "aspect-[4/5] grayscale-[0.25]"
+                }`}
               />
             </div>
 

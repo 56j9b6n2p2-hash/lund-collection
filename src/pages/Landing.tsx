@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, useLocation } from "react-router";
+import { useLocation } from "react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowDown,
@@ -23,11 +23,9 @@ import {
   type CinematicClip,
 } from "@/components/CinematicVideoPlaylist";
 import { DropSignupForm } from "@/components/DropSignupForm";
-import { ProductCard } from "@/components/ProductCard";
+import { HoodieShowcase } from "@/components/HoodieShowcase";
 import { Reveal } from "@/components/Reveal";
 import { Snowfall } from "@/components/Snowfall";
-import { useStorefront } from "@/components/StorefrontLayout";
-import { products } from "@/data/products";
 import { cn } from "@/lib/utils";
 
 const heroClips: CinematicClip[] = [
@@ -131,14 +129,8 @@ const places = [
 ];
 
 export default function Landing() {
-  const { cart, openCart } = useStorefront();
   const reduceMotion = useReducedMotion();
   const location = useLocation();
-
-  const handleAdd = (id: string) => {
-    cart.addItem(id);
-    openCart();
-  };
 
   useEffect(() => {
     if (!location.hash) return;
@@ -257,13 +249,13 @@ export default function Landing() {
                       Anmäl dig till juldroppet
                       <ArrowDown className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
                     </a>
-                    <Link
-                      to="/shop"
-                      className="eyebrow hidden h-14 items-center gap-2 border border-bone/25 px-6 text-bone/80 transition-colors hover:border-bone/60 hover:text-bone sm:inline-flex"
+                    <a
+                      href="#kollektionen"
+                      className="eyebrow inline-flex h-14 items-center gap-2 border border-bone/25 px-6 text-bone/80 transition-colors hover:border-bone/60 hover:text-bone"
                     >
                       Se kollektionen
                       <ArrowRight className="size-3.5" />
-                    </Link>
+                    </a>
                   </div>
                 </motion.div>
               </div>
@@ -359,72 +351,7 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* Collection */}
-        <section
-          id="kollektionen"
-          aria-labelledby="collection-title"
-          className="scroll-mt-24 bg-[#ece2d2] section-pad"
-        >
-          <div className="container-site">
-            <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
-              <Reveal>
-                <p className="eyebrow flex items-center gap-3 text-ink/55">
-                  <span className="h-px w-8 bg-gold" />
-                  Julkollektionen · 2026
-                  <Star
-                    className="size-3 text-gold"
-                    fill="currentColor"
-                    strokeWidth={1.5}
-                    aria-hidden="true"
-                  />
-                </p>
-                <h2
-                  id="collection-title"
-                  className="mt-5 text-[clamp(2.7rem,5.8vw,5.4rem)] leading-[0.87] text-ink"
-                >
-                  Fyra plagg.
-                  <br />
-                  Ett juldrop.
-                </h2>
-              </Reveal>
-              <Reveal className="max-w-sm" delay={0.1}>
-                <p className="text-sm leading-6 text-ink/65">
-                  Lågmälda plagg i material som åldras vackert. Varje detalj
-                  hämtar sin färg från en plats i Lund — och varje plagg är
-                  namngivet efter den. Gjorda för kalla morgnar, julmarknader och
-                  långa kvällar.
-                </p>
-                <p className="eyebrow mt-5 text-ink/55">
-                  Designad i Lund · Tillverkad i Portugal
-                </p>
-                <Link
-                  to="/shop"
-                  className="eyebrow group mt-5 inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-ink transition-colors hover:border-gold hover:text-gold-deep"
-                >
-                  Sök i hela kollektionen
-                  <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </Link>
-              </Reveal>
-            </div>
-
-            <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 md:mt-14">
-              {products.map((product, index) => (
-                <Reveal key={product.id} delay={index * 0.06}>
-                  <ProductCard
-                    product={product}
-                    onAdd={handleAdd}
-                    index={index}
-                  />
-                </Reveal>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-col gap-2 border-t border-ink/10 pt-5 text-[10px] uppercase tracking-[0.12em] text-ink/65 sm:flex-row sm:items-center sm:justify-between">
-              <p>Julkollektionen · 1 december</p>
-              <p>Fri frakt över 1 500 kr · Skickas från Lund</p>
-            </div>
-          </div>
-        </section>
+        <HoodieShowcase />
 
         {/* Christmas drop signup */}
         <section
