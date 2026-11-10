@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { Instagram } from "lucide-react";
 import { Wordmark } from "@/components/Wordmark";
 
 export function SiteFooter({
@@ -79,6 +80,17 @@ export function SiteFooter({
               >
                 Kontakt
               </Link>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/kollektionenavlund.se/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-bone/70 transition-colors hover:text-gold"
+              >
+                <Instagram className="size-3.5" strokeWidth={1.6} />
+                Instagram
+              </a>
             </li>
             <li>
               <a
