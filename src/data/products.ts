@@ -56,8 +56,8 @@ export const products: Product[] = [
     ],
     place: {
       name: "Domkyrkan",
-      image: "/media/lund/cathedral.jpg",
-      alt: "Lunds domkyrka i snö och kvällsljus",
+      image: "/media/lund/winter-domkyrkan.jpg",
+      alt: "Lunds domkyrka i snö och vinterljus",
       copy: "Katedralen som rest sig över Lund i nio sekler. I december lyser fönstren varmt mot snön, och tornen syns långt över taken.",
     },
   },

@@ -29,6 +29,15 @@ import { cn } from "@/lib/utils";
 
 const heroClips: CinematicClip[] = [
   {
+    place: "Drönarvy · Lund",
+    kind: "place",
+    tone: "video-frost",
+    desktopSrc: "/media/video/winter-drone-1440.mp4",
+    mobileSrc: "/media/video/winter-drone-960.mp4",
+    poster: "/media/video/posters/winter-drone.jpg",
+    alt: "Rörlig drönarvy över en snötäckt stad i vinterljus",
+  },
+  {
     place: "Domkyrkan",
     kind: "place",
     tone: "video-frost",
@@ -100,8 +109,8 @@ const places = [
   {
     title: "Domkyrkan",
     meta: "1104 · Romansk",
-    image: "/media/lund/cathedral.jpg",
-    alt: "Lunds domkyrka i varmt ljus",
+    image: "/media/lund/winter-domkyrkan.jpg",
+    alt: "Lunds domkyrka i snö och vinterljus",
     copy: "Två torn, ett astronomiskt ur och tystnaden mellan valven.",
     className: "sm:col-span-2 lg:row-span-2",
     large: true,
@@ -109,29 +118,29 @@ const places = [
   {
     title: "Lundagård",
     meta: "Parken · 1666",
-    image: "/media/lund/lundagard.jpg",
-    alt: "Lundagårds grönska vid Lunds universitet",
-    copy: "Gruset, grönskan och genvägarna mellan föreläsningarna.",
+    image: "/media/lund/winter-lundagard.jpg",
+    alt: "Snötäckt gata och träd vid Lundagård",
+    copy: "Gruset, snön och genvägarna mellan föreläsningarna.",
   },
   {
     title: "Universitetsbiblioteket",
     meta: "1907 · Jugend",
-    image: "/media/lund/university-library.jpg",
-    alt: "Lunds universitetsbibliotek med murgröna i höstdimma",
-    copy: "Murgröna, läslampor och höstdimma över hyllorna.",
+    image: "/media/lund/winter-library.jpg",
+    alt: "Universitetsbiblioteket i vinterdimma",
+    copy: "Murgröna, läslampor och vinterdimma över hyllorna.",
   },
   {
     title: "Stortorget",
     meta: "Stadens hjärta",
-    image: "/media/lund/stortorget.jpg",
-    alt: "Rött tegel och staty vid Stortorget i Lund",
+    image: "/media/lund/winter-stortorget.jpg",
+    alt: "Snö över Stortorget i Lund",
     copy: "Mötesplatsen där stadens ljus tänds först.",
   },
   {
     title: "Universitetshuset",
     meta: "1882 · Nyklassicism",
-    image: "/media/lund/universitetshuset.jpg",
-    alt: "Universitetshuset i Lund med sin historiska fasad",
+    image: "/media/lund/winter-university.jpg",
+    alt: "Universitetshuset i Lund i snöfall",
     copy: "Kunskapen har formats här i över 350 år.",
   },
 ];
@@ -662,8 +671,8 @@ export default function Landing() {
               <div className="relative">
                 <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-sand">
                   <img
-                    src="/media/lund/autumn-street.jpg"
-                    alt="Kullerstensgata i Lund som leder fram till en kyrka i höstskymning"
+                    src="/media/lund/winter-about.jpg"
+                    alt="Snötäckt kullerstensgata i Lund i vinterljus"
                     width={1200}
                     height={1500}
                     loading="lazy"
@@ -740,7 +749,7 @@ export default function Landing() {
           className="relative scroll-mt-20 overflow-hidden bg-ink text-bone"
         >
           <img
-            src="/media/lund/street.jpg"
+            src="/media/lund/winter-contact.jpg"
             alt=""
             aria-hidden="true"
             width={1200}
