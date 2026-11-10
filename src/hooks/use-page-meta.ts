@@ -11,7 +11,7 @@ type PageMeta = {
   imageAlt?: string;
   imageWidth?: number;
   imageHeight?: number;
-  type?: "website" | "product";
+  type?: "website" | "product" | "video.other";
   noindex?: boolean;
 };
 

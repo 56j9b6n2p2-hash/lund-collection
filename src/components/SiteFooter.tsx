@@ -36,6 +36,14 @@ export function SiteFooter({
             </li>
             <li>
               <Link
+                to="/film"
+                className="text-bone/70 transition-colors hover:text-gold"
+              >
+                Lunds videokollektion
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/#juldroppet"
                 className="text-bone/70 transition-colors hover:text-gold"
               >

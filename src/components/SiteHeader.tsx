@@ -14,6 +14,7 @@ import { Wordmark } from "@/components/Wordmark";
 
 const navItems = [
   { label: "Shop", to: "/shop" },
+  { label: "Film", to: "/film" },
   { label: "Juldroppet", to: "/#juldroppet" },
   { label: "Staden", to: "/#staden" },
   { label: "Om oss", to: "/#om-oss" },
@@ -44,7 +45,7 @@ export function SiteHeader({
 
         <div className="flex items-center gap-2 md:gap-6 lg:gap-9">
           <nav aria-label="Huvudmeny" className="hidden md:block">
-            <ul className="flex items-center gap-5 lg:gap-6">
+            <ul className="flex items-center gap-4 lg:gap-6">
               {navItems.map((item) => (
                 <li key={item.to}>
                   <Link

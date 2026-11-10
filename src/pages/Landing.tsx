@@ -496,13 +496,22 @@ export default function Landing() {
                   En grön linje genom snötunga vintermorgnar. Lund är en stad som
                   rör sig långsamt — men aldrig står still.
                 </p>
-                <a
-                  href="#platser"
-                  className="eyebrow mt-6 inline-flex items-center gap-2 border-b border-gold/60 pb-1 text-gold transition-colors hover:border-gold hover:text-gold-soft"
-                >
-                  Se platserna
-                  <ArrowRight className="size-3.5" />
-                </a>
+                <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <a
+                    href="#platser"
+                    className="eyebrow inline-flex items-center gap-2 border-b border-gold/60 pb-1 text-gold transition-colors hover:border-gold hover:text-gold-soft"
+                  >
+                    Se platserna
+                    <ArrowRight className="size-3.5" />
+                  </a>
+                  <Link
+                    to="/film"
+                    className="eyebrow inline-flex items-center gap-2 border-b border-gold/60 pb-1 text-gold transition-colors hover:border-gold hover:text-gold-soft"
+                  >
+                    Se videokollektionen
+                    <ArrowUpRight className="size-3.5" />
+                  </Link>
+                </div>
               </Reveal>
             </div>
           </div>
