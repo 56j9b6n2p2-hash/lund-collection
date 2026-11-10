@@ -194,8 +194,7 @@ export function CartDrawer({
               Tomt, än så länge.
             </h3>
             <p className="mt-3 max-w-[18rem] text-sm leading-6 text-muted-foreground">
-              Fyra plagg inspirerade av Domkyrkan, Lundagård, Stortorget och
-              nätterna över Lund.
+              En hoodie inspirerad av Domkyrkan och vinterkvällarna i Lund.
             </p>
             <Link
               to="/shop"

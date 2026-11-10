@@ -243,9 +243,9 @@ export default function Landing() {
                   transition={{ delay: 0.7, duration: 0.9, ease: "easeOut" }}
                 >
                   <p className="max-w-md text-[15px] leading-7 text-bone/80 md:text-base">
-                    Ett juldrop från Lund. Fyra plagg, inspirerade av
-                    Domkyrkan, Lundagård och snön över Stortorget. Anmäl dig och
-                    få första tillgång den 1 december.
+                    Ett juldrop från Lund. En hoodie, inspirerad av Domkyrkan
+                    och snön över Stortorget. Anmäl dig och få första tillgång
+                    den 1 december.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <a
@@ -393,7 +393,7 @@ export default function Landing() {
                 <span className="text-gold">1 december</span>
               </h2>
               <p className="mt-6 max-w-md text-sm leading-7 text-bone/70">
-                Fyra plagg, en stad och en kväll som hör vintern till. Anmäl dig
+                En hoodie, en stad och en kväll som hör vintern till. Anmäl dig
                 så hör vi av oss inför släppet — och du slipper undra när
                 dörrarna öppnar.
               </p>
@@ -598,9 +598,9 @@ export default function Landing() {
             <Reveal className="max-w-sm" delay={0.1}>
               <p className="text-sm leading-6 text-ink/65">
                 Domkyrkans romanska valv, Lundagårds grus, Stortorgets ljus och
-                kunskapens hus. Platserna som gav kollektionen dess namn — och
-                dess känsla. I december, när snön ligger över taken, blir de
-                ännu svårare att lämna.
+                kunskapens hus. Platserna som formade hoodien — och dess känsla.
+                I december, när snön ligger över taken, blir de ännu svårare att
+                lämna.
               </p>
             </Reveal>
           </div>
@@ -698,13 +698,12 @@ export default function Landing() {
               <p className="mt-6 text-[15px] leading-7 text-ink/70">
                 Kollektionen av Lund föddes ur en enkel idé: att göra kläder som
                 känns lika självklara som staden de kommer från. Vi arbetar i
-                små serier med material som tål att användas — ekologisk bomull,
-                borstad fleece och europeisk merinoull.
+                små serier med material som tål att användas — en tung,
+                borstad bomullsblandning med mjuk insida.
               </p>
               <p className="mt-4 text-[15px] leading-7 text-ink/70">
-                Julkollektionen är namngiven efter platser i Lund. Domkyrkan.
-                Lundagård. Stortorget. Nattvandringen. Bär dem under julen, slit
-                dem länge och lämna dem vidare.
+                Hoodien är en hyllning till Domkyrkan och vinterkvällarna i
+                Lund. Bär den under julen, slit den länge och lämna den vidare.
               </p>
 
               <ul className="mt-8 space-y-3 border-t border-ink/10 pt-6">

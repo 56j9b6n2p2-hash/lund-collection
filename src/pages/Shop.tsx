@@ -14,7 +14,7 @@ export default function Shop() {
   usePageMeta({
     title: "Julkollektionen 2026 — Kollektionen av Lund",
     description:
-      "Utforska julkollektionen 2026 från Kollektionen av Lund. Fyra tidlösa plagg inspirerade av Domkyrkan, Lundagård och Stortorget. Sök efter plagg, färg eller material.",
+      "Utforska julkollektionen 2026 från Kollektionen av Lund. En tung hoodie inspirerad av Domkyrkan och vinterkvällarna i Lund. Sök efter färg eller material.",
     path: "/shop",
   });
 
@@ -73,21 +73,22 @@ export default function Shop() {
                 Julkollektionen · 2026
               </p>
               <h1 className="mt-5 max-w-full break-words text-[clamp(2.7rem,7.6vw,6.6rem)] leading-[0.86] text-bone">
-                Julen, i fyra
+                Julen, i en
                 <br />
-                plagg<span className="text-gold">.</span>
+                hoodie<span className="text-gold">.</span>
               </h1>
               <p className="mt-6 max-w-md text-sm leading-7 text-bone/65">
-                Fyra lugna plagg för kalla morgnar, sena kvällar och allt
-                däremellan. Sök, läs och reservera din favorit inför juldroppet.
+                En tung hoodie för kalla morgnar, sena kvällar och allt
+                däremellan. Läs om plagget och reservera din storlek inför
+                juldroppet.
               </p>
             </div>
 
             <div className="hidden shrink-0 items-end gap-3 pb-1 md:flex">
               <span className="font-display text-[7rem] leading-[0.75] text-gold/25">
-                04
+                {String(products.length).padStart(2, "0")}
               </span>
-              <span className="eyebrow pb-1 text-bone/45">plagg</span>
+              <span className="eyebrow pb-1 text-bone/45">hoodie</span>
             </div>
           </div>
 
@@ -109,7 +110,7 @@ export default function Shop() {
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Sök på plagg, färg eller material"
+                placeholder="Sök på färg eller material"
                 className="h-12 w-full rounded-md border border-transparent bg-bone py-3 pl-11 pr-11 text-sm text-ink outline-none transition-shadow placeholder:text-ink/45 focus:border-gold focus:ring-2 focus:ring-gold/30"
               />
               {query ? (
@@ -130,15 +131,15 @@ export default function Shop() {
       <section className="container-site py-14 md:py-20">
         <div className="flex items-baseline justify-between gap-6 border-b border-ink/10 pb-4">
           <p className="eyebrow text-ink/55">
-            {query.trim() ? `Resultat för “${query.trim()}”` : "Alla plagg"}
+            {query.trim() ? `Resultat för “${query.trim()}”` : "Kollektionen"}
           </p>
           <p className="text-xs tabular-nums text-muted-foreground">
-            {filtered.length} plagg
+            {filtered.length} hoodie
           </p>
         </div>
 
         {filtered.length > 0 ? (
-          <div className="mt-7 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          <div className="mt-7 grid max-w-xl grid-cols-1 gap-4">
             {filtered.map((product, index) => (
               <ProductCard
                 key={product.id}

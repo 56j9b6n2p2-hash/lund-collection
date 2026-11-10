@@ -8,8 +8,7 @@ import {
   Star,
   Truck,
 } from "lucide-react";
-import { ProductCard } from "@/components/ProductCard";
-import { formatSek, getProduct, products } from "@/data/products";
+import { formatSek, getProduct } from "@/data/products";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { useStorefront } from "@/components/StorefrontLayout";
 
@@ -55,9 +54,6 @@ export default function ProductDetail() {
     );
   }
 
-  const related = products
-    .filter((item) => item.id !== product.id)
-    .slice(0, 3);
   const isSquareProduct = product.id === "domkyrkan-hoodie";
 
   return (
@@ -249,38 +245,6 @@ export default function ProductDetail() {
               <ArrowUpRight className="size-3.5" />
             </Link>
           </div>
-        </div>
-      </section>
-
-      <section className="container-site py-14 md:py-20">
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <p className="eyebrow flex items-center gap-2.5 text-gold-deep">
-              <Star className="size-3" fill="currentColor" strokeWidth={1.5} />
-              Mer från julen
-            </p>
-            <h2 className="mt-3 text-[clamp(2.3rem,4.6vw,3.8rem)] leading-[0.9] text-ink">
-              Fler plagg.
-            </h2>
-          </div>
-          <Link
-            to="/shop"
-            className="eyebrow hidden items-center gap-2 border-b border-ink/20 pb-1 text-ink transition-colors hover:border-gold hover:text-gold-deep sm:inline-flex"
-          >
-            Hela kollektionen
-            <ArrowUpRight className="size-3.5" />
-          </Link>
-        </div>
-
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-          {related.map((item) => (
-            <ProductCard
-              key={item.id}
-              product={item}
-              onAdd={handleAdd}
-              index={products.indexOf(item)}
-            />
-          ))}
         </div>
       </section>
     </>
