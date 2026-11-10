@@ -211,7 +211,7 @@ export default function Landing() {
                 <motion.h1
                   id="hero-title"
                   aria-label="En känsla. En stad. En kollektion."
-                  className="hero-neon mt-5 max-w-full break-words font-display text-[clamp(2.35rem,10.4vw,11.5rem)] leading-[0.84] text-bone"
+                  className="hero-neon mt-5 max-w-full break-words font-display text-[clamp(2.35rem,10.4vw,11.5rem)] leading-[1.05] text-bone"
                   initial={reduceMotion ? false : "hidden"}
                   animate={reduceMotion ? undefined : "show"}
                   variants={{
