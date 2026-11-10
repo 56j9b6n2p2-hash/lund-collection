@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { Menu, ShoppingBag } from "lucide-react";
+import { Instagram, Menu, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -57,6 +57,17 @@ export function SiteHeader({
               ))}
             </ul>
           </nav>
+
+          <a
+            href="https://www.instagram.com/kollektionenavlund.se/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Kollektionen av Lund på Instagram"
+            className="hidden h-11 items-center gap-2.5 border border-bone/20 px-3 text-bone transition-colors hover:border-gold hover:text-gold sm:flex sm:px-4"
+          >
+            <Instagram className="size-[17px]" strokeWidth={1.6} />
+            <span className="eyebrow hidden lg:inline">Instagram</span>
+          </a>
 
           <button
             type="button"
@@ -133,7 +144,17 @@ export function SiteHeader({
                     {cartCount} {itemLabel}
                   </span>
                 </button>
-                <p className="mt-8 text-xs leading-6 text-bone/60">
+                <a
+                  href="https://www.instagram.com/kollektionenavlund.se/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Kollektionen av Lund på Instagram"
+                  className="mt-4 flex items-center gap-2 text-sm text-bone/70 transition-colors hover:text-gold"
+                >
+                  <Instagram className="size-4" strokeWidth={1.6} />
+                  @kollektionenavlund.se
+                </a>
+                <p className="mt-6 text-xs leading-6 text-bone/60">
                   Designat i Lund, Sverige
                   <br />
                   Fri frakt över 1 500 kr

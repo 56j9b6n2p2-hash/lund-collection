@@ -181,6 +181,7 @@ export default function Landing() {
         >
           <CinematicVideoPlaylist
             priority
+            interval={16000}
             clips={heroClips}
             overlayClassName="bg-gradient-to-t from-ink via-[#07131c]/65 to-[#07131c]/40"
             showPlaceLabel
