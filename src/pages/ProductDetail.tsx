@@ -64,7 +64,10 @@ export default function ProductDetail() {
     <>
       <div className="bg-background pt-20">
         <div className="container-site border-b border-ink/10 py-5">
-          <nav aria-label="Brödsmulor" className="eyebrow text-ink/50">
+          <nav
+            aria-label="Brödsmulor"
+            className="eyebrow flex flex-wrap items-center gap-y-1 text-ink/50"
+          >
             <Link to="/" className="transition-colors hover:text-gold-deep">
               Hem
             </Link>
@@ -139,7 +142,7 @@ export default function ProductDetail() {
               <Star className="size-3" fill="currentColor" strokeWidth={1.5} />
               Julkollektionen · 2026
             </p>
-            <h1 className="mt-4 text-[clamp(2.8rem,5.6vw,4.8rem)] leading-[0.88] text-ink">
+            <h1 className="mt-4 max-w-full break-words text-[clamp(2.5rem,5.6vw,4.8rem)] leading-[0.88] text-ink">
               {product.name}
             </h1>
             <p className="mt-3 text-sm text-muted-foreground">
@@ -153,17 +156,21 @@ export default function ProductDetail() {
               {product.description}
             </p>
 
-            <div className="mt-6 flex items-center gap-2.5 text-xs text-muted-foreground">
-              <span
-                aria-hidden="true"
-                className="inline-block size-3.5 rounded-full border border-ink/10"
-                style={{ backgroundColor: product.colorHex }}
-              />
-              <span>
-                Färg: <span className="text-ink">{product.colorName}</span>
+            <div className="mt-6 flex flex-col gap-2 text-xs text-muted-foreground sm:flex-row sm:flex-wrap sm:items-center sm:gap-2.5">
+              <span className="flex items-center gap-2.5">
+                <span
+                  aria-hidden="true"
+                  className="inline-block size-3.5 shrink-0 rounded-full border border-ink/10"
+                  style={{ backgroundColor: product.colorHex }}
+                />
+                <span>
+                  Färg: <span className="text-ink">{product.colorName}</span>
+                </span>
               </span>
-              <span className="text-ink/20">·</span>
-              <span>{product.material}</span>
+              <span aria-hidden="true" className="hidden text-ink/20 sm:inline">
+                ·
+              </span>
+              <span className="break-words">{product.material}</span>
             </div>
 
             <button

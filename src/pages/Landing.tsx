@@ -168,7 +168,7 @@ export default function Landing() {
         {/* Hero */}
         <section
           aria-labelledby="hero-title"
-          className="relative flex h-[100svh] min-h-[520px] items-end overflow-hidden bg-ink text-bone"
+          className="relative flex h-[100svh] min-h-[620px] items-end overflow-hidden bg-ink text-bone"
         >
           <CinematicVideoPlaylist
             priority
@@ -189,11 +189,11 @@ export default function Landing() {
             <ChristmasStar className="-mt-1 size-24 xl:size-28" />
           </div>
 
-          <div className="container-site relative z-10 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-28 md:pb-14">
+          <div className="container-site relative z-10 pb-[max(2rem,env(safe-area-inset-bottom))] pt-24 md:pb-14 md:pt-28">
             <div className="flex items-end justify-between gap-8">
               <div className="min-w-0">
                 <motion.p
-                  className="eyebrow flex items-center gap-3 text-gold"
+                  className="eyebrow flex flex-wrap items-center gap-x-3 gap-y-2 text-gold"
                   variants={heroVariants}
                   initial={reduceMotion ? false : "hidden"}
                   animate={reduceMotion ? undefined : "show"}
@@ -211,7 +211,7 @@ export default function Landing() {
                 <motion.h1
                   id="hero-title"
                   aria-label="En känsla. En stad. En kollektion."
-                  className="hero-neon mt-5 font-display text-[clamp(2.5rem,10.4vw,11.5rem)] leading-[0.84] text-bone"
+                  className="hero-neon mt-5 max-w-full break-words font-display text-[clamp(2.35rem,10.4vw,11.5rem)] leading-[0.84] text-bone"
                   initial={reduceMotion ? false : "hidden"}
                   animate={reduceMotion ? undefined : "show"}
                   variants={{
@@ -250,14 +250,14 @@ export default function Landing() {
                   <div className="flex flex-wrap items-center gap-3">
                     <a
                       href="#juldroppet"
-                      className="eyebrow group inline-flex h-14 items-center gap-3 bg-gold px-6 text-ink transition-colors hover:bg-bone md:px-8"
+                      className="eyebrow group inline-flex h-12 items-center gap-3 bg-gold px-5 text-ink transition-colors hover:bg-bone sm:h-14 sm:px-6 md:px-8"
                     >
                       Anmäl dig till juldroppet
                       <ArrowDown className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
                     </a>
                     <a
                       href="#kollektionen"
-                      className="eyebrow inline-flex h-14 items-center gap-2 border border-bone/25 px-6 text-bone/80 transition-colors hover:border-bone/60 hover:text-bone"
+                      className="eyebrow inline-flex h-12 items-center gap-2 border border-bone/25 px-5 text-bone/80 transition-colors hover:border-bone/60 hover:text-bone sm:h-14 sm:px-6"
                     >
                       Se kollektionen
                       <ArrowRight className="size-3.5" />

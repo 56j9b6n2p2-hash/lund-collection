@@ -53,7 +53,10 @@ export default function Shop() {
           <Star className="h-full w-full" strokeWidth={0.6} />
         </div>
         <div className="container-site relative pb-12 pt-10 md:pb-16 md:pt-14">
-          <nav aria-label="Brödsmulor" className="eyebrow text-bone/50">
+          <nav
+            aria-label="Brödsmulor"
+            className="eyebrow flex flex-wrap items-center gap-y-1 text-bone/50"
+          >
             <Link to="/" className="transition-colors hover:text-gold">
               Hem
             </Link>
@@ -69,7 +72,7 @@ export default function Shop() {
                 <Star className="size-3" fill="currentColor" strokeWidth={1.5} />
                 Julkollektionen · 2026
               </p>
-              <h1 className="mt-5 text-[clamp(3rem,7.6vw,6.6rem)] leading-[0.86] text-bone">
+              <h1 className="mt-5 max-w-full break-words text-[clamp(2.7rem,7.6vw,6.6rem)] leading-[0.86] text-bone">
                 Julen, i fyra
                 <br />
                 plagg<span className="text-gold">.</span>

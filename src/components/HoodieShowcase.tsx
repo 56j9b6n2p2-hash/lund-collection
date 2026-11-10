@@ -20,36 +20,36 @@ type Colorway = {
 
 const colorways: Colorway[] = [
   {
-    id: "rod",
-    label: "Vinröd",
-    hex: "#6f2430",
+    id: "vit",
+    label: "Vintervit",
+    hex: "#f2eee6",
     views: [
       {
-        src: "/media/hoodie/julklappstradet-rod-1.jpg",
+        src: "/media/hoodie/domkyrkan-vit-1.jpg",
         label: "Fram",
-        alt: "Vinröd hoodie med julklappsträdet på bröstet",
+        alt: "Vintervit hoodie med julmarknaden på bröstet",
       },
       {
-        src: "/media/hoodie/julklappstradet-rod-2.jpg",
+        src: "/media/hoodie/domkyrkan-vit-2.jpg",
         label: "Bak",
-        alt: "Vinröd hoodie med inramad julmarknad på ryggen",
+        alt: "Vintervit hoodie med Lunds domkyrka på ryggen",
       },
     ],
   },
   {
-    id: "gron",
-    label: "Grön",
-    hex: "#3f4a32",
+    id: "gra",
+    label: "Grå",
+    hex: "#9aa0a6",
     views: [
       {
-        src: "/media/hoodie/julklappstradet-gron-1.jpg",
+        src: "/media/hoodie/domkyrkan-gra-1.jpg",
         label: "Fram",
-        alt: "Grön hoodie med julklappsträdet på bröstet",
+        alt: "Grå hoodie med julmarknaden på bröstet",
       },
       {
-        src: "/media/hoodie/julklappstradet-gron-2.jpg",
+        src: "/media/hoodie/domkyrkan-gra-2.jpg",
         label: "Bak",
-        alt: "Grön hoodie med inramad julmarknad på ryggen",
+        alt: "Grå hoodie med Lunds domkyrka på ryggen",
       },
     ],
   },
@@ -59,48 +59,14 @@ const colorways: Colorway[] = [
     hex: "#1d2c3d",
     views: [
       {
-        src: "/media/hoodie/julklappstradet-marinbla-1.jpg",
+        src: "/media/hoodie/domkyrkan-marinbla-1.jpg",
         label: "Fram",
-        alt: "Marinblå hoodie med julklappsträdet på bröstet",
+        alt: "Marinblå hoodie med julmarknaden på bröstet",
       },
       {
-        src: "/media/hoodie/julklappstradet-marinbla-2.jpg",
+        src: "/media/hoodie/domkyrkan-marinbla-2.jpg",
         label: "Bak",
-        alt: "Marinblå hoodie med inramad julmarknad på ryggen",
-      },
-    ],
-  },
-  {
-    id: "sand",
-    label: "Sand",
-    hex: "#c9b18c",
-    views: [
-      {
-        src: "/media/hoodie/julklappstradet-sand-1.jpg",
-        label: "Fram",
-        alt: "Sandfärgad hoodie med julklappsträdet på bröstet",
-      },
-      {
-        src: "/media/hoodie/julklappstradet-sand-2.jpg",
-        label: "Bak",
-        alt: "Sandfärgad hoodie med inramad julmarknad på ryggen",
-      },
-    ],
-  },
-  {
-    id: "svart",
-    label: "Svart",
-    hex: "#171717",
-    views: [
-      {
-        src: "/media/hoodie/julklappstradet-svart-1.jpg",
-        label: "Fram",
-        alt: "Svart hoodie med julklappsträdet på bröstet",
-      },
-      {
-        src: "/media/hoodie/julklappstradet-svart-2.jpg",
-        label: "Bak",
-        alt: "Svart hoodie med inramad julmarknad på ryggen",
+        alt: "Marinblå hoodie med Lunds domkyrka på ryggen",
       },
     ],
   },
@@ -189,7 +155,7 @@ export function HoodieShowcase() {
               </p>
               <h2
                 id="collection-title"
-                className="mt-6 text-[clamp(2.8rem,7vw,6.4rem)] leading-[0.86] text-bone"
+                className="mt-6 max-w-full break-words text-[clamp(2.6rem,7vw,6.4rem)] leading-[0.86] text-bone"
               >
                 Jul i Lund
               </h2>
@@ -202,7 +168,7 @@ export function HoodieShowcase() {
             <p className="eyebrow max-w-xs text-gold/80 md:text-right">
               1 december
               <span className="mt-3 block font-sans text-[11px] normal-case leading-6 tracking-normal text-bone/50">
-                En hoodie. Fem färger. Byggd för kalla promenader mellan
+                En hoodie. Tre färger. Byggd för kalla promenader mellan
                 Stortorget och Domkyrkan.
               </span>
             </p>
@@ -216,17 +182,17 @@ export function HoodieShowcase() {
                 <p className="eyebrow text-bone/55">
                   Hoodie — {activeColor.label}
                 </p>
-                <h3 className="mt-6 text-[clamp(2.2rem,4.6vw,3.6rem)] leading-[0.9] text-bone">
-                  Julklappsträdet
+                <h3 className="mt-6 max-w-full break-words text-[clamp(2.2rem,4.6vw,3.6rem)] leading-[0.9] text-bone">
+                  Domkyrkan
                 </h3>
                 <p className="mt-8 max-w-sm text-sm leading-8 text-bone/75">
-                  Snö över Stortorget, julbodar som lyser och ett träd fullt av
-                  paket. En hyllning till Lund i december.
+                  Julmarknaden på bröstet och Domkyrkan i kvällsljus på ryggen.
+                  Två motiv från samma vinterkväll i Lund.
                 </p>
                 <p className="mt-6 max-w-sm text-sm leading-8 text-bone/55">
-                  Julklappsträdet på bröstet och en inramad julmarknad på
-                  ryggen. Tung fleece, mjuk insida och en passform som rymmer
-                  både tjock tröja och vinterluft.
+                  Ett inramat julmotiv över bröstet och katedralen över ryggen.
+                  Tung fleece, mjuk insida och en passform som rymmer både tjock
+                  tröja och vinterluft.
                 </p>
               </div>
 
