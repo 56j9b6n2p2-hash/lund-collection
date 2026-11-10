@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+Disallow: /auth
+Disallow: /dashboard
+Disallow: /api/
+
 Sitemap: https://kollektionenavlund.se/sitemap.xml
