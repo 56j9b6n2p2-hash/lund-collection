@@ -33,7 +33,7 @@ const heroClips: CinematicClip[] = [
     kind: "place",
     tone: "video-frost",
     desktopSrc: "/media/video/winter-drone-1440.mp4",
-    mobileSrc: "/media/video/winter-drone-960.mp4",
+    mobileSrc: "/media/video/winter-drone-mobile.mp4",
     poster: "/media/video/posters/winter-drone.jpg",
     alt: "Rörlig drönarvy över en snötäckt stad i vinterljus",
   },
