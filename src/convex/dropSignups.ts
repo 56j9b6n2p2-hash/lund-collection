@@ -1,7 +1,11 @@
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Shared password for the lightweight /admin panel. The check lives here on the
+// server so the signup list is never included in the public client bundle.
+const ADMIN_PASSWORD = "vpv77";
 
 export const subscribe = mutation({
   args: {
@@ -32,5 +36,26 @@ export const subscribe = mutation({
     });
 
     return { status: "new" as const };
+  },
+});
+
+export const listAdmin = query({
+  args: {
+    password: v.string(),
+  },
+  handler: async (ctx, args) => {
+    if (args.password !== ADMIN_PASSWORD) {
+      return null;
+    }
+
+    const signups = await ctx.db.query("dropSignups").collect();
+
+    return signups
+      .sort((a, b) => b.createdAt - a.createdAt)
+      .map((signup) => ({
+        email: signup.email,
+        source: signup.source ?? "juldroppet",
+        createdAt: signup.createdAt,
+      }));
   },
 });
