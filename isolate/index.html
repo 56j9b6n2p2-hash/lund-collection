@@ -21,7 +21,8 @@
     <meta name="robots" content="index, follow" />
     <meta name="geo.region" content="SE-M" />
     <meta name="geo.placename" content="Lund" />
-    <link rel="canonical" href="https://kollektionenavlund.se/" />
+    <!-- Canonical sätts av usePageMeta per route så att /film och watch-sidor
+         inte ärver startsidans canonical innan React har renderat. -->
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="sv_SE" />
@@ -134,7 +135,7 @@
         ]
       }
     </script>
-    <script type="module" crossorigin src="/assets/index-ZQ8YXxT9.js"></script>
+    <script type="module" crossorigin src="/assets/index-73uWq142.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-vendor-CVS2H6go.js">
     <link rel="modulepreload" crossorigin href="/assets/radix-ui-B5rcE5_W.js">
     <link rel="modulepreload" crossorigin href="/assets/charts-D7QqoUUt.js">

@@ -43,18 +43,18 @@
   </url>
   <url>
     <loc>https://kollektionenavlund.se/film</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://kollektionenavlund.se/media/video/posters/winter-drone.jpg</image:loc>
       <image:title>Lunds videokollektion</image:title>
-      <image:caption>Sju korta filmer om Lund i vinter.</image:caption>
+      <image:caption>Nio korta filmer om Lund i vinter.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://kollektionenavlund.se/film/vinter-over-lund</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -127,6 +127,28 @@
       <image:loc>https://kollektionenavlund.se/media/video/posters/night-tram.jpg</image:loc>
       <image:title>Natten över Lund</image:title>
       <image:caption>Spårvagnen genom Lund efter midnatt.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kollektionenavlund.se/film/st-hans-park</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/video/posters/st-hans-park.jpg</image:loc>
+      <image:title>Vinter över Sankt Hans backar</image:title>
+      <image:caption>Snötäckta backar i Sankt Hans park i Lund.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kollektionenavlund.se/film/vinterljus-over-lund</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/snow-poster.jpg</image:loc>
+      <image:title>Vinterljus över Lund</image:title>
+      <image:caption>Snöfall i vinterljus bakom Domkyrkan Hoodie.</image:caption>
     </image:image>
   </url>
 </urlset>
