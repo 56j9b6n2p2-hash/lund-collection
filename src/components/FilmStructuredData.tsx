@@ -96,7 +96,7 @@ export function FilmCollectionStructuredData() {
           url: `${SITE_URL}/film`,
           name: "Lunds videokollektion",
           description:
-            "Sju korta filmer om Lund i vinter: Domkyrkan, spårvagnen, snöfallet och julnatten.",
+            "Nio korta filmer om Lund i vinter: Domkyrkan, spårvagnen, snöfallet och julnatten.",
           inLanguage: "sv-SE",
           isPartOf: {
             "@type": "WebSite",

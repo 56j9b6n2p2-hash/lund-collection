@@ -29,7 +29,7 @@ export const films: LundFilm[] = [
       "Drönarvy över Lund i vinterljus: snötäckta tak, Domkyrkans torn och Stortorgets tysta gator. En långsam film om staden från ovan.",
     story: [
       "Filmen börjar högt över taken, där Lund blir ett mönster av kullerstensgator, skorstenar och snö. Domkyrkans torn är stadens fasta punkt medan ljuset långsamt skiftar över taken.",
-      "Vinter över Lund är en av sju korta filmer från julkollektionen 2026. De är gjorda för att fånga staden i rörelse — från drönarens tysta vy till spårvagnens gröna linje genom morgonen.",
+      "Vinter över Lund är en av nio korta filmer från julkollektionen 2026. De är gjorda för att fånga staden i rörelse — från drönarens tysta vy till spårvagnens gröna linje genom morgonen.",
     ],
     desktopSrc: "/media/video/winter-drone-1440.mp4",
     mobileSrc: "/media/video/winter-drone-mobile.mp4",
@@ -148,6 +148,45 @@ export const films: LundFilm[] = [
     desktopSrc: "/media/video/night-tram-1600.mp4",
     mobileSrc: "/media/video/night-tram-960.mp4",
     uploadDate: "2026-11-10",
+  },
+  {
+    id: "st-hans-park",
+    title: "Vinter över Sankt Hans backar",
+    kicker: "Sankt Hans · 08",
+    location: "Sankt Hans park",
+    durationSeconds: 12,
+    poster: "/media/video/posters/st-hans-park.jpg",
+    alt: "Snötäckta backar och park i Sankt Hans park i Lund",
+    summary:
+      "Snö över backarna och utsikt mot Öresund från norra Lund.",
+    description:
+      "Sankt Hans park i vinter: snötäckta backar, stilla promenadvägar och utsikt över Lund och slätten mot Öresund. En kort film från stadens största park.",
+    story: [
+      "Norr om Lunds centrum öppnar Sankt Hans backar upp sig mot himlen. På vintern blir kullarna en plats för pulka, promenader och en vid utsikt över staden och det skånska landskapet.",
+      "Filmen fångar parken när snön ligger kvar och ljudet av staden känns avlägset. Det är samma vinter som går igen i kollektionen — men här finns plats för tystnad, rörelse och kall luft.",
+    ],
+    desktopSrc: "/media/video/st-hans-park-1440.mp4",
+    mobileSrc: "/media/video/st-hans-park-960.mp4",
+    uploadDate: "2026-11-11",
+  },
+  {
+    id: "vinterljus-over-lund",
+    title: "Vinterljus över Lund",
+    kicker: "Vinterljus · 09",
+    location: "Lund",
+    durationSeconds: 9,
+    poster: "/media/hoodie/snow-poster.jpg",
+    alt: "Snöfall i vinterljus bakom Domkyrkan Hoodie",
+    summary: "Snöfallet som ramar in julkollektionen i vinterljus.",
+    description:
+      "Ett stilla snöfall i vinterljuset över Lund — bakgrunden till Domkyrkan Hoodie och julkollektionen 2026. En kort film om kyla, ljus och snö.",
+    story: [
+      "Snön faller tätt men mjukt över staden. Filmen är en närbild av vinterljuset som kollektionen bygger på: kallt, stilla och med ett varmt sken någonstans i bakgrunden.",
+      "Här används bilden bakom Domkyrkan Hoodie. Samma snö, samma mörker och samma känsla av att stanna en stund innan man går vidare genom Lund.",
+    ],
+    desktopSrc: "/media/hoodie/snow-1440.mp4",
+    mobileSrc: "/media/hoodie/snow-960.mp4",
+    uploadDate: "2026-11-11",
   },
 ];
 

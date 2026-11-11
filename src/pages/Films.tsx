@@ -25,7 +25,7 @@ export default function Films() {
   usePageMeta({
     title: "Lunds videokollektion | Filmer från Lund",
     description:
-      "Lunds videokollektion: sju korta filmer om Domkyrkan, spårvagnen, snöfallet och julnatten. Se varje film med spelare, bild och berättelse från Lund.",
+      "Lunds videokollektion: nio korta filmer om Domkyrkan, spårvagnen, snöfallet och julnatten. Se varje film med spelare, bild och berättelse från Lund.",
     path: "/film",
     image: "/media/video/posters/winter-drone.jpg",
     imageAlt: "Drönarvy över ett snötäckt Lund i vinterljus",
@@ -84,7 +84,7 @@ export default function Films() {
               delay={0.12}
             >
               <p className="max-w-sm text-sm leading-7 text-bone/75">
-                Sju korta filmer om staden i vinter: Domkyrkan, spårvagnen,
+                Nio korta filmer om staden i vinter: Domkyrkan, spårvagnen,
                 snöfallet och julnatten. Samma platser som formade kollektionen,
                 sedda i rörelse.
               </p>
