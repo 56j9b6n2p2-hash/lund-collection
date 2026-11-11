@@ -30,58 +30,12 @@ import { cn } from "@/lib/utils";
 
 const heroClips: CinematicClip[] = [
   {
-    place: "Drönarvy · Lund",
+    place: "Lund i vinter",
     kind: "place",
-    tone: "video-frost",
-    desktopSrc: "/media/video/winter-drone-1440.mp4",
-    mobileSrc: "/media/video/winter-drone-mobile.mp4",
+    desktopSrc: "/media/video/home-hero-montage-1440.mp4",
+    mobileSrc: "/media/video/home-hero-montage-960.mp4",
     poster: "/media/video/posters/winter-drone.jpg",
-    alt: "Rörlig drönarvy över en snötäckt stad i vinterljus",
-  },
-  {
-    place: "Domkyrkan",
-    kind: "place",
-    tone: "video-frost",
-    desktopSrc: "/media/video/hero-cathedral-1440.mp4",
-    mobileSrc: "/media/video/hero-cathedral-960.mp4",
-    poster: "/media/video/posters/hero-cathedral.jpg",
-    alt: "Drönarvy över Lunds domkyrka i vinterljus",
-  },
-  {
-    place: "Domkyrkan · kväll",
-    kind: "place",
-    tone: "video-evening",
-    desktopSrc: "/media/video/cathedral-evening-1440.mp4",
-    mobileSrc: "/media/video/cathedral-evening-960.mp4",
-    poster: "/media/video/posters/cathedral-evening.jpg",
-    alt: "Lunds domkyrka i snö och kvällsljus",
-  },
-  {
-    place: "Snöfall",
-    kind: "snow",
-    tone: "video-frost",
-    desktopSrc: "/media/video/snow-landscape-1440.mp4",
-    mobileSrc: "/media/video/snow-landscape-960.mp4",
-    poster: "/media/video/posters/snow-landscape.jpg",
-    alt: "Snöfall över ett snötäckt vinterlandskap",
-  },
-  {
-    place: "Centrala Lund",
-    kind: "place",
-    tone: "video-frost",
-    desktopSrc: "/media/video/city-tram-1600.mp4",
-    mobileSrc: "/media/video/city-tram-960.mp4",
-    poster: "/media/video/posters/city-tram.jpg",
-    alt: "Grön spårvagn passerar genom centrala Lund",
-  },
-  {
-    place: "Julnatten",
-    kind: "mood",
-    tone: "video-festive",
-    desktopSrc: "/media/video/festive-tram-1440.mp4",
-    mobileSrc: "/media/video/festive-tram-960.mp4",
-    poster: "/media/video/posters/festive-tram.jpg",
-    alt: "Spårvagn passerar en juldekorerad byggnad i kvällsljus",
+    alt: "Sammanhängande vinterfilm över Lund med domkyrkan, spårvagnar och snöfall",
   },
 ];
 
@@ -191,7 +145,6 @@ export default function Landing() {
         >
           <CinematicVideoPlaylist
             priority
-            interval={16000}
             clips={heroClips}
             overlayClassName="bg-gradient-to-t from-ink via-[#07131c]/65 to-[#07131c]/40"
             showPlaceLabel

@@ -17,9 +17,10 @@ export type CinematicClip = {
 };
 
 /**
- * A muted, looping background film that crossfades between several Lund
- * locations. The next clip is only played when it is ready, so the current
- * scene stays visible instead of flashing an empty video element.
+ * A muted, looping background film. With several clips it crossfades between
+ * Lund locations; with one clip it simply loops the montage. The next clip is
+ * only played when it is ready, so the current scene stays visible instead of
+ * flashing an empty video element.
  */
 export function CinematicVideoPlaylist({
   clips,
@@ -259,19 +260,21 @@ export function CinematicVideoPlaylist({
             />
             {activeClip.place}
           </span>
-          <span className="flex items-center gap-1.5" aria-hidden="true">
-            {clips.map((clip, index) => (
-              <span
-                key={clip.place}
-                className={cn(
-                  "h-px transition-all duration-700",
-                  activeIndex === index
-                    ? "w-7 bg-gold"
-                    : "w-3 bg-bone/35",
-                )}
-              />
-            ))}
-          </span>
+          {clips.length > 1 ? (
+            <span className="flex items-center gap-1.5" aria-hidden="true">
+              {clips.map((clip, index) => (
+                <span
+                  key={clip.place}
+                  className={cn(
+                    "h-px transition-all duration-700",
+                    activeIndex === index
+                      ? "w-7 bg-gold"
+                      : "w-3 bg-bone/35",
+                  )}
+                />
+              ))}
+            </span>
+          ) : null}
         </div>
       ) : null}
     </div>
