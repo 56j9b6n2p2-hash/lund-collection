@@ -39,7 +39,7 @@ export function SiteFooter({
                 to="/film"
                 className="text-bone/70 transition-colors hover:text-gold"
               >
-                Lunds videokollektion
+                Vinter över Lund
               </Link>
             </li>
             <li>

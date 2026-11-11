@@ -14,6 +14,18 @@ export type LundFilm = {
   uploadDate: string;
 };
 
+export const heroMontage = {
+  title: "Vinter över Lund",
+  description:
+    "En sammanhängande vinterfilm över Lund: Domkyrkan, spårvagnen, snöfallet och julnatten i en enda bakgrundsfilm från Kollektionen av Lund.",
+  durationSeconds: 111,
+  poster: "/media/video/posters/winter-drone.jpg",
+  alt: "Sammanhängande vinterfilm över Lund med domkyrkan, spårvagnar och snöfall",
+  desktopSrc: "/media/video/home-hero-montage-1440.mp4",
+  mobileSrc: "/media/video/home-hero-montage-960.mp4",
+  uploadDate: "2026-11-11",
+} as const;
+
 export const films: LundFilm[] = [
   {
     id: "vinter-over-lund",

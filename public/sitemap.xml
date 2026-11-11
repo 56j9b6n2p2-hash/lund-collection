@@ -5,7 +5,7 @@
 >
   <url>
     <loc>https://kollektionenavlund.se/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -48,107 +48,8 @@
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://kollektionenavlund.se/media/video/posters/winter-drone.jpg</image:loc>
-      <image:title>Lunds videokollektion</image:title>
-      <image:caption>Nio korta filmer om Lund i vinter.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/film/vinter-over-lund</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://kollektionenavlund.se/media/video/posters/winter-drone.jpg</image:loc>
-      <image:title>Vinter över Lund</image:title>
-      <image:caption>Drönarvy över ett snötäckt Lund i vinterljus.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/film/domkyrkan-i-vinterljus</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://kollektionenavlund.se/media/video/posters/hero-cathedral.jpg</image:loc>
-      <image:title>Domkyrkan i vinterljus</image:title>
-      <image:caption>Lunds domkyrka i snö och vinterljus.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/film/domkyrkan-efter-morkret</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://kollektionenavlund.se/media/video/posters/cathedral-evening.jpg</image:loc>
-      <image:title>Domkyrkan efter mörkret</image:title>
-      <image:caption>Lunds domkyrka i snö och kvällsljus.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/film/snon-over-lund</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://kollektionenavlund.se/media/video/posters/snow-landscape.jpg</image:loc>
-      <image:title>Snön över Lund</image:title>
-      <image:caption>Snöfall över det skånska vinterlandskapet.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/film/sparvagnen-genom-lund</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://kollektionenavlund.se/media/video/posters/city-tram.jpg</image:loc>
-      <image:title>Spårvagnen genom Lund</image:title>
-      <image:caption>Grön spårvagn genom centrala Lund på vintern.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/film/julnatten-i-lund</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://kollektionenavlund.se/media/video/posters/festive-tram.jpg</image:loc>
-      <image:title>Julnatten i Lund</image:title>
-      <image:caption>Juldekorationer och spårvagn i kvällsljus.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/film/natten-over-lund</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://kollektionenavlund.se/media/video/posters/night-tram.jpg</image:loc>
-      <image:title>Natten över Lund</image:title>
-      <image:caption>Spårvagnen genom Lund efter midnatt.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/film/st-hans-park</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://kollektionenavlund.se/media/video/posters/st-hans-park.jpg</image:loc>
-      <image:title>Vinter över Sankt Hans backar</image:title>
-      <image:caption>Snötäckta backar i Sankt Hans park i Lund.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/film/vinterljus-over-lund</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://kollektionenavlund.se/media/hoodie/snow-poster.jpg</image:loc>
-      <image:title>Vinterljus över Lund</image:title>
-      <image:caption>Snöfall i vinterljus bakom Domkyrkan Hoodie.</image:caption>
+      <image:title>Vinter över Lund — en sammanhängande film</image:title>
+      <image:caption>En sammanhängande vinterfilm över Lund.</image:caption>
     </image:image>
   </url>
 </urlset>

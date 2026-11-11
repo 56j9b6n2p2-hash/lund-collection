@@ -1,25 +1,33 @@
 import { useEffect } from "react";
-import { films, type LundFilm } from "@/data/films";
+import { heroMontage, type LundFilm } from "@/data/films";
 
 const SITE_URL = "https://kollektionenavlund.se";
+
+type VideoData = {
+  title: string;
+  description: string;
+  poster: string;
+  uploadDate: string;
+  durationSeconds: number;
+  desktopSrc: string;
+  url: string;
+};
 
 function absoluteUrl(value: string) {
   return `${SITE_URL}${value.startsWith("/") ? value : `/${value}`}`;
 }
 
-function videoObject(film: LundFilm) {
-  const url = `${SITE_URL}/film/${film.id}`;
-
+function buildVideoObject(video: VideoData) {
   return {
     "@type": "VideoObject",
-    "@id": `${url}#video`,
-    name: film.title,
-    description: film.description,
-    thumbnailUrl: [absoluteUrl(film.poster)],
-    uploadDate: film.uploadDate,
-    duration: `PT${film.durationSeconds}S`,
-    contentUrl: absoluteUrl(film.desktopSrc),
-    url,
+    "@id": `${video.url}#video`,
+    name: video.title,
+    description: video.description,
+    thumbnailUrl: [absoluteUrl(video.poster)],
+    uploadDate: video.uploadDate,
+    duration: `PT${video.durationSeconds}S`,
+    contentUrl: absoluteUrl(video.desktopSrc),
+    url: video.url,
     inLanguage: "sv-SE",
     isFamilyFriendly: true,
     genre: "Stadsfilm",
@@ -39,18 +47,31 @@ function videoObject(film: LundFilm) {
   };
 }
 
+/**
+ * Kept for the old per-film component. The public /film route no longer renders
+ * individual watch pages; it uses one VideoObject for the combined montage.
+ */
 export function FilmStructuredData({ film }: { film: LundFilm }) {
   useEffect(() => {
     const script = document.createElement("script");
+    const url = `${SITE_URL}/film/${film.id}`;
     script.type = "application/ld+json";
     script.id = "film-structured-data";
     script.text = JSON.stringify({
       "@context": "https://schema.org",
       "@graph": [
-        videoObject(film),
+        buildVideoObject({
+          title: film.title,
+          description: film.description,
+          poster: film.poster,
+          uploadDate: film.uploadDate,
+          durationSeconds: film.durationSeconds,
+          desktopSrc: film.desktopSrc,
+          url,
+        }),
         {
           "@type": "BreadcrumbList",
-          "@id": `${SITE_URL}/film/${film.id}#breadcrumbs`,
+          "@id": `${url}#breadcrumbs`,
           itemListElement: [
             {
               "@type": "ListItem",
@@ -61,14 +82,14 @@ export function FilmStructuredData({ film }: { film: LundFilm }) {
             {
               "@type": "ListItem",
               position: 2,
-              name: "Lunds videokollektion",
+              name: "Filmen",
               item: `${SITE_URL}/film`,
             },
             {
               "@type": "ListItem",
               position: 3,
               name: film.title,
-              item: `${SITE_URL}/film/${film.id}`,
+              item: url,
             },
           ],
         },
@@ -82,38 +103,60 @@ export function FilmStructuredData({ film }: { film: LundFilm }) {
   return null;
 }
 
-export function FilmCollectionStructuredData() {
+/**
+ * One page, one video: the combined background montage on /film. There are no
+ * ItemList entries for the individual clips anymore.
+ */
+export function FilmPageStructuredData() {
   useEffect(() => {
     const script = document.createElement("script");
+    const url = `${SITE_URL}/film`;
     script.type = "application/ld+json";
-    script.id = "film-collection-structured-data";
+    script.id = "film-page-structured-data";
     script.text = JSON.stringify({
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "CollectionPage",
-          "@id": `${SITE_URL}/film#collection`,
-          url: `${SITE_URL}/film`,
-          name: "Lunds videokollektion",
-          description:
-            "Nio korta filmer om Lund i vinter: Domkyrkan, spårvagnen, snöfallet och julnatten.",
+          "@type": "WebPage",
+          "@id": `${url}#webpage`,
+          url,
+          name: "Vinter över Lund — en sammanhängande film",
+          description: heroMontage.description,
           inLanguage: "sv-SE",
-          isPartOf: {
-            "@type": "WebSite",
-            "@id": `${SITE_URL}/#website`,
-            url: `${SITE_URL}/`,
-            name: "Kollektionen av Lund",
+          primaryImageOfPage: {
+            "@type": "ImageObject",
+            url: absoluteUrl(heroMontage.poster),
+          },
+          mainEntity: {
+            "@id": `${url}#video`,
           },
         },
+        buildVideoObject({
+          title: heroMontage.title,
+          description: heroMontage.description,
+          poster: heroMontage.poster,
+          uploadDate: heroMontage.uploadDate,
+          durationSeconds: heroMontage.durationSeconds,
+          desktopSrc: heroMontage.desktopSrc,
+          url,
+        }),
         {
-          "@type": "ItemList",
-          "@id": `${SITE_URL}/film#films`,
-          numberOfItems: films.length,
-          itemListElement: films.map((film, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            item: videoObject(film),
-          })),
+          "@type": "BreadcrumbList",
+          "@id": `${url}#breadcrumbs`,
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Hem",
+              item: `${SITE_URL}/`,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Filmen",
+              item: url,
+            },
+          ],
         },
       ],
     });

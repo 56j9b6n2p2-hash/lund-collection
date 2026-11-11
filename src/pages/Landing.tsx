@@ -461,7 +461,7 @@ export default function Landing() {
                     to="/film"
                     className="eyebrow inline-flex items-center gap-2 border-b border-gold/60 pb-1 text-gold transition-colors hover:border-gold hover:text-gold-soft"
                   >
-                    Se videokollektionen
+                    Se filmen
                     <ArrowUpRight className="size-3.5" />
                   </Link>
                 </div>
