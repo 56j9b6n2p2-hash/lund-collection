@@ -5,12 +5,9 @@ import {
   ArrowDown,
   ArrowRight,
   ArrowUpRight,
-  Clock,
   GraduationCap,
+  Instagram,
   Landmark,
-  Mail,
-  MapPin,
-  ShoppingBag,
   Snowflake,
   Sparkles,
   Star,
@@ -105,9 +102,9 @@ export default function Landing() {
   const location = useLocation();
 
   usePageMeta({
-    title: "Lund merch & Lund hoodie | Kollektionen av Lund",
+    title: "Lund merch, julklapp Lund 2026 & hoodie | Kollektionen av Lund",
     description:
-      "Lund merch och Lund kläder från Kollektionen av Lund. Domkyrkan Hoodie är en tung Lund hoodie med julmarknadstryck. Se kollektionen och juldroppet 1 december.",
+      "Lund merch och Lund kläder från Kollektionen av Lund. Domkyrkan Hoodie för 679 kr i lokal pre-order – en julklapp i Lund 2026 med egen hemleverans. 046 merch inför juldroppet 1 december.",
     path: "/",
     image: "/media/video/posters/winter-drone.jpg",
     imageAlt: "Drönarvy över ett snötäckt Lund i vinterljus",
@@ -173,7 +170,7 @@ export default function Landing() {
                   transition={{ delay: 0.1 }}
                 >
                   <span className="h-px w-8 bg-gold/70" />
-                  Lund · Skåne · Julen 2026
+                  Lund · Skåne · 046 · Julen 2026
                   <Snowflake
                     className="size-3"
                     strokeWidth={1.5}
@@ -217,8 +214,9 @@ export default function Landing() {
                 >
                   <p className="max-w-md text-[15px] leading-7 text-bone/80 md:text-base">
                     Lund merch från Kollektionen av Lund. En tung vinterhoodie
-                    inspirerad av Domkyrkan och snön över Stortorget. Anmäl dig
-                    och få första tillgång den 1 december.
+                    inspirerad av Domkyrkan och snön över Stortorget – 679 kr i
+                    lokal pre-order. Få förtur och egen hemleverans i Lund innan
+                    jul.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <a
@@ -251,7 +249,7 @@ export default function Landing() {
                 </span>
                 <span className="flex items-center gap-2 text-[11px] text-bone/70">
                   <span className="size-1.5 animate-pulse rounded-full bg-gold motion-reduce:animate-none" />
-                  Juldroppet · 1 december
+                  Lokal pre-order · 679 kr
                 </span>
                 <span className="mt-1 font-display text-4xl leading-none text-gold">
                   01.12
@@ -293,12 +291,18 @@ export default function Landing() {
               </p>
               <p className="mt-4 text-[15px] leading-7 text-ink/70">
                 I år har vi samlat den i en julkollektion: tidlös, lågmäld och
-                byggd för att bäras länge. Ett litet släpp för snöiga promenader
-                och ljusa kvällar.
+                byggd för att bäras länge. Lokal pre-order inför 1 december,
+                samlad produktion och egen hemleverans till dörren i Lund innan
+                jul.
+              </p>
+              <p className="mt-4 text-[15px] leading-7 text-ink/70">
+                Från Domkyrkan och Mårtenstorget till Klostergården, Linero,
+                Norra Fäladen och tuna – Lund merch för hela staden, från
+                Lundsnation och LTH till årets julklapp Lund 2026.
               </p>
               <p className="eyebrow mt-8 flex items-center gap-2 text-ink/55">
                 <Star className="size-2.5 text-gold" fill="currentColor" strokeWidth={1.5} />
-                Julkollektionen 2026 · Kollektionen av Lund
+                En stad. Ett riktnummer. 046.
               </p>
             </Reveal>
           </div>
@@ -355,7 +359,7 @@ export default function Landing() {
             <Reveal className="md:col-span-6">
               <p className="eyebrow flex items-center gap-2.5 text-gold">
                 <Sparkles className="size-3.5" strokeWidth={1.5} />
-                Save the date
+                Lokal pre-order · 046
               </p>
               <h2
                 id="juldroppet-title"
@@ -366,9 +370,10 @@ export default function Landing() {
                 <span className="text-gold">1 december</span>
               </h2>
               <p className="mt-6 max-w-md text-sm leading-7 text-bone/70">
-                En hoodie, en stad och en kväll som hör vintern till. Anmäl dig
-                så hör vi av oss inför släppet — och du slipper undra när
-                dörrarna öppnar.
+                En hoodie, en stad och en kväll som hör vintern till. Droppet
+                öppnar för alla den 1 december. Vi producerar samlat efter
+                släppet och kör eller cyklar hem din hoodie till dörren i Lund
+                innan jul. Inget stort lager i förväg.
               </p>
 
               <dl className="mt-9 grid max-w-md grid-cols-3 gap-4 border-t border-bone/15 pt-5">
@@ -379,13 +384,13 @@ export default function Landing() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="eyebrow text-[9px] text-bone/55">År</dt>
+                  <dt className="eyebrow text-[9px] text-bone/55">Pris</dt>
                   <dd className="mt-1.5 font-display text-4xl leading-none text-bone">
-                    2026
+                    679 kr
                   </dd>
                 </div>
                 <div>
-                  <dt className="eyebrow text-[9px] text-bone/55">Plats</dt>
+                  <dt className="eyebrow text-[9px] text-bone/55">Leverans</dt>
                   <dd className="mt-1.5 font-display text-4xl leading-none text-bone">
                     Lund
                   </dd>
@@ -395,12 +400,13 @@ export default function Landing() {
 
             <Reveal className="md:col-span-5 md:col-start-8" delay={0.12}>
               <div className="rounded-2xl border border-gold/25 bg-bone/[0.06] p-6 backdrop-blur-sm md:p-8">
-                <p className="eyebrow text-gold">Första tillgång</p>
+                <p className="eyebrow text-gold">Co-design · Förtur</p>
                 <h3 className="mt-3 font-display text-3xl uppercase leading-none text-bone">
-                  Stå på listan.
+                  Forma Lunds kollektion. Få förtur.
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-bone/65">
-                  Lämna din e-post, så hör vi av oss innan den 1 december.
+                  Lämna din e-post och en frivillig idé till nästa plagg. Vi hör
+                  av oss inför den 1 december.
                 </p>
                 <DropSignupForm source="landing" />
               </div>
@@ -653,9 +659,9 @@ export default function Landing() {
                   />
                 </div>
                 <div className="surface-card mt-4 rounded-xl p-5 md:absolute md:-bottom-6 md:right-6 md:mt-0 md:max-w-[250px]">
-                  <p className="eyebrow text-gold-deep">Designat i Lund</p>
+                  <p className="eyebrow text-gold-deep">Två 18-åringar · Lund</p>
                   <p className="mt-2 text-sm leading-6 text-ink/70">
-                    Små serier. Lång livslängd. Inga genvägar.
+                    En stad. Ett riktnummer. 046.
                   </p>
                 </div>
               </div>
@@ -667,33 +673,34 @@ export default function Landing() {
             >
               <p className="eyebrow flex items-center gap-3 text-gold-deep">
                 <span className="h-px w-8 bg-gold/70" />
-                Lund merch
+                Om oss · 046
               </p>
               <h2
                 id="about-title"
                 className="mt-5 text-[clamp(2.5rem,5vw,4.7rem)] leading-[0.88] text-ink"
               >
-                Lund kläder.
+                Två 18-åringar.
                 <br />
-                Designat i Lund.
+                En stad.
+                <br />
+                Något eget.
               </h2>
               <p className="mt-6 text-[15px] leading-7 text-ink/70">
-                Kollektionen av Lund föddes ur en enkel idé: att göra Lund merch
-                som känns lika självklar som staden den kommer från. Vi arbetar
-                i små serier med material som tål att användas — en tung,
-                borstad bomullsblandning med mjuk insida.
+                Vi bygger ett varumärke för staden, av staden. En plats med
+                studentliv, historia och kontraster där vi förenar alla under
+                ett gemensamt uttryck.
               </p>
               <p className="mt-4 text-[15px] leading-7 text-ink/70">
-                Vår Lund hoodie är en hyllning till Domkyrkan och
-                vinterkvällarna i Lund. Bär den under julen, slit den länge och
-                lämna den vidare.
+                Inga genvägar: vi driver allt själva, från webb och design till
+                affischer och hemleveranser. Vår långsiktiga vision är att växa
+                och anställa andra unga i Lund.
               </p>
 
               <ul className="mt-8 space-y-3 border-t border-ink/10 pt-6">
                 {[
-                  "Små serier, tillverkade i Portugal",
-                  "Material valda för att åldras vackert",
-                  "Frakt från Lund inom 2–4 arbetsdagar",
+                  "Inga genvägar – vi gör allt själva",
+                  "Egen hemleverans i Lund",
+                  "Arbetsmöjligheter för unga",
                 ].map((item) => (
                   <li
                     key={item}
@@ -707,19 +714,19 @@ export default function Landing() {
 
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <Link
+                  to="/om-oss"
+                  className="eyebrow group inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-ink transition-colors hover:border-gold hover:text-ink/70"
+                >
+                  Läs hela berättelsen
+                  <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+                <Link
                   to="/shop/domkyrkan-hoodie"
                   className="eyebrow group inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-ink transition-colors hover:border-gold hover:text-ink/70"
                 >
                   Se Lund hoodien
                   <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
-                <a
-                  href="mailto:hej@kollektionenavlund.se?subject=Fr%C3%A5ga%20till%20Kollektionen%20av%20Lund"
-                  className="eyebrow group inline-flex items-center gap-2 border-b border-ink/20 pb-1 text-ink transition-colors hover:border-gold hover:text-ink/70"
-                >
-                  Prata med oss
-                  <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
               </div>
             </Reveal>
           </div>
@@ -749,98 +756,57 @@ export default function Landing() {
             <Reveal>
               <p className="eyebrow flex items-center gap-3 text-gold">
                 <span className="h-px w-8 bg-gold/70" />
-                Kontakt
+                Kontakt · 046
               </p>
               <h2
                 id="contact-title"
                 className="mt-5 text-[clamp(2.5rem,6.2vw,5.7rem)] leading-[0.86] text-bone"
               >
-                Bär din stad<span className="text-gold">.</span>
+                Säg hej på Instagram<span className="text-gold">.</span>
               </h2>
               <p className="mt-6 max-w-md text-sm leading-7 text-bone/70">
-                Frågor om juldroppet, storlek eller din beställning? Vi finns i
-                Lund — och svarar oftast samma dag.
+                Vi tar kunddialogen direkt via Instagram-DM i detta skede.
+                Frågor om storlek, lokal pre-order eller hemleverans i Lund?
+                Skicka ett meddelande.
               </p>
               <a
-                href="mailto:hej@kollektionenavlund.se"
-                className="mt-8 inline-flex items-center gap-2 border-b border-gold/60 pb-1 text-sm text-gold transition-colors hover:border-gold hover:text-gold-soft"
+                href="https://ig.me/m/kollektionenavlund.se"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="eyebrow mt-8 inline-flex h-12 items-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-bone"
               >
-                <Mail className="size-4" strokeWidth={1.5} />
-                hej@kollektionenavlund.se
+                <Instagram className="size-4" strokeWidth={1.7} />
+                Skicka DM på Instagram
+                <ArrowUpRight className="size-3.5" />
               </a>
             </Reveal>
 
             <Reveal delay={0.12}>
               <div className="rounded-2xl border border-bone/15 bg-bone/[0.07] p-6 backdrop-blur-md md:p-8">
-                <dl className="space-y-6">
-                  <div className="flex gap-4">
-                    <MapPin
-                      className="mt-0.5 size-4 shrink-0 text-gold"
-                      strokeWidth={1.5}
-                    />
-                    <div>
-                      <dt className="eyebrow text-[9px] text-bone/60">
-                        Pop-up & studio
-                      </dt>
-                      <dd className="mt-1.5 text-sm text-bone/90">
-                        Stortorget 7, 222 23 Lund
-                      </dd>
-                      <dd className="mt-1">
-                        <a
-                          href="https://www.google.com/maps/search/?api=1&query=Stortorget+7+Lund+Sweden"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[11px] text-gold/90 underline decoration-gold/30 underline-offset-4 transition-colors hover:text-gold"
-                        >
-                          Visa på karta
-                          <ArrowUpRight className="size-3" />
-                        </a>
-                      </dd>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4">
-                    <Clock
-                      className="mt-0.5 size-4 shrink-0 text-gold"
-                      strokeWidth={1.5}
-                    />
-                    <div>
-                      <dt className="eyebrow text-[9px] text-bone/60">
-                        Öppettider
-                      </dt>
-                      <dd className="mt-1.5 text-sm leading-6 text-bone/90">
-                        Tis–fre 11–18
-                        <br />
-                        Lör 10–16 · Sön 12–16
-                      </dd>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4">
-                    <ShoppingBag
-                      className="mt-0.5 size-4 shrink-0 text-gold"
-                      strokeWidth={1.5}
-                    />
-                    <div>
-                      <dt className="eyebrow text-[9px] text-bone/60">
-                        Beställningar
-                      </dt>
-                      <dd className="mt-1.5 text-sm leading-6 text-bone/90">
-                        Skickas från Lund inom 2–4 arbetsdagar.
-                        <br />
-                        Fri frakt över 1 500 kr.
-                      </dd>
-                    </div>
-                  </div>
-                </dl>
-
+                <p className="eyebrow text-gold">Direkt via DM</p>
+                <p className="mt-4 break-all font-display text-3xl uppercase leading-none text-bone">
+                  @kollektionenavlund.se
+                </p>
+                <p className="mt-4 text-sm leading-6 text-bone/65">
+                  Vi svarar så snart vi kan. Pre-order, storlek eller frågor om
+                  hemleveransen – allt går via Instagram just nu.
+                </p>
                 <a
-                  href="mailto:hej@kollektionenavlund.se?subject=Boka%20privat%20visning%20i%20Lund"
-                  className="eyebrow mt-8 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-bone"
+                  href="https://www.instagram.com/kollektionenavlund.se/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="eyebrow mt-6 inline-flex items-center gap-2 border-b border-gold/60 pb-1 text-gold transition-colors hover:border-gold hover:text-gold-soft"
                 >
-                  Boka privat visning
-                  <ArrowRight className="size-3.5" />
+                  Öppna Instagram
+                  <ArrowUpRight className="size-3.5" />
                 </a>
+                <Link
+                  to="/kontakt"
+                  className="eyebrow mt-5 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-bone"
+                >
+                  Till kontaktsidan
+                  <ArrowRight className="size-3.5" />
+                </Link>
               </div>
             </Reveal>
           </div>

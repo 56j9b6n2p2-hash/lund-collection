@@ -15,11 +15,12 @@ export function SiteFooter({
         <div className="md:col-span-5">
           <Wordmark size="large" />
           <p className="mt-6 max-w-sm text-sm leading-6 text-bone/55">
-            Kläder inspirerade av Lund. Skapade för vinter, jul och allt
-            däremellan — i katedralens skugga och på väg mot nästa föreläsning.
+            Lund merch och julkläder från två 18-åringar i staden. Lokal
+            pre-order, egen hemleverans och en julkollektion byggd för Lund i
+            vinterskrud.
           </p>
           <p className="eyebrow mt-8 text-[9px] text-bone/50">
-            Julkollektionen 2026 · Lund, Skåne
+            En stad. Ett riktnummer. 046.
           </p>
         </div>
 
@@ -75,7 +76,7 @@ export function SiteFooter({
           <ul className="space-y-3 text-sm">
             <li>
               <Link
-                to="/#om-oss"
+                to="/om-oss"
                 className="text-bone/70 transition-colors hover:text-gold"
               >
                 Om oss
@@ -83,7 +84,7 @@ export function SiteFooter({
             </li>
             <li>
               <Link
-                to="/#kontakt"
+                to="/kontakt"
                 className="text-bone/70 transition-colors hover:text-gold"
               >
                 Kontakt
@@ -102,26 +103,28 @@ export function SiteFooter({
             </li>
             <li>
               <a
-                href="mailto:hej@kollektionenavlund.se"
+                href="https://ig.me/m/kollektionenavlund.se"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-bone/70 transition-colors hover:text-gold"
               >
-                Mejla oss
+                Skicka DM
               </a>
             </li>
           </ul>
         </nav>
 
         <div className="md:col-span-2">
-          <p className="eyebrow mb-5 text-bone/55">Hitta hit</p>
-          <address className="text-sm not-italic leading-6 text-bone/70">
-            Stortorget 7
+          <p className="eyebrow mb-5 text-bone/55">Leverans</p>
+          <p className="text-sm leading-6 text-bone/70">
+            Egen hemleverans
             <br />
-            222 23 Lund
+            i Lund
             <br />
-            Sverige
-          </address>
+            innan jul
+          </p>
           <p className="mt-4 text-[10px] tracking-[0.08em] text-bone/55">
-            55.7047° N · 13.1910° E
+            Pre-order · 1 december
           </p>
         </div>
       </div>
@@ -129,7 +132,7 @@ export function SiteFooter({
       <div className="border-t border-bone/10">
         <div className="container-site flex flex-col gap-2 py-6 text-[11px] text-bone/55 md:flex-row md:items-center md:justify-between">
           <p>© 2026 Kollektionen av Lund</p>
-          <p>Julkollektionen 2026 · Lund, Sverige</p>
+          <p>Julkollektionen 2026 · 046 · Lund</p>
         </div>
       </div>
     </footer>

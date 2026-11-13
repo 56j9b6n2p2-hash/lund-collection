@@ -17,8 +17,8 @@ const navItems = [
   { label: "Film", to: "/film" },
   { label: "Juldroppet", to: "/#juldroppet" },
   { label: "Staden", to: "/#staden" },
-  { label: "Om oss", to: "/#om-oss" },
-  { label: "Kontakt", to: "/#kontakt" },
+  { label: "Om oss", to: "/om-oss" },
+  { label: "Kontakt", to: "/kontakt" },
 ];
 
 export function SiteHeader({
@@ -158,7 +158,7 @@ export function SiteHeader({
                 <p className="mt-6 text-xs leading-6 text-bone/60">
                   Designat i Lund, Sverige
                   <br />
-                  Fri frakt över 1 500 kr
+                  Lokal pre-order · egen hemleverans
                 </p>
               </div>
             </SheetContent>

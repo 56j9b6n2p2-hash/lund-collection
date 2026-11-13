@@ -23,7 +23,7 @@ export default function ProductDetail() {
       ? `${product.name} — Lund hoodie | Kollektionen av Lund`
       : "Plagget hittades inte — Kollektionen av Lund",
     description: product
-      ? `Lund hoodie i ${product.colorName.toLowerCase()} med julmarknaden på bröstet och Lunds domkyrka på ryggen. Tung, borstad bomullsblandning, unisex S–XXL. Reservera inför juldroppet.`
+      ? `Lund hoodie i ${product.colorName.toLowerCase()} med julmarknaden på bröstet och Lunds domkyrka på ryggen. Tung, borstad bomullsblandning, unisex S–XXL. 679 kr i lokal pre-order med egen hemleverans i Lund innan jul.`
       : "Plagget finns inte i julkollektionen. Utforska hela kollektionen från Kollektionen av Lund.",
     path: `/shop/${id ?? ""}`,
     image: product?.image ?? "/media/video/posters/winter-drone.jpg",
@@ -117,10 +117,10 @@ export default function ProductDetail() {
                 />
                 <div>
                   <p className="text-xs font-semibold text-ink">
-                    Frakt från Lund
+                    Egen hemleverans i Lund
                   </p>
                   <p className="mt-1 text-[11px] leading-5 text-muted-foreground">
-                    Leverans 2–4 arbetsdagar. Fri frakt över 1 500 kr.
+                    Vi kör eller cyklar hem din hoodie innan jul.
                   </p>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export default function ProductDetail() {
           <div className="md:col-span-5 md:sticky md:top-28 md:self-start">
             <p className="eyebrow flex items-center gap-2.5 text-gold-deep">
               <Star className="size-3" fill="currentColor" strokeWidth={1.5} />
-              Julkollektionen · 2026
+              Lokal pre-order · 046
             </p>
             <h1 className="mt-4 max-w-full break-words text-[clamp(2.5rem,5.6vw,4.8rem)] leading-[0.88] text-ink">
               {product.name}
@@ -182,18 +182,18 @@ export default function ProductDetail() {
               onClick={() => handleAdd(product.id)}
               className="eyebrow mt-7 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone"
             >
-              Reservera plagget
+              Förbeställ hoodien
               <Plus className="size-4" strokeWidth={1.8} />
             </button>
             <Link
               to="/#juldroppet"
               className="eyebrow mt-3 flex h-12 w-full items-center justify-center gap-2 border border-ink/15 text-ink transition-colors hover:border-gold hover:text-gold-deep"
             >
-              Anmäl dig till juldroppet
+              Få förtur &amp; skicka idé
               <ArrowUpRight className="size-3.5" />
             </Link>
             <p className="mt-3 text-center text-[10px] leading-5 text-muted-foreground">
-              Kostnadsfri reservation · Ingen betalning dras nu
+              Kostnadsfri pre-order · Ingen betalning dras nu
             </p>
 
             <div className="mt-8 border-t border-ink/10 pt-6">
@@ -215,8 +215,9 @@ export default function ProductDetail() {
             </div>
 
             <p className="mt-6 border-t border-ink/10 pt-5 text-[11px] leading-5 text-muted-foreground">
-              Skickas från Lund inom 2–4 arbetsdagar. Beställningar packas för
-              hand i små serier.
+              Lokal pre-order: vi producerar samlat efter den 1 december och
+              kör hem hoodien till dig i Lund innan jul. Inget stort lager i
+              förväg.
             </p>
           </div>
         </section>

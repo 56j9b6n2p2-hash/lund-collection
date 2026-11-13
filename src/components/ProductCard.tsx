@@ -78,10 +78,10 @@ export function ProductCard({
         <button
           type="button"
           onClick={() => onAdd(product.id)}
-          aria-label={`Reservera ${product.name}`}
+          aria-label={`Förbeställ ${product.name}`}
           className="mt-4 flex h-10 w-full items-center justify-between border border-ink/15 px-3 text-[9px] font-semibold uppercase tracking-[0.12em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bone sm:text-[10px] sm:tracking-[0.16em]"
         >
-          Reservera
+          Förbeställ
           <Plus className="size-3.5" strokeWidth={1.8} />
         </button>
       </div>

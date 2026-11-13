@@ -11,10 +11,12 @@ export const subscribe = mutation({
   args: {
     email: v.string(),
     source: v.optional(v.string()),
+    idea: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const email = args.email.trim().toLowerCase().slice(0, 160);
     const source = args.source?.trim().slice(0, 80) || "juldroppet";
+    const idea = args.idea?.trim().slice(0, 500) || undefined;
 
     if (!emailPattern.test(email)) {
       throw new Error("Ange en giltig e-postadress.");
@@ -26,12 +28,16 @@ export const subscribe = mutation({
       .first();
 
     if (existing) {
+      if (idea && !existing.idea) {
+        await ctx.db.patch(existing._id, { idea });
+      }
       return { status: "already" as const };
     }
 
     await ctx.db.insert("dropSignups", {
       email,
       source,
+      ...(idea ? { idea } : {}),
       createdAt: Date.now(),
     });
 
@@ -55,6 +61,7 @@ export const listAdmin = query({
       .map((signup) => ({
         email: signup.email,
         source: signup.source ?? "juldroppet",
+        idea: signup.idea,
         createdAt: signup.createdAt,
       }));
   },

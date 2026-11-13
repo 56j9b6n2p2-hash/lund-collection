@@ -118,8 +118,8 @@ const details = [
     copy: "S–XXL. Plagget är unisex och har en rak passform. Vill du bära det oversize, välj en storlek upp. Måtten finns i storlekstabellen på produktsidan.",
   },
   {
-    title: "Leverans",
-    copy: "Trycks på beställning och skickas inom EU. Leverans 2–4 arbetsdagar från Lund. Fri frakt över 1 500 kr.",
+    title: "Lokal pre-order & leverans",
+    copy: "679 kr, lokalt tryckt. Vi producerar samlat efter den 1 december och kör eller cyklar hem din hoodie till dörren i Lund innan jul. Inget stort lager i förväg.",
   },
 ];
 
@@ -200,10 +200,11 @@ export function HoodieShowcase() {
               </p>
             </div>
             <p className="eyebrow max-w-xs text-gold/80 md:text-right">
-              1 december
+              1 december · 679 kr
               <span className="mt-3 block font-sans text-[11px] normal-case leading-6 tracking-normal text-bone/50">
-                En hoodie. Fem färger. Byggd för kalla promenader mellan
-                Stortorget och Domkyrkan.
+                Lokal pre-order med egen hemleverans i Lund innan jul. En
+                hoodie. Fem färger. Byggd för kalla promenader mellan Stortorget
+                och Domkyrkan.
               </span>
             </p>
           </div>
@@ -352,7 +353,7 @@ export function HoodieShowcase() {
                 href="#juldroppet"
                 className="eyebrow mt-auto inline-flex h-12 items-center justify-center gap-2 bg-gold px-4 text-center text-ink transition-colors hover:bg-bone"
               >
-                Skriv upp dig för förtur
+                Få förtur &amp; skicka idé
                 <ArrowRight className="size-3.5" />
               </a>
             </div>

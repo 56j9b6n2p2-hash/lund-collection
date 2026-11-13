@@ -75,7 +75,7 @@ function AdminTopBar({ onSignOut }: { onSignOut?: () => void }) {
 export default function Admin() {
   usePageMeta({
     title: "Juldroppet admin | Kollektionen av Lund",
-    description: "Intern adminpanel för anmälningar till juldroppet.",
+    description: "Intern adminpanel för anmälningar och medskapande idéer till juldroppet.",
     path: "/admin",
     noindex: true,
   });
@@ -216,8 +216,8 @@ export default function Admin() {
               Anmälningar<span className="text-gold-deep">.</span>
             </h1>
             <p className="mt-5 max-w-xl text-sm leading-7 text-ink/65">
-              Alla e-postadresser som står på listan för juldroppet. Listan
-              uppdateras direkt när någon ny anmäler sig.
+              Alla som står på listan för juldroppet, med deras idéer om nästa
+              plagg. Listan uppdateras direkt när någon ny anmäler sig.
             </p>
           </div>
 
@@ -260,7 +260,8 @@ export default function Admin() {
                 Ingen på listan ännu.
               </p>
               <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">
-                Så snart någon anmäler sig via juldroppet dyker adressen upp här.
+                Så snart någon anmäler sig via juldroppet dyker adressen och
+                idéen upp här.
               </p>
             </div>
           ) : (
@@ -275,6 +276,9 @@ export default function Admin() {
                   </TableHead>
                   <TableHead className="eyebrow h-12 px-5 text-ink/50">
                     Källa
+                  </TableHead>
+                  <TableHead className="eyebrow h-12 px-5 text-ink/50">
+                    Idé
                   </TableHead>
                   <TableHead className="eyebrow h-12 px-5 text-right text-ink/50 md:px-6">
                     Anmäld
@@ -299,6 +303,9 @@ export default function Admin() {
                       <span className="inline-flex border border-ink/10 bg-sand/50 px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-ink/60">
                         {signup.source}
                       </span>
+                    </TableCell>
+                    <TableCell className="max-w-xs whitespace-normal px-5 py-4 text-xs leading-5 text-ink/65">
+                      {signup.idea || "—"}
                     </TableCell>
                     <TableCell className="px-5 py-4 text-right text-xs tabular-nums text-muted-foreground md:px-6">
                       {formatSignupDate(signup.createdAt)}

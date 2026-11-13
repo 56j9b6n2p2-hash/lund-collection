@@ -12,9 +12,9 @@ export default function Shop() {
   const [query, setQuery] = useState("");
 
   usePageMeta({
-    title: "Lund merch, Lund kläder & hoodie | Kollektionen av Lund",
+    title: "Lund merch, julklappar & hoodie | Kollektionen av Lund",
     description:
-      "Lund merch och Lund kläder i små serier. Domkyrkan Hoodie är en tung Lund hoodie i fem färger, S–XXL. Reservera inför juldroppet 1 december.",
+      "Lund merch och julkläder från Lund. Domkyrkan Hoodie för 679 kr i lokal pre-order – en julklapp Lund 2026 med egen hemleverans innan jul. 046 merch inför droppet 1 december.",
     path: "/shop",
     image: "/media/hoodie/domkyrkan-vit-1.jpg",
     imageAlt: "Vintervit Lund hoodie — Domkyrkan Hoodie",
@@ -83,8 +83,9 @@ export default function Shop() {
               </h1>
               <p className="mt-6 max-w-md text-sm leading-7 text-bone/65">
                 Lund merch och Lund kläder från Kollektionen av Lund. En tung
-                Lund hoodie för kalla morgnar, sena kvällar och allt däremellan.
-                Läs om plagget och reservera din storlek inför juldroppet.
+                Lund hoodie för 679 kr i lokal pre-order – för kalla morgnar,
+                sena kvällar och årets julklapp Lund 2026. Vi producerar samlat
+                efter 1 december och kör hem den till dig i Lund.
               </p>
             </div>
 
@@ -195,14 +196,16 @@ export default function Shop() {
           </div>
           <div className="md:col-span-6 md:col-start-7">
             <p className="text-sm leading-7 text-ink/70">
-              Letar du efter Lund merch, Lund kläder eller en Lund hoodie?
-              Kollektionen av Lund gör små serier med motiv från staden:
-              Domkyrkan, Stortorget och julmarknaden. Vår hoodie är tung, mjuk
-              och tryckt på beställning.
+              Letar du efter Lund merch, 046 merch, julklapp Lund, julkläder Lund
+              eller årets julklapp Lund 2026? Kollektionen av Lund gör små serier
+              med motiv från staden: Domkyrkan, Stortorget och julmarknaden. Vår
+              hoodie är tung, mjuk och lokalt tryckt.
             </p>
             <p className="mt-4 text-sm leading-7 text-ink/70">
-              Lund hoodien finns i fem färger och storlekarna S–XXL. Beställ
-              online och få den skickad från Lund inom 2–4 arbetsdagar.
+              Lund hoodien finns i fem färger och storlekarna S–XXL för 679 kr.
+              Beställ i lokal pre-order och få den levererad till dörren i Lund
+              innan jul – från Klostergården och Linero till Norra Fäladen och
+              tuna.
             </p>
             <Link
               to="/shop/domkyrkan-hoodie"
@@ -222,14 +225,15 @@ export default function Shop() {
           <div className="md:col-span-6">
             <p className="eyebrow flex items-center gap-2.5 text-gold">
               <Star className="size-3" fill="currentColor" strokeWidth={1.5} />
-              Juldroppet · 1 december
+              Lokal pre-order · 1 december
             </p>
             <h2 className="mt-4 text-[clamp(2.3rem,4.8vw,4rem)] leading-[0.9] text-bone">
-              Först till kvarn.
+              Forma Lunds kollektion. Få förtur.
             </h2>
             <p className="mt-4 max-w-md text-sm leading-7 text-bone/65">
-              Lämna din e-post så hör vi av oss inför släppet. Inga nyhetsbrev
-              i onödan — bara det viktigaste inför den 1 december.
+              Lämna din e-post och en frivillig idé till nästa plagg. Vi hör av
+              oss inför släppet – inga nyhetsbrev i onödan, bara förtur och en
+              chans att påverka nästa Lund-plagg.
             </p>
           </div>
           <div className="md:col-span-5 md:col-start-8">
