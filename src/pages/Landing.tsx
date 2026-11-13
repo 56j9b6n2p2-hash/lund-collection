@@ -233,6 +233,13 @@ export default function Landing() {
                       Se kollektionen
                       <ArrowRight className="size-3.5" />
                     </a>
+                    <a
+                      href="#om-oss"
+                      className="eyebrow inline-flex h-12 items-center gap-2 border border-bone/25 px-5 text-bone/80 transition-colors hover:border-bone/60 hover:text-bone sm:h-14 sm:px-6"
+                    >
+                      Om oss
+                      <ArrowDown className="size-3.5" />
+                    </a>
                   </div>
                 </motion.div>
               </div>
