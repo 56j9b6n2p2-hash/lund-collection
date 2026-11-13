@@ -234,7 +234,7 @@ export default function Landing() {
                       <ArrowRight className="size-3.5" />
                     </a>
                     <a
-                      href="#om-oss"
+                      href="#about-title"
                       className="eyebrow inline-flex h-12 items-center gap-2 border border-bone/25 px-5 text-bone/80 transition-colors hover:border-bone/60 hover:text-bone sm:h-14 sm:px-6"
                     >
                       Om oss
@@ -684,7 +684,7 @@ export default function Landing() {
               </p>
               <h2
                 id="about-title"
-                className="mt-5 text-[clamp(2.5rem,5vw,4.7rem)] leading-[0.88] text-ink"
+                className="mt-5 scroll-mt-24 text-[clamp(2.5rem,5vw,4.7rem)] leading-[0.88] text-ink"
               >
                 Två 18-åringar.
                 <br />
