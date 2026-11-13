@@ -5,7 +5,7 @@
 >
   <url>
     <loc>https://kollektionenavlund.se/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -15,8 +15,19 @@
     </image:image>
   </url>
   <url>
+    <loc>https://kollektionenavlund.se/om-oss</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/lund/winter-about.jpg</image:loc>
+      <image:title>Två 18-åringar. En stad. Något eget.</image:title>
+      <image:caption>Om Kollektionen av Lund och julkollektionen 2026.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kollektionenavlund.se/shop</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -27,7 +38,7 @@
   </url>
   <url>
     <loc>https://kollektionenavlund.se/shop/domkyrkan-hoodie</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -43,13 +54,24 @@
   </url>
   <url>
     <loc>https://kollektionenavlund.se/film</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://kollektionenavlund.se/media/video/posters/winter-drone.jpg</image:loc>
       <image:title>Vinter över Lund — en sammanhängande film</image:title>
       <image:caption>En sammanhängande vinterfilm över Lund.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kollektionenavlund.se/kontakt</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/lund/winter-contact.jpg</image:loc>
+      <image:title>Kontakt — Kollektionen av Lund</image:title>
+      <image:caption>Säg hej på Instagram.</image:caption>
     </image:image>
   </url>
 </urlset>
