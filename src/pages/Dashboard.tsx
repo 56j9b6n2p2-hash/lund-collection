@@ -1,10 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/hooks/use-auth";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { LayoutDashboard, LogOut } from "lucide-react";
 import { useNavigate } from "react-router";
 
 export default function Dashboard() {
+  usePageMeta({
+    title: "Mitt konto | Kollektionen av Lund",
+    description: "Ditt konto hos Kollektionen av Lund.",
+    path: "/dashboard",
+    noindex: true,
+  });
+
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 

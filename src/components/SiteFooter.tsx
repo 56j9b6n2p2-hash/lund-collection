@@ -32,7 +32,15 @@ export function SiteFooter({
                 to="/shop"
                 className="text-bone/70 transition-colors hover:text-gold"
               >
-                Hela kollektionen
+                Lund merch &amp; julklappar
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/shop/domkyrkan-hoodie"
+                className="text-bone/70 transition-colors hover:text-gold"
+              >
+                Lund hoodie · 529 kr
               </Link>
             </li>
             <li>
@@ -117,9 +125,9 @@ export function SiteFooter({
         <div className="md:col-span-2">
           <p className="eyebrow mb-5 text-bone/55">Leverans</p>
           <p className="text-sm leading-6 text-bone/70">
-            Egen hemleverans
+            Personlig hemleverans
             <br />
-            i Lund
+            av ägarna i Lund
             <br />
             innan jul
           </p>

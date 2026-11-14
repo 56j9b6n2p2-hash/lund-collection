@@ -25,14 +25,14 @@ const colorways: Colorway[] = [
     hex: "#d8c8b2",
     views: [
       {
-        src: "/media/hoodie/domkyrkan-vit-1.jpg",
+        src: "/media/hoodie/lund-hoodie-domkyrkan-kram-fram.jpg",
         label: "Fram",
-        alt: "Kräm hoodie med inramat Domkyrkan-motiv på bröstet",
+        alt: "Kräm Lund hoodie med inramat Domkyrkan-motiv – Lund merch från Kollektionen av Lund",
       },
       {
-        src: "/media/hoodie/domkyrkan-vit-2.jpg",
+        src: "/media/hoodie/lund-hoodie-domkyrkan-kram-bak.jpg",
         label: "Bak",
-        alt: "Kräm hoodie med slät rygg",
+        alt: "Kräm Lund hoodie med slät rygg – baksidan av Lund merch-hoodien",
       },
     ],
   },
@@ -42,14 +42,14 @@ const colorways: Colorway[] = [
     hex: "#5c6048",
     views: [
       {
-        src: "/media/hoodie/domkyrkan-gra-1.jpg",
+        src: "/media/hoodie/lund-hoodie-domkyrkan-oliv-fram.jpg",
         label: "Fram",
-        alt: "Olivgrön hoodie med inramat Domkyrkan-motiv på bröstet",
+        alt: "Olivgrön Lund hoodie med inramat Domkyrkan-motiv – Lund kläder med stadsmotiv",
       },
       {
-        src: "/media/hoodie/domkyrkan-gra-2.jpg",
+        src: "/media/hoodie/lund-hoodie-domkyrkan-oliv-bak.jpg",
         label: "Bak",
-        alt: "Olivgrön hoodie med slät rygg",
+        alt: "Olivgrön Lund hoodie med slät rygg – Lund tröja från Kollektionen av Lund",
       },
     ],
   },
@@ -59,14 +59,14 @@ const colorways: Colorway[] = [
     hex: "#24221f",
     views: [
       {
-        src: "/media/hoodie/domkyrkan-svart-1.jpg",
+        src: "/media/hoodie/lund-hoodie-domkyrkan-svart-fram.jpg",
         label: "Fram",
-        alt: "Svart hoodie med inramat Domkyrkan-motiv på bröstet",
+        alt: "Svart Lund hoodie med inramat Domkyrkan-motiv – Lund merch och julklapp med Lund-motiv",
       },
       {
-        src: "/media/hoodie/domkyrkan-svart-2.jpg",
+        src: "/media/hoodie/lund-hoodie-domkyrkan-svart-bak.jpg",
         label: "Bak",
-        alt: "Svart hoodie med slät rygg",
+        alt: "Svart Lund hoodie med slät rygg – baksidan av Lund tröjan",
       },
     ],
   },
@@ -76,14 +76,14 @@ const colorways: Colorway[] = [
     hex: "#b7b5b2",
     views: [
       {
-        src: "/media/hoodie/domkyrkan-sand-1.jpg",
+        src: "/media/hoodie/lund-hoodie-domkyrkan-ljusgra-fram.jpg",
         label: "Fram",
-        alt: "Ljusgrå hoodie med inramat Domkyrkan-motiv på bröstet",
+        alt: "Ljusgrå Lund hoodie med inramat Domkyrkan-motiv – Lund kläder online",
       },
       {
-        src: "/media/hoodie/domkyrkan-sand-2.jpg",
+        src: "/media/hoodie/lund-hoodie-domkyrkan-ljusgra-bak.jpg",
         label: "Bak",
-        alt: "Ljusgrå hoodie med slät rygg",
+        alt: "Ljusgrå Lund hoodie med slät rygg – Lund sweatshirt från Kollektionen av Lund",
       },
     ],
   },
@@ -93,14 +93,14 @@ const colorways: Colorway[] = [
     hex: "#5e2430",
     views: [
       {
-        src: "/media/hoodie/domkyrkan-rod-1.jpg",
+        src: "/media/hoodie/lund-hoodie-domkyrkan-bordeaux-fram.jpg",
         label: "Fram",
-        alt: "Bordeaux hoodie med inramat Domkyrkan-motiv på bröstet",
+        alt: "Bordeaux Lund hoodie med inramat Domkyrkan-motiv – unik julklapp från Lund",
       },
       {
-        src: "/media/hoodie/domkyrkan-rod-2.jpg",
+        src: "/media/hoodie/lund-hoodie-domkyrkan-bordeaux-bak.jpg",
         label: "Bak",
-        alt: "Bordeaux hoodie med slät rygg",
+        alt: "Bordeaux Lund hoodie med slät rygg – Lund tröja för vintern",
       },
     ],
   },
@@ -191,6 +191,7 @@ export function HoodieShowcase() {
                 id="collection-title"
                 className="mt-6 max-w-full break-words text-[clamp(2.6rem,7vw,6.4rem)] leading-[0.86] text-bone"
               >
+                <span className="sr-only">Lund hoodie – </span>
                 Jul i Lund
               </h2>
               <p className="mt-8 max-w-xl text-sm leading-8 text-bone/65">
@@ -249,6 +250,8 @@ export function HoodieShowcase() {
                   width={1200}
                   height={1200}
                   loading="lazy"
+                  decoding="async"
+                  sizes="(min-width: 1024px) 42vw, 100vw"
                   className="h-full w-full object-cover"
                 />
                 <span className="eyebrow absolute bottom-4 left-4 bg-ink/70 px-3 py-2 text-[9px] text-bone/80 backdrop-blur-md">

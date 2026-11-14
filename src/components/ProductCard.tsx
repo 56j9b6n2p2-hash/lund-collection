@@ -24,6 +24,7 @@ export function ProductCard({
           width={900}
           height={1125}
           loading="lazy"
+          decoding="async"
           sizes="(min-width: 1024px) 24vw, (min-width: 640px) 45vw, 90vw"
           className="h-full w-full object-cover grayscale-[0.45] sepia-[0.06] transition-all duration-700 group-hover:scale-[1.03] group-hover:grayscale-0 group-hover:sepia-0"
         />

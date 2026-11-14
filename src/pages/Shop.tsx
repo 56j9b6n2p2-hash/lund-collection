@@ -1,23 +1,30 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router";
 import { Search, Star, X } from "lucide-react";
+import { BreadcrumbStructuredData } from "@/components/BreadcrumbStructuredData";
 import { DropSignupForm } from "@/components/DropSignupForm";
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/data/products";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { useStorefront } from "@/components/StorefrontLayout";
 
+const shopBreadcrumbs = [
+  { name: "Hem", path: "/" },
+  { name: "Lund merch & Lundkläder", path: "/shop" },
+];
+
 export default function Shop() {
   const { cart, openCart } = useStorefront();
   const [query, setQuery] = useState("");
 
   usePageMeta({
-    title: "Lund merch, julklappar & hoodie | Kollektionen av Lund",
+    title: "Lund Merch – Hoodies & Julklappar | Kollektionen av Lund",
     description:
-      "Lund merch och julkläder från Lund. Domkyrkan Hoodie för 529 kr i lokal pre-order – en julklapp Lund 2026 med egen hemleverans innan jul. 046 merch inför droppet 1 december.",
+      "Lund merch och Lund kläder online. Köp Lund hoodie i fem färger för 529 kr – en unik julklapp med Lund-motiv och personlig hemleverans i Lund.",
     path: "/shop",
-    image: "/media/hoodie/domkyrkan-vit-1.jpg",
-    imageAlt: "Kräm Lund hoodie — Domkyrkan Hoodie",
+    image: "/media/hoodie/lund-hoodie-domkyrkan-kram-fram.jpg",
+    imageAlt:
+      "Kräm Lund hoodie med Domkyrkan-motiv – Lund merch och Lund tröja från Kollektionen av Lund",
     imageWidth: 1200,
     imageHeight: 1200,
   });
@@ -49,6 +56,8 @@ export default function Shop() {
 
   return (
     <>
+      <BreadcrumbStructuredData items={shopBreadcrumbs} />
+
       <section className="relative overflow-hidden bg-pine pt-20 text-bone">
         <div
           aria-hidden="true"
@@ -77,15 +86,19 @@ export default function Shop() {
                 Julkollektionen · 2026
               </p>
               <h1 className="mt-5 max-w-full break-words text-[clamp(2.7rem,7.6vw,6.6rem)] leading-[0.86] text-bone">
+                <span className="sr-only">
+                  Lund merch – Lund hoodie, Lund tröja och Lund kläder.{" "}
+                </span>
                 Julen, i en
                 <br />
                 hoodie<span className="text-gold">.</span>
               </h1>
               <p className="mt-6 max-w-md text-sm leading-7 text-bone/65">
-                Lund merch och Lund kläder från Kollektionen av Lund. En tung
-                Lund hoodie för 529 kr i lokal pre-order – för kalla morgnar,
-                sena kvällar och årets julklapp Lund 2026. Vi producerar samlat
-                efter 1 december och kör hem den till dig i Lund.
+                Lund merch och Lund kläder online i Sverige. En tung Lund hoodie
+                för 529 kr i lokal pre-order – en Lund tröja och Lund sweatshirt
+                för kalla morgnar, sena kvällar och årets julklapp Lund 2026. Vi
+                producerar samlat efter 1 december och kör hem den till dig i
+                Lund.
               </p>
             </div>
 
@@ -196,10 +209,11 @@ export default function Shop() {
           </div>
           <div className="md:col-span-6 md:col-start-7">
             <p className="text-sm leading-7 text-ink/70">
-              Letar du efter Lund merch, 046 merch, julklapp Lund, julkläder Lund
-              eller årets julklapp Lund 2026? Kollektionen av Lund gör små serier
-              med motiv från staden: Domkyrkan, Stortorget och julmarknaden. Vår
-              hoodie är tung, mjuk och lokalt tryckt.
+              Letar du efter Lund merch, Lund tröja, Lund sweatshirt eller kläder
+              med Lund-motiv? Kollektionen av Lund gör små serier med motiv från
+              staden: Domkyrkan, Stortorget och julmarknaden. Vår Lund hoodie är
+              tung, mjuk och lokalt tryckt – ett enkelt sätt att bära med sig
+              Lund, oavsett om du är student, Lundabo eller har staden i hjärtat.
             </p>
             <p className="mt-4 text-sm leading-7 text-ink/70">
               Lund hoodien finns i fem färger och storlekarna S–XXL för 529 kr.

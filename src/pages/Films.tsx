@@ -30,9 +30,9 @@ export default function Films() {
   const duration = formatFilmDuration(heroMontage.durationSeconds);
 
   usePageMeta({
-    title: "Vinter över Lund | En sammanhängande film",
+    title: "Vinter över Lund | Film om Lund – Kollektionen av Lund",
     description:
-      "En sammanhängande vinterfilm över Lund: Domkyrkan, spårvagnen, snöfallet och julnatten i en enda film. Se bakgrundsfilmen från Kollektionen av Lund.",
+      "Se en vinterfilm om Lund: Domkyrkan, spårvagnen och snöfallet. Upptäck berättelsen bakom Lund merch, Lund hoodie och julklappar med Lund-motiv.",
     path: "/film",
     image: heroMontage.poster,
     imageAlt: heroMontage.alt,

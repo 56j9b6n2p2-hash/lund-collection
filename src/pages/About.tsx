@@ -6,11 +6,16 @@ import {
   Snowflake,
   Star,
 } from "lucide-react";
+import { BreadcrumbStructuredData } from "@/components/BreadcrumbStructuredData";
 import { Reveal } from "@/components/Reveal";
 import { usePageMeta } from "@/hooks/use-page-meta";
 
 const INSTAGRAM_URL = "https://www.instagram.com/kollektionenavlund.se/";
 const INSTAGRAM_DM_URL = "https://ig.me/m/kollektionenavlund.se";
+const aboutBreadcrumbs = [
+  { name: "Hem", path: "/" },
+  { name: "Om Kollektionen av Lund", path: "/om-oss" },
+];
 
 const chapters = [
   {
@@ -37,9 +42,9 @@ const chapters = [
 
 export default function About() {
   usePageMeta({
-    title: "Om oss | Två 18-åringar. En stad. Något eget.",
+    title: "Om oss | Lund Merch av två 18-åringar | Kollektionen av Lund",
     description:
-      "Kollektionen av Lund byggs av två 18-åringar i Lund. Läs om vår lokala pre-order, egna hemleveranser, arbetsmöjligheter för unga och julkollektionen 2026. En stad. Ett riktnummer. 046.",
+      "Kollektionen av Lund är ett Lund merch-projekt startat av två 18-åringar. Läs om lokala hoodies, personliga hemleveranser och julklappar med Lund-motiv.",
     path: "/om-oss",
     image: "/media/lund/winter-about.jpg",
     imageAlt: "Snötäckt kullerstensgata i Lund i vinterljus",
@@ -49,6 +54,8 @@ export default function About() {
 
   return (
     <>
+      <BreadcrumbStructuredData items={aboutBreadcrumbs} />
+
       <section className="relative flex min-h-[78svh] items-end overflow-hidden bg-ink text-bone">
         <img
           src="/media/lund/winter-about.jpg"
@@ -89,6 +96,9 @@ export default function About() {
               Om Kollektionen av Lund · 046
             </p>
             <h1 className="mt-5 max-w-5xl text-[clamp(2.8rem,8vw,7.4rem)] leading-[0.86] text-bone">
+              <span className="sr-only">
+                Lund merch och Lund hoodies –{" "}
+              </span>
               Två 18-åringar.
               <br />
               En stad.
@@ -112,6 +122,7 @@ export default function About() {
               Vår berättelse
             </p>
             <h2 className="mt-5 text-[clamp(2.6rem,4.8vw,4.5rem)] leading-[0.88] text-ink">
+              <span className="sr-only">Lund merch. </span>
               Byggt i Lund.
               <br />
               För Lund.

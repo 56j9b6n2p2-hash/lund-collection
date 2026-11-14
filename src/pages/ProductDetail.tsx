@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router";
 import {
   ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
   Check,
   Plus,
@@ -21,10 +22,10 @@ export default function ProductDetail() {
 
   usePageMeta({
     title: product
-      ? `${product.name} — Lund hoodie | Kollektionen av Lund`
+      ? "Lund Hoodie – Lund Merch | Unika Lundkläder"
       : "Plagget hittades inte — Kollektionen av Lund",
     description: product
-      ? `Lund hoodie i ${product.colorName.toLowerCase()} med ett inramat Domkyrkan-motiv på bröstet och en ren rygg. Tung, borstad bomullsblandning, unisex S–XXL. 529 kr i lokal pre-order med egen hemleverans i Lund innan jul.`
+      ? "Upptäck Lund Merch – en hoodie inspirerad av Lund. Den perfekta julklappen för dig som älskar Lund eller vill bära med dig stadens identitet."
       : "Plagget finns inte i julkollektionen. Utforska hela kollektionen från Kollektionen av Lund.",
     path: `/shop/${id ?? ""}`,
     image: product?.image ?? "/media/video/posters/winter-drone.jpg",
@@ -102,6 +103,8 @@ export default function ProductDetail() {
                 height={isSquareProduct ? 1200 : 1125}
                 loading="eager"
                 fetchPriority="high"
+                decoding="async"
+                sizes="(min-width: 768px) 58vw, 100vw"
                 className={`h-full w-full object-cover ${
                   isSquareProduct
                     ? "aspect-square"
@@ -148,6 +151,7 @@ export default function ProductDetail() {
               Lokal pre-order · 046
             </p>
             <h1 className="mt-4 max-w-full break-words text-[clamp(2.5rem,5.6vw,4.8rem)] leading-[0.88] text-ink">
+              <span className="sr-only">Lund Hoodie – Lund Merch: </span>
               {product.name}
             </h1>
             <p className="mt-3 text-sm text-muted-foreground">
@@ -240,6 +244,76 @@ export default function ProductDetail() {
           </div>
         </section>
       </div>
+
+      <section
+        aria-labelledby="product-seo-title"
+        className="container-site pb-14 md:pb-20"
+      >
+        <div className="border-t border-ink/10 pt-10 md:pt-14">
+          <p className="eyebrow text-gold-deep">Lund merch & julklappar</p>
+          <h2
+            id="product-seo-title"
+            className="mt-4 max-w-3xl text-[clamp(2.3rem,4.8vw,4rem)] leading-[0.9] text-ink"
+          >
+            Lund hoodie – en julklapp med Lund-motiv
+          </h2>
+          <div className="mt-7 grid gap-6 border-t border-ink/10 pt-7 md:grid-cols-3 md:gap-8">
+            <div>
+              <h3 className="font-sans text-sm font-semibold normal-case tracking-normal text-ink">
+                Kläder med Lund-motiv
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-ink/65">
+                Domkyrkan, Stortorget och vinterljuset är tryckta i liten serie
+                på en tung, borstad hoodie. Ett plagg för dig som vill bära Lund
+                – inte bara besöka staden. Fungerar lika bra som Lund jultröja
+                som souvenir från Lund.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-sans text-sm font-semibold normal-case tracking-normal text-ink">
+                Present till någon som älskar Lund
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-ink/65">
+                Letar du efter en unik julklapp från Lund? Hoodien är ett
+                personligt presenttips till studenter, Lundabor och alla med
+                anknytning till staden – oavsett om de bor kvar eller längtar
+                tillbaka.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-sans text-sm font-semibold normal-case tracking-normal text-ink">
+                Leverans i Lund innan jul
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-ink/65">
+                Beställ i lokal pre-order för 529 kr. Vi producerar samlat efter
+                den 1 december och kör eller cyklar hem din Lund hoodie till
+                dörren i Lund innan jul.
+              </p>
+            </div>
+          </div>
+          <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs">
+            <Link
+              to="/shop"
+              className="group inline-flex items-center gap-2 border-b border-ink/20 pb-1 font-medium text-ink transition-colors hover:border-gold hover:text-gold-deep"
+            >
+              Se alla Lundkläder
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              to="/om-oss"
+              className="border-b border-ink/20 pb-1 font-medium text-ink transition-colors hover:border-gold hover:text-gold-deep"
+            >
+              Om Kollektionen av Lund
+            </Link>
+            <Link
+              to="/kontakt"
+              className="border-b border-ink/20 pb-1 font-medium text-ink transition-colors hover:border-gold hover:text-gold-deep"
+            >
+              Kontakta oss
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-ink text-bone">
         <div className="container-site grid gap-8 py-14 md:grid-cols-12 md:items-center md:gap-10 md:py-16">

@@ -1,25 +1,32 @@
 import { Link } from "react-router";
 import { ArrowRight, ArrowUpRight, Instagram, Truck } from "lucide-react";
+import { BreadcrumbStructuredData } from "@/components/BreadcrumbStructuredData";
 import { Reveal } from "@/components/Reveal";
 import { usePageMeta } from "@/hooks/use-page-meta";
 
 const INSTAGRAM_URL = "https://www.instagram.com/kollektionenavlund.se/";
 const INSTAGRAM_DM_URL = "https://ig.me/m/kollektionenavlund.se";
+const contactBreadcrumbs = [
+  { name: "Hem", path: "/" },
+  { name: "Kontakt", path: "/kontakt" },
+];
 
 export default function Contact() {
   usePageMeta({
-    title: "Kontakt | Säg hej på Instagram",
+    title: "Kontakt | Lund Merch & Hoodies – Kollektionen av Lund",
     description:
-      "Kontakta Kollektionen av Lund på Instagram. Skicka ett DM om Lund hoodie, lokal pre-order, 529 kr eller egen hemleverans i Lund. En stad. Ett riktnummer. 046.",
+      "Har du frågor om Lund merch, Lund hoodie eller din pre-order? Kontakta Kollektionen av Lund på Instagram för storlek, leverans och julklappar med Lund-motiv.",
     path: "/kontakt",
     image: "/media/lund/winter-contact.jpg",
-    imageAlt: "Vinter i Lund",
+    imageAlt: "Vinter i Lund – kontakt med Kollektionen av Lund",
     imageWidth: 1200,
     imageHeight: 800,
   });
 
   return (
-    <section className="relative flex min-h-[calc(100svh-5rem)] items-center overflow-hidden bg-ink text-bone">
+    <>
+      <BreadcrumbStructuredData items={contactBreadcrumbs} />
+      <section className="relative flex min-h-[calc(100svh-5rem)] items-center overflow-hidden bg-ink text-bone">
       <img
         src="/media/lund/winter-contact.jpg"
         alt=""
@@ -45,8 +52,14 @@ export default function Contact() {
             Kontakt · 046
           </p>
           <h1 className="mt-5 text-[clamp(3rem,9vw,7rem)] leading-[0.86] text-bone">
+            <span className="sr-only">
+              Kontakt om Lund merch, Lund hoodie och Lund kläder –{" "}
+            </span>
             Säg hej på Instagram<span className="text-gold">.</span>
           </h1>
+          <h2 className="sr-only">
+            Lund merch, storlekar och personlig hemleverans i Lund
+          </h2>
           <p className="mx-auto mt-6 max-w-xl text-[15px] leading-7 text-bone/75">
             Vi tar kunddialogen direkt via Instagram-DM i detta skede. Frågor om
             storlek, lokal pre-order eller hemleverans i Lund? Skicka ett
@@ -104,10 +117,11 @@ export default function Contact() {
             to="/shop/domkyrkan-hoodie"
             className="transition-colors hover:text-gold"
           >
-            Se Domkyrkan Hoodie
+            Se Lund hoodien
           </Link>
         </Reveal>
       </div>
-    </section>
+      </section>
+    </>
   );
 }

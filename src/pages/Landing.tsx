@@ -104,9 +104,9 @@ export default function Landing() {
   const location = useLocation();
 
   usePageMeta({
-    title: "Lund merch, julklapp Lund 2026 & hoodie | Kollektionen av Lund",
+    title: "Lund Merch, Lund Hoodie & Julklappar | Kollektionen av Lund",
     description:
-      "Lund merch och Lund kläder från Kollektionen av Lund. Domkyrkan Hoodie för 529 kr i lokal pre-order – en julklapp i Lund 2026 med egen hemleverans. 046 merch inför juldroppet 1 december.",
+      "Lund merch och Lund hoodie från två 18-åringar i Lund. Upptäck kläder med Lund-motiv och unika julklappar – 529 kr med personlig hemleverans i Lund.",
     path: "/",
     image: "/media/video/posters/winter-drone.jpg",
     imageAlt: "Drönarvy över ett snötäckt Lund i vinterljus",
@@ -327,10 +327,10 @@ export default function Landing() {
                 spårvagnens gröna linje, med julmarknadens ljus i ögonvrån.
               </p>
               <p className="mt-4 text-[15px] leading-7 text-ink/70">
-                I år har vi samlat den i en julkollektion: tidlös, lågmäld och
-                byggd för att bäras länge. Lokal pre-order inför 1 december,
-                samlad produktion och egen hemleverans till dörren i Lund innan
-                jul.
+                I år har vi samlat den i en julkollektion: en Lund hoodie, en
+                mjuk Lund tröja och kläder med Lund-motiv, byggda för att bäras
+                länge. Lokal pre-order inför 1 december, samlad produktion och
+                personlig hemleverans till dörren i Lund innan jul.
               </p>
               <p className="mt-4 text-[15px] leading-7 text-ink/70">
                 Från Domkyrkan och Mårtenstorget till Klostergården, Linero,
@@ -647,6 +647,8 @@ export default function Landing() {
                   width={1200}
                   height={800}
                   loading="lazy"
+                  decoding="async"
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   className="absolute inset-0 h-full w-full object-cover brightness-[0.8] saturate-[0.9] transition-transform duration-[900ms] group-hover:scale-[1.04]"
                 />
                 <div
