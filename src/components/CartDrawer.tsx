@@ -53,6 +53,7 @@ export function CartDrawer({
   const [mode, setMode] = useState<Mode>("cart");
   const [customerName, setCustomerName] = useState("");
   const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [placed, setPlaced] = useState<PlacedOrder | null>(null);
@@ -68,6 +69,7 @@ export function CartDrawer({
     setStripeUrl(null);
     setCustomerName("");
     setEmail("");
+    setAddress("");
   }
 
   function handleOpenChange(nextOpen: boolean) {
@@ -86,6 +88,12 @@ export function CartDrawer({
     }
     if (!emailPattern.test(email.trim())) {
       setError("Ange en giltig e-postadress.");
+      return;
+    }
+    if (address.trim().length < 6) {
+      setError(
+        "Ange en fullständig leveransadress med gata, postnummer och ort.",
+      );
       return;
     }
     if (cart.detailed.length === 0) {
@@ -110,6 +118,7 @@ export function CartDrawer({
       const orderId = await createOrder({
         customerName: customerName.trim(),
         email: email.trim(),
+        address: address.trim(),
         items: cart.detailed.map((line) => ({
           productId: line.product.id,
           name: line.product.name,
@@ -121,6 +130,7 @@ export function CartDrawer({
       const order = {
         reference: `LUN-${String(orderId).slice(-6).toUpperCase()}`,
         email: orderSummary.email,
+        address: address.trim(),
         total: orderSummary.total,
         itemCount: orderSummary.itemCount,
       };
@@ -217,6 +227,14 @@ export function CartDrawer({
                 <dt className="text-muted-foreground">Delsumma</dt>
                 <dd className="font-semibold">{formatSek(placed.total)}</dd>
               </div>
+              <div className="flex items-start justify-between gap-6 py-3">
+                <dt className="shrink-0 text-muted-foreground">
+                  Leveransadress
+                </dt>
+                <dd className="max-w-[58%] text-right leading-5">
+                  {placed.address}
+                </dd>
+              </div>
               <div className="flex items-center justify-between py-3">
                 <dt className="text-muted-foreground">Leverans</dt>
                 <dd>I Lund · innan jul</dd>
@@ -260,6 +278,14 @@ export function CartDrawer({
               <div className="flex items-center justify-between py-3">
                 <dt className="text-muted-foreground">Belopp</dt>
                 <dd className="font-semibold">{formatSek(placed.total)}</dd>
+              </div>
+              <div className="flex items-start justify-between gap-6 py-3">
+                <dt className="shrink-0 text-muted-foreground">
+                  Leveransadress
+                </dt>
+                <dd className="max-w-[58%] text-right leading-5">
+                  {placed.address}
+                </dd>
               </div>
               <div className="flex items-center justify-between py-3">
                 <dt className="text-muted-foreground">Betalning</dt>
@@ -450,6 +476,33 @@ export function CartDrawer({
                   placeholder="namn@exempel.se"
                   className="h-11 w-full rounded-md border border-ink/15 bg-white/70 px-3 text-sm text-ink outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-gold focus:ring-2 focus:ring-gold/25"
                 />
+              </div>
+              <div>
+                <label
+                  htmlFor="cart-address"
+                  className="eyebrow mb-2 block text-muted-foreground"
+                >
+                  Leveransadress
+                </label>
+                <input
+                  id="cart-address"
+                  name="address"
+                  autoComplete="street-address"
+                  required
+                  minLength={6}
+                  maxLength={200}
+                  value={address}
+                  onChange={(event) => setAddress(event.target.value)}
+                  placeholder="Gata, postnummer och ort"
+                  aria-describedby="cart-address-help"
+                  className="h-11 w-full rounded-md border border-ink/15 bg-white/70 px-3 text-sm text-ink outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-gold focus:ring-2 focus:ring-gold/25"
+                />
+                <p
+                  id="cart-address-help"
+                  className="mt-1.5 text-[10px] leading-5 text-muted-foreground"
+                >
+                  Behövs för att vi ska kunna leverera hem till dig i Lund.
+                </p>
               </div>
             </div>
 

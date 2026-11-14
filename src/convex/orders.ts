@@ -9,6 +9,7 @@ export const createOrder = mutation({
   args: {
     customerName: v.string(),
     email: v.string(),
+    address: v.string(),
     items: v.array(
       v.object({
         productId: v.string(),
@@ -21,12 +22,18 @@ export const createOrder = mutation({
   handler: async (ctx, args) => {
     const customerName = args.customerName.trim().slice(0, 80);
     const email = args.email.trim().toLowerCase().slice(0, 160);
+    const address = args.address.trim().replace(/\s+/g, " ").slice(0, 200);
 
     if (customerName.length < 2) {
       throw new Error("Ange ett namn så vi vet vem beställningen tillhör.");
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       throw new Error("Ange en giltig e-postadress.");
+    }
+    if (address.length < 6) {
+      throw new Error(
+        "Ange en fullständig leveransadress med gata, postnummer och ort.",
+      );
     }
     if (args.items.length === 0 || args.items.length > 12) {
       throw new Error("Varukorgen är tom eller innehåller för många rader.");
@@ -53,6 +60,7 @@ export const createOrder = mutation({
     return await ctx.db.insert("orders", {
       customerName,
       email,
+      address,
       items,
       total,
       status: "new",
@@ -78,6 +86,7 @@ export const listAdmin = query({
         id: order._id,
         customerName: order.customerName,
         email: order.email,
+        address: order.address ?? "",
         items: order.items,
         total: order.total,
         status: order.status,

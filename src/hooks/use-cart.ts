@@ -5,6 +5,7 @@ export type CartLine = { id: string; qty: number };
 export type PlacedOrder = {
   reference: string;
   email: string;
+  address: string;
   total: number;
   itemCount: number;
 };

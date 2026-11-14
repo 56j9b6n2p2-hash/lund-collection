@@ -36,6 +36,7 @@ const schema = defineSchema(
     orders: defineTable({
       customerName: v.string(),
       email: v.string(),
+      address: v.optional(v.string()),
       items: v.array(
         v.object({
           productId: v.string(),

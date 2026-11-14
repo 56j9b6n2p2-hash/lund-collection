@@ -6,6 +6,7 @@ import {
   LockKeyhole,
   LogOut,
   Mail,
+  MapPin,
   ShoppingBag,
   Users,
 } from "lucide-react";
@@ -422,6 +423,15 @@ export default function Admin() {
                       >
                         {order.email}
                       </a>
+                      {order.address ? (
+                        <p className="mt-1.5 flex items-start gap-1.5 text-[11px] leading-5 text-muted-foreground">
+                          <MapPin
+                            className="mt-0.5 size-3 shrink-0 text-gold-deep"
+                            strokeWidth={1.7}
+                          />
+                          <span>{order.address}</span>
+                        </p>
+                      ) : null}
                     </TableCell>
                     <TableCell className="max-w-xs whitespace-normal px-5 py-4 text-xs leading-5 text-ink/65">
                       {orderItemsLabel(order.items)}
