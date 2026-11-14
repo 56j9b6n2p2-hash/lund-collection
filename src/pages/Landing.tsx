@@ -104,7 +104,7 @@ export default function Landing() {
   usePageMeta({
     title: "Lund merch, julklapp Lund 2026 & hoodie | Kollektionen av Lund",
     description:
-      "Lund merch och Lund kläder från Kollektionen av Lund. Domkyrkan Hoodie för 679 kr i lokal pre-order – en julklapp i Lund 2026 med egen hemleverans. 046 merch inför juldroppet 1 december.",
+      "Lund merch och Lund kläder från Kollektionen av Lund. Domkyrkan Hoodie för 529 kr i lokal pre-order – en julklapp i Lund 2026 med egen hemleverans. 046 merch inför juldroppet 1 december.",
     path: "/",
     image: "/media/video/posters/winter-drone.jpg",
     imageAlt: "Drönarvy över ett snötäckt Lund i vinterljus",
@@ -214,7 +214,7 @@ export default function Landing() {
                 >
                   <p className="max-w-md text-[15px] leading-7 text-bone/80 md:text-base">
                     Lund merch från Kollektionen av Lund. En tung vinterhoodie
-                    inspirerad av Domkyrkan och snön över Stortorget – 679 kr i
+                    inspirerad av Domkyrkan och snön över Stortorget – 529 kr i
                     lokal pre-order. Få förtur och egen hemleverans i Lund innan
                     jul.
                   </p>
@@ -256,7 +256,7 @@ export default function Landing() {
                 </span>
                 <span className="flex items-center gap-2 text-[11px] text-bone/70">
                   <span className="size-1.5 animate-pulse rounded-full bg-gold motion-reduce:animate-none" />
-                  Lokal pre-order · 679 kr
+                  Lokal pre-order · 529 kr
                 </span>
                 <span className="mt-1 font-display text-4xl leading-none text-gold">
                   01.12
@@ -393,7 +393,7 @@ export default function Landing() {
                 <div>
                   <dt className="eyebrow text-[9px] text-bone/55">Pris</dt>
                   <dd className="mt-1.5 font-display text-4xl leading-none text-bone">
-                    679 kr
+                    529 kr
                   </dd>
                 </div>
                 <div>

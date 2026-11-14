@@ -10,7 +10,7 @@ export default function Contact() {
   usePageMeta({
     title: "Kontakt | Säg hej på Instagram",
     description:
-      "Kontakta Kollektionen av Lund på Instagram. Skicka ett DM om Lund hoodie, lokal pre-order, 679 kr eller egen hemleverans i Lund. En stad. Ett riktnummer. 046.",
+      "Kontakta Kollektionen av Lund på Instagram. Skicka ett DM om Lund hoodie, lokal pre-order, 529 kr eller egen hemleverans i Lund. En stad. Ett riktnummer. 046.",
     path: "/kontakt",
     image: "/media/lund/winter-contact.jpg",
     imageAlt: "Vinter i Lund",
@@ -83,7 +83,7 @@ export default function Contact() {
         <div className="mx-auto mt-14 grid max-w-3xl gap-3 sm:grid-cols-3">
           {[
             ["01", "Pre-order", "Droppet öppnar 1 december."],
-            ["02", "679 kr", "Lokalt tryckt hoodie."],
+            ["02", "529 kr", "Lokalt tryckt hoodie."],
             ["03", "Hemleverans", "Vi kör eller cyklar hem den i Lund."],
           ].map(([number, title, copy], index) => (
             <Reveal key={title} delay={0.08 + index * 0.06}>

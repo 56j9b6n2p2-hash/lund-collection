@@ -119,7 +119,7 @@ const details = [
   },
   {
     title: "Lokal pre-order & leverans",
-    copy: "679 kr, lokalt tryckt. Vi producerar samlat efter den 1 december och kör eller cyklar hem din hoodie till dörren i Lund innan jul. Inget stort lager i förväg.",
+    copy: "529 kr, lokalt tryckt. Vi producerar samlat efter den 1 december och kör eller cyklar hem din hoodie till dörren i Lund innan jul. Inget stort lager i förväg.",
   },
 ];
 
@@ -200,7 +200,7 @@ export function HoodieShowcase() {
               </p>
             </div>
             <p className="eyebrow max-w-xs text-gold/80 md:text-right">
-              1 december · 679 kr
+              1 december · 529 kr
               <span className="mt-3 block font-sans text-[11px] normal-case leading-6 tracking-normal text-bone/50">
                 Lokal pre-order med egen hemleverans i Lund innan jul. En
                 hoodie. Fem färger. Byggd för kalla promenader mellan Stortorget
