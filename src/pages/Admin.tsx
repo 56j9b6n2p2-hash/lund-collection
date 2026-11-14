@@ -6,6 +6,7 @@ import {
   LockKeyhole,
   LogOut,
   Mail,
+  ShoppingBag,
   Users,
 } from "lucide-react";
 import { useState, type FormEvent } from "react";
@@ -22,6 +23,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { api } from "@/convex/_generated/api";
+import { formatSek } from "@/data/products";
 import { usePageMeta } from "@/hooks/use-page-meta";
 
 const dateFormatter = new Intl.DateTimeFormat("sv-SE", {
@@ -32,6 +34,16 @@ const dateFormatter = new Intl.DateTimeFormat("sv-SE", {
 function formatSignupDate(timestamp: number) {
   const date = new Date(timestamp);
   return Number.isNaN(date.getTime()) ? "—" : dateFormatter.format(date);
+}
+
+function orderReference(id: string) {
+  return `LUN-${id.slice(-6).toUpperCase()}`;
+}
+
+function orderItemsLabel(items: { name: string; quantity: number }[]) {
+  return items
+    .map((item) => `${item.quantity} × ${item.name}`)
+    .join(", ");
 }
 
 function AdminTopBar({ onSignOut }: { onSignOut?: () => void }) {
@@ -75,7 +87,8 @@ function AdminTopBar({ onSignOut }: { onSignOut?: () => void }) {
 export default function Admin() {
   usePageMeta({
     title: "Juldroppet admin | Kollektionen av Lund",
-    description: "Intern adminpanel för anmälningar och medskapande idéer till juldroppet.",
+    description:
+      "Intern adminpanel för förtursanmälningar och pre-orders till juldroppet.",
     path: "/admin",
     noindex: true,
   });
@@ -88,10 +101,19 @@ export default function Admin() {
     api.dropSignups.listAdmin,
     submittedPassword ? { password: submittedPassword } : "skip",
   );
+  const orders = useQuery(
+    api.orders.listAdmin,
+    submittedPassword ? { password: submittedPassword } : "skip",
+  );
 
-  const isChecking = submittedPassword.length > 0 && signups === undefined;
-  const isDenied = submittedPassword.length > 0 && signups === null;
-  const isSignedIn = Array.isArray(signups);
+  const isDenied = signups === null || orders === null;
+  const isChecking =
+    submittedPassword.length > 0 &&
+    !isDenied &&
+    (signups === undefined || orders === undefined);
+  const isSignedIn = Array.isArray(signups) && Array.isArray(orders);
+  const signupList = Array.isArray(signups) ? signups : [];
+  const orderList = Array.isArray(orders) ? orders : [];
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -130,8 +152,8 @@ export default function Admin() {
                 Admin<span className="text-gold">.</span>
               </h1>
               <p className="mt-4 text-sm leading-6 text-bone/60">
-                Logga in för att se alla som anmält sig till juldroppet den 1
-                december.
+                Logga in för att se förturslistan och alla pre-orders till
+                juldroppet den 1 december.
               </p>
 
               <form onSubmit={handleSubmit} className="mt-7">
@@ -185,7 +207,7 @@ export default function Admin() {
                       Kontrollerar…
                     </>
                   ) : (
-                    "Visa anmälningar"
+                    "Visa översikt"
                   )}
                 </Button>
               </form>
@@ -216,19 +238,30 @@ export default function Admin() {
               Anmälningar<span className="text-gold-deep">.</span>
             </h1>
             <p className="mt-5 max-w-xl text-sm leading-7 text-ink/65">
-              Alla som står på listan för juldroppet, med deras idéer om nästa
-              plagg. Listan uppdateras direkt när någon ny anmäler sig.
+              Alla som står på förturslistan och alla pre-orders som lagts i
+              kassan. Översikten uppdateras direkt när något nytt kommer in.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-ink/10 bg-card px-6 py-5 shadow-[0_1px_2px_rgba(16,24,32,0.03),0_24px_50px_-40px_rgba(16,24,32,0.35)] md:min-w-48">
-            <p className="eyebrow text-muted-foreground">På listan</p>
-            <p className="mt-2 font-display text-5xl leading-none text-ink">
-              {String(signups.length).padStart(2, "0")}
-            </p>
-            <p className="mt-2 text-xs text-muted-foreground">
-              {signups.length === 1 ? "anmäld adress" : "anmälda adresser"}
-            </p>
+          <div className="flex flex-wrap gap-3">
+            <div className="min-w-40 rounded-2xl border border-ink/10 bg-card px-6 py-5 shadow-[0_1px_2px_rgba(16,24,32,0.03),0_24px_50px_-40px_rgba(16,24,32,0.35)]">
+              <p className="eyebrow text-muted-foreground">På förturslistan</p>
+              <p className="mt-2 font-display text-5xl leading-none text-ink">
+                {String(signupList.length).padStart(2, "0")}
+              </p>
+              <p className="mt-2 text-xs text-muted-foreground">
+                {signupList.length === 1 ? "anmäld adress" : "anmälda adresser"}
+              </p>
+            </div>
+            <div className="min-w-40 rounded-2xl border border-ink/10 bg-card px-6 py-5 shadow-[0_1px_2px_rgba(16,24,32,0.03),0_24px_50px_-40px_rgba(16,24,32,0.35)]">
+              <p className="eyebrow text-muted-foreground">Pre-orders</p>
+              <p className="mt-2 font-display text-5xl leading-none text-ink">
+                {String(orderList.length).padStart(2, "0")}
+              </p>
+              <p className="mt-2 text-xs text-muted-foreground">
+                {orderList.length === 1 ? "lagd beställning" : "lagda beställningar"}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -251,7 +284,7 @@ export default function Admin() {
             </span>
           </div>
 
-          {signups.length === 0 ? (
+          {signupList.length === 0 ? (
             <div className="flex flex-col items-center px-6 py-16 text-center">
               <span className="flex size-14 items-center justify-center rounded-full border border-sand bg-background text-ink/45">
                 <Mail className="size-5" strokeWidth={1.5} />
@@ -286,7 +319,7 @@ export default function Admin() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {signups.map((signup) => (
+                {signupList.map((signup) => (
                   <TableRow
                     key={`${signup.email}-${signup.createdAt}`}
                     className="border-ink/10 hover:bg-sand/30"
@@ -317,8 +350,107 @@ export default function Admin() {
           )}
         </section>
 
+        <section
+          aria-labelledby="order-list-title"
+          className="mt-8 overflow-hidden rounded-2xl border border-ink/10 bg-card shadow-[0_1px_2px_rgba(16,24,32,0.03),0_30px_60px_-45px_rgba(16,24,32,0.4)] md:mt-10"
+        >
+          <div className="flex flex-col gap-4 border-b border-ink/10 px-5 py-5 sm:flex-row sm:items-center sm:justify-between md:px-6">
+            <div>
+              <p className="eyebrow text-gold-deep">Kassan</p>
+              <h2
+                id="order-list-title"
+                className="mt-2 font-sans text-lg font-semibold normal-case leading-6 tracking-normal text-ink"
+              >
+                Alla pre-orders
+              </h2>
+            </div>
+            <span className="w-fit border border-ink/10 bg-sand/50 px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-ink/60">
+              Senast först
+            </span>
+          </div>
+
+          {orderList.length === 0 ? (
+            <div className="flex flex-col items-center px-6 py-16 text-center">
+              <span className="flex size-14 items-center justify-center rounded-full border border-sand bg-background text-ink/45">
+                <ShoppingBag className="size-5" strokeWidth={1.5} />
+              </span>
+              <p className="mt-5 font-display text-2xl leading-none text-ink">
+                Inga pre-orders ännu.
+              </p>
+              <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">
+                Så snart någon slutför en pre-order i kassan dyker den upp här.
+              </p>
+            </div>
+          ) : (
+            <Table>
+              <caption className="sr-only">
+                Pre-orders till juldroppet, sorterade med senaste först.
+              </caption>
+              <TableHeader>
+                <TableRow className="border-ink/10 hover:bg-transparent">
+                  <TableHead className="eyebrow h-12 px-5 text-ink/50 md:px-6">
+                    Kund
+                  </TableHead>
+                  <TableHead className="eyebrow h-12 px-5 text-ink/50">
+                    Plagg
+                  </TableHead>
+                  <TableHead className="eyebrow h-12 px-5 text-ink/50">
+                    Belopp
+                  </TableHead>
+                  <TableHead className="eyebrow h-12 px-5 text-ink/50">
+                    Ordernr
+                  </TableHead>
+                  <TableHead className="eyebrow h-12 px-5 text-ink/50">
+                    Status
+                  </TableHead>
+                  <TableHead className="eyebrow h-12 px-5 text-right text-ink/50 md:px-6">
+                    Lagd
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {orderList.map((order) => (
+                  <TableRow
+                    key={order.id}
+                    className="border-ink/10 hover:bg-sand/30"
+                  >
+                    <TableCell className="min-w-52 whitespace-normal px-5 py-4 md:px-6">
+                      <p className="font-medium text-ink">{order.customerName}</p>
+                      <a
+                        href={`mailto:${order.email}`}
+                        className="mt-1 block break-all text-xs text-muted-foreground transition-colors hover:text-gold-deep"
+                      >
+                        {order.email}
+                      </a>
+                    </TableCell>
+                    <TableCell className="max-w-xs whitespace-normal px-5 py-4 text-xs leading-5 text-ink/65">
+                      {orderItemsLabel(order.items)}
+                    </TableCell>
+                    <TableCell className="whitespace-nowrap px-5 py-4 text-sm font-semibold tabular-nums text-ink">
+                      {formatSek(order.total)}
+                    </TableCell>
+                    <TableCell className="whitespace-nowrap px-5 py-4 text-xs tracking-wide text-muted-foreground">
+                      {orderReference(order.id)}
+                    </TableCell>
+                    <TableCell className="px-5 py-4">
+                      <span className="inline-flex border border-ink/10 bg-sand/50 px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-ink/60">
+                        {order.status === "confirmed" ? "Bekräftad" : "Ny"}
+                      </span>
+                    </TableCell>
+                    <TableCell className="px-5 py-4 text-right text-xs tabular-nums text-muted-foreground md:px-6">
+                      {formatSignupDate(order.createdAt)}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
+        </section>
+
         <p className="mt-5 text-[11px] leading-5 text-muted-foreground">
-          {signups.length} {signups.length === 1 ? "anmälan" : "anmälningar"} ·
+          {signupList.length}{" "}
+          {signupList.length === 1 ? "anmälan" : "anmälningar"} ·{" "}
+          {orderList.length} {orderList.length === 1 ? "pre-order" : "pre-orders"} ·
           endast synligt med adminlösenordet.
         </p>
       </main>

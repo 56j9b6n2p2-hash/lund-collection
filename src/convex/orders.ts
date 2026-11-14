@@ -1,7 +1,9 @@
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 const MAX_QUANTITY = 10;
+// Keep this in sync with the lightweight /admin panel password.
+const ADMIN_PASSWORD = "vpv77";
 
 export const createOrder = mutation({
   args: {
@@ -56,5 +58,30 @@ export const createOrder = mutation({
       status: "new",
       createdAt: Date.now(),
     });
+  },
+});
+
+export const listAdmin = query({
+  args: {
+    password: v.string(),
+  },
+  handler: async (ctx, args) => {
+    if (args.password !== ADMIN_PASSWORD) {
+      return null;
+    }
+
+    const orders = await ctx.db.query("orders").collect();
+
+    return orders
+      .sort((a, b) => b.createdAt - a.createdAt)
+      .map((order) => ({
+        id: order._id,
+        customerName: order.customerName,
+        email: order.email,
+        items: order.items,
+        total: order.total,
+        status: order.status,
+        createdAt: order.createdAt,
+      }));
   },
 });
