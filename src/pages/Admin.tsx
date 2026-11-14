@@ -199,7 +199,7 @@ export default function Admin() {
                 <Button
                   type="submit"
                   disabled={isChecking}
-                  className="eyebrow mt-5 flex h-12 w-full items-center justify-center gap-2 bg-gold px-5 text-ink transition-colors hover:bg-bone disabled:cursor-wait disabled:opacity-70"
+                  className="eyebrow mt-5 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gold px-5 text-ink transition-colors hover:bg-bone disabled:cursor-wait disabled:opacity-70"
                 >
                   {isChecking ? (
                     <>

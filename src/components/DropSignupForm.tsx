@@ -116,7 +116,7 @@ export function DropSignupForm({ source = "juldroppet" }: { source?: string }) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="eyebrow mt-4 flex h-12 w-full items-center justify-center gap-2 bg-gold px-5 text-ink transition-colors hover:bg-bone disabled:cursor-wait disabled:opacity-70"
+        className="group mt-4 flex min-h-14 w-full items-center justify-between gap-3 rounded-2xl bg-gold px-4 py-3 text-left text-ink shadow-[0_16px_34px_-22px_rgba(201,161,90,0.9)] transition-all hover:-translate-y-0.5 hover:bg-bone disabled:cursor-wait disabled:opacity-70 disabled:hover:translate-y-0"
       >
         {status === "sending" ? (
           <>
@@ -125,8 +125,15 @@ export function DropSignupForm({ source = "juldroppet" }: { source?: string }) {
           </>
         ) : (
           <>
-            Få förtur &amp; skicka idé
-            <ArrowRight className="size-3.5" />
+            <span>
+              <span className="block text-sm font-semibold">
+                Få förtur &amp; skicka idé
+              </span>
+              <span className="mt-0.5 block text-[11px] text-ink/55">
+                Kostnadsfritt · vi hör av oss
+              </span>
+            </span>
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
           </>
         )}
       </button>

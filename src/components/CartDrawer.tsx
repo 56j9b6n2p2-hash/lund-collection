@@ -21,6 +21,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { PaymentMethods } from "@/components/PaymentMethods";
 import { formatSek } from "@/data/products";
 import type { CartApi, PlacedOrder } from "@/hooks/use-cart";
 
@@ -93,7 +94,7 @@ export function CartDrawer({
     }
     if (payWithStripe && cart.count > 1) {
       setError(
-        "Kortbetalningen gäller ett plagg i taget. Skicka en betalningsfri pre-order för fler plagg, så fakturerar vi.",
+        "Betalningen gäller ett plagg i taget. Skicka en betalningsfri pre-order för fler plagg, så fakturerar vi.",
       );
       return;
     }
@@ -182,9 +183,9 @@ export function CartDrawer({
           </SheetTitle>
           <SheetDescription className="mt-2 text-sm text-muted-foreground">
             {mode === "cart"
-              ? `${cart.count} ${itemLabel} · Kort eller betalningsfri pre-order`
+              ? `${cart.count} ${itemLabel} · Flera betalsätt eller betalningsfri pre-order`
               : mode === "checkout"
-                ? "Betala med kort via Stripe eller skicka en betalningsfri pre-order. Vi producerar samlat efter 1 december och kör hem den i Lund innan jul."
+                ? "Betala med Klarna, kort, Amazon Pay eller Apple Pay via Stripe – eller skicka en betalningsfri pre-order. Vi producerar samlat efter 1 december och kör hem den i Lund innan jul."
                 : mode === "stripe"
                   ? "Stripe öppnas med din e-post och orderreferens ifyllda."
                   : `Din pre-order är registrerad, ${firstName}.`}
@@ -228,9 +229,10 @@ export function CartDrawer({
             <button
               type="button"
               onClick={() => handleOpenChange(false)}
-              className="eyebrow mt-8 flex h-12 items-center justify-center gap-2 bg-ink px-6 text-bone transition-colors hover:bg-gold hover:text-ink"
+              className="mt-8 flex min-h-14 items-center justify-between gap-6 rounded-2xl bg-ink px-4 py-3 text-bone transition-all hover:-translate-y-0.5 hover:bg-gold hover:text-ink"
             >
-              Stäng
+              <span className="text-sm font-semibold">Stäng</span>
+              <ArrowRight className="size-4" />
             </button>
           </div>
         ) : mode === "stripe" && placed && stripeUrl ? (
@@ -261,15 +263,15 @@ export function CartDrawer({
               </div>
               <div className="flex items-center justify-between py-3">
                 <dt className="text-muted-foreground">Betalning</dt>
-                <dd>Kort · Stripe</dd>
+                <dd>Stripe · valt betalsätt</dd>
               </div>
             </dl>
             <a
               href={stripeUrl}
-              className="eyebrow mt-8 flex h-12 items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone"
+              className="group mt-8 flex min-h-14 items-center justify-between gap-3 rounded-2xl bg-gold px-4 py-3 text-ink shadow-[0_16px_34px_-22px_rgba(201,161,90,0.9)] transition-all hover:-translate-y-0.5 hover:bg-ink hover:text-bone"
             >
-              Öppna Stripe
-              <ArrowUpRight className="size-3.5" />
+              <span className="text-sm font-semibold">Öppna Stripe</span>
+              <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
             <p className="mt-3 text-center text-[11px] leading-5 text-muted-foreground">
               Om Stripe inte öppnas automatiskt kan du använda knappen ovan.
@@ -277,9 +279,10 @@ export function CartDrawer({
             <button
               type="button"
               onClick={() => handleOpenChange(false)}
-              className="mt-4 flex items-center justify-center gap-2 py-2 text-xs text-muted-foreground transition-colors hover:text-ink"
+              className="group mt-3 flex min-h-12 w-full items-center justify-between gap-3 rounded-xl border border-ink/15 px-4 py-3 text-sm font-medium text-ink transition-colors hover:border-ink/30 hover:bg-white/60"
             >
-              Stäng
+              <span>Stäng</span>
+              <ArrowRight className="size-4 text-ink/40 transition-transform group-hover:translate-x-0.5" />
             </button>
           </div>
         ) : cart.detailed.length === 0 ? (
@@ -296,10 +299,10 @@ export function CartDrawer({
             <Link
               to="/shop"
               onClick={() => handleOpenChange(false)}
-              className="eyebrow mt-8 flex h-12 items-center gap-2 border border-ink/20 px-6 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bone"
+              className="group mt-8 flex min-h-14 items-center justify-between gap-6 rounded-2xl border border-ink/20 bg-white/50 px-4 py-3 text-ink transition-all hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:text-bone"
             >
-              Utforska kollektionen
-              <ArrowRight className="size-3.5" />
+              <span className="text-sm font-semibold">Utforska kollektionen</span>
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
         ) : mode === "cart" ? (
@@ -383,16 +386,18 @@ export function CartDrawer({
                 </span>
               </div>
               <p className="mt-2 text-[11px] leading-5 text-muted-foreground">
-                Egen hemleverans i Lund. Betala med kort eller skicka en
-                betalningsfri pre-order.
+                Egen hemleverans i Lund. Flera betalsätt eller betalningsfri
+                pre-order.
               </p>
               <button
                 type="button"
                 onClick={() => setMode("checkout")}
-                className="eyebrow mt-5 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone"
+                className="group mt-5 flex min-h-14 w-full items-center justify-between gap-3 rounded-2xl bg-gold px-4 py-3 text-ink shadow-[0_16px_34px_-22px_rgba(201,161,90,0.9)] transition-all hover:-translate-y-0.5 hover:bg-ink hover:text-bone"
               >
-                Till kassan
-                <ArrowRight className="size-3.5" />
+                <span className="text-sm font-semibold">Till kassan</span>
+                <span className="flex size-9 items-center justify-center rounded-full border border-ink/10 bg-white/20">
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
               </button>
               <button
                 type="button"
@@ -448,7 +453,9 @@ export function CartDrawer({
               </div>
             </div>
 
-            <div className="mt-6 border-y border-sand py-4">
+            <PaymentMethods className="mt-6" />
+
+            <div className="mt-4 border-y border-sand py-4">
               <div className="flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">
                   {cart.count} {itemLabel}
@@ -463,7 +470,7 @@ export function CartDrawer({
               </div>
               <div className="mt-2 flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Betalning</span>
-                <span className="text-ink">Kort · Stripe</span>
+                <span className="text-ink">Betalsätt · Stripe</span>
               </div>
             </div>
 
@@ -479,37 +486,54 @@ export function CartDrawer({
             <button
               type="submit"
               disabled={submitting || cart.count > 1}
-              className="eyebrow mt-6 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone disabled:cursor-not-allowed disabled:opacity-50"
+              className="group mt-4 flex min-h-14 w-full items-center gap-3 rounded-2xl bg-ink px-4 py-3 text-left text-bone shadow-[0_16px_34px_-20px_rgba(16,24,32,0.8)] transition-all hover:-translate-y-0.5 hover:bg-gold hover:text-ink disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:bg-ink disabled:hover:text-bone"
             >
-              {submitting ? (
-                <>
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-bone/10 transition-colors group-hover:bg-ink/10">
+                {submitting ? (
                   <Loader2 className="size-4 animate-spin" />
-                  Skickar…
-                </>
-              ) : (
-                <>
+                ) : (
                   <CreditCard className="size-4" strokeWidth={1.8} />
-                  Betala med kort
-                  <ArrowUpRight className="size-3.5" />
-                </>
-              )}
+                )}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-[9px] font-semibold uppercase tracking-[0.18em] opacity-55">
+                  {submitting ? "Skickar…" : "Säker betalning"}
+                </span>
+                <span className="mt-0.5 block text-sm font-semibold">
+                  {submitting
+                    ? "Skickar…"
+                    : `Betala med kort · ${formatSek(cart.subtotal)}`}
+                </span>
+              </span>
+              <ArrowUpRight className="size-4 shrink-0 opacity-60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </button>
             {cart.count > 1 ? (
               <p className="mt-2 text-center text-[10px] leading-5 text-muted-foreground">
-                Kortbetalning gäller ett plagg i taget. Skicka en
-                betalningsfri pre-order för fler plagg, så fakturerar vi.
+                Betalningen gäller ett plagg i taget. Skicka en betalningsfri
+                pre-order för fler plagg, så fakturerar vi.
               </p>
             ) : null}
             <button
               type="button"
               onClick={handlePreorder}
               disabled={submitting}
-              className="mt-2 flex h-11 w-full items-center justify-center gap-2 border border-ink/15 px-6 text-xs uppercase tracking-[0.14em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bone disabled:cursor-wait disabled:opacity-70"
+              className="group mt-2.5 flex min-h-14 w-full items-center gap-3 rounded-2xl border border-ink/15 bg-white/40 px-4 py-3 text-left text-ink transition-all hover:-translate-y-0.5 hover:border-ink/30 hover:bg-white/80 disabled:cursor-wait disabled:opacity-60 disabled:hover:translate-y-0"
             >
-              Skicka pre-order utan betalning
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-ink/10 bg-sand/50 text-gold-deep">
+                <Check className="size-4" strokeWidth={1.8} />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-semibold">
+                  Köp utan betalning
+                </span>
+                <span className="mt-0.5 block text-[11px] text-muted-foreground">
+                  Förtur · vi hör av oss innan jul
+                </span>
+              </span>
+              <ArrowRight className="size-4 shrink-0 text-ink/40 transition-transform group-hover:translate-x-1" />
             </button>
             <p className="mt-3 text-center text-[10px] leading-5 text-muted-foreground">
-              Du skickas till Stripes säkra kortbetalning.
+              Betalningen slutförs säkert hos Stripe.
             </p>
             <button
               type="button"

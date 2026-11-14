@@ -169,7 +169,7 @@ export default function Shop() {
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="eyebrow mt-7 flex h-11 items-center gap-2 border border-ink/20 px-5 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bone"
+              className="eyebrow mt-7 flex h-12 items-center gap-2 rounded-xl border border-ink/20 px-5 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bone"
             >
               Rensa sökningen
               <X className="size-3.5" />

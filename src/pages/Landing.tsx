@@ -221,21 +221,21 @@ export default function Landing() {
                   <div className="flex flex-wrap items-center gap-3">
                     <a
                       href="#juldroppet"
-                      className="eyebrow group inline-flex h-12 items-center gap-3 bg-gold px-5 text-ink transition-colors hover:bg-bone sm:h-14 sm:px-6 md:px-8"
+                      className="eyebrow group inline-flex h-12 items-center gap-3 rounded-2xl bg-gold px-5 text-ink shadow-[0_16px_34px_-22px_rgba(201,161,90,0.9)] transition-all hover:-translate-y-0.5 hover:bg-bone sm:h-14 sm:px-6 md:px-8"
                     >
                       Anmäl dig till juldroppet
                       <ArrowDown className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
                     </a>
                     <a
                       href="#kollektionen"
-                      className="eyebrow inline-flex h-12 items-center gap-2 border border-bone/25 px-5 text-bone/80 transition-colors hover:border-bone/60 hover:text-bone sm:h-14 sm:px-6"
+                      className="eyebrow inline-flex h-12 items-center gap-2 rounded-2xl border border-bone/25 px-5 text-bone/80 transition-all hover:-translate-y-0.5 hover:border-bone/60 hover:text-bone sm:h-14 sm:px-6"
                     >
                       Se kollektionen
                       <ArrowRight className="size-3.5" />
                     </a>
                     <a
                       href="#about-title"
-                      className="eyebrow inline-flex h-12 items-center gap-2 border border-bone/25 px-5 text-bone/80 transition-colors hover:border-bone/60 hover:text-bone sm:h-14 sm:px-6"
+                      className="eyebrow inline-flex h-12 items-center gap-2 rounded-2xl border border-bone/25 px-5 text-bone/80 transition-all hover:-translate-y-0.5 hover:border-bone/60 hover:text-bone sm:h-14 sm:px-6"
                     >
                       Om oss
                       <ArrowDown className="size-3.5" />
@@ -780,7 +780,7 @@ export default function Landing() {
                 href="https://ig.me/m/kollektionenavlund.se"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="eyebrow mt-8 inline-flex h-12 items-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-bone"
+                className="eyebrow mt-8 inline-flex h-12 items-center gap-2 rounded-xl bg-gold px-6 text-ink transition-colors hover:bg-bone"
               >
                 <Instagram className="size-4" strokeWidth={1.7} />
                 Skicka DM på Instagram
@@ -809,7 +809,7 @@ export default function Landing() {
                 </a>
                 <Link
                   to="/kontakt"
-                  className="eyebrow mt-5 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-bone"
+                  className="eyebrow mt-5 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gold px-6 text-ink transition-colors hover:bg-bone"
                 >
                   Till kontaktsidan
                   <ArrowRight className="size-3.5" />

@@ -352,20 +352,36 @@ export function HoodieShowcase() {
               <div className="mt-auto grid gap-2">
                 <Link
                   to="/shop/domkyrkan-hoodie"
-                  className="eyebrow inline-flex h-12 items-center justify-center gap-2 bg-gold px-4 text-center text-ink transition-colors hover:bg-bone"
+                  className="group flex min-h-14 items-center justify-between gap-3 rounded-2xl bg-gold px-4 py-3 text-ink shadow-[0_16px_34px_-22px_rgba(201,161,90,0.9)] transition-all hover:-translate-y-0.5 hover:bg-bone"
                 >
-                  Köp preorder
-                  <ArrowRight className="size-3.5" />
+                  <span className="text-left">
+                    <span className="block text-[9px] font-semibold uppercase tracking-[0.18em] opacity-55">
+                      Lokal pre-order
+                    </span>
+                    <span className="mt-0.5 block text-sm font-semibold">
+                      Köp preorder · 529 kr
+                    </span>
+                  </span>
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-ink/10 bg-white/20">
+                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
                 </Link>
                 <a
                   href="#juldroppet"
-                  className="eyebrow inline-flex h-12 items-center justify-center gap-2 border border-bone/25 px-4 text-center text-bone/75 transition-colors hover:border-bone/60 hover:text-bone"
+                  className="group flex min-h-14 items-center justify-between gap-3 rounded-2xl border border-bone/25 bg-bone/5 px-4 py-3 text-bone/80 transition-all hover:-translate-y-0.5 hover:border-bone/60 hover:bg-bone/10 hover:text-bone"
                 >
-                  Skriv upp dig för förtur
-                  <ArrowDown className="size-3.5" />
+                  <span className="text-left">
+                    <span className="block text-sm font-semibold">
+                      Skriv upp dig för förtur
+                    </span>
+                    <span className="mt-0.5 block text-[11px] text-bone/45">
+                      Kostnadsfritt · vi hör av oss
+                    </span>
+                  </span>
+                  <ArrowDown className="size-4 shrink-0 text-bone/40 transition-transform group-hover:translate-y-0.5" />
                 </a>
                 <p className="text-center text-[10px] leading-5 text-bone/45">
-                  Förtur är kostnadsfri · Betala med kort i kassan
+                  Förtur är kostnadsfri · Klarna, kort, Amazon Pay eller Apple Pay i kassan
                 </p>
               </div>
             </div>

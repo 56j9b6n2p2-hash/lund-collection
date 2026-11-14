@@ -40,7 +40,7 @@ export const products: Product[] = [
       "271 g/m² · 50% bomull / 50% polyester",
       "Borstad insida, dubbelfodrad huva och känguruficka",
       "OEKO-TEX® Standard 100 · lokalt tryckt i liten serie",
-      "Egen hemleverans i Lund innan jul · betala med kort eller utan betalning",
+      "Egen hemleverans i Lund innan jul · betala med Klarna, kort, Amazon Pay eller Apple Pay – eller utan betalning",
     ],
     tags: [
       "hoodie",

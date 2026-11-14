@@ -43,7 +43,7 @@ export default function FilmDetail() {
         </p>
         <Link
           to="/film"
-          className="eyebrow mt-8 flex h-12 items-center gap-2 bg-ink px-6 text-bone transition-colors hover:bg-gold hover:text-ink"
+          className="eyebrow mt-8 flex h-12 items-center gap-2 rounded-xl bg-ink px-6 text-bone transition-colors hover:bg-gold hover:text-ink"
         >
           <ArrowLeft className="size-3.5" />
           Till filmerna

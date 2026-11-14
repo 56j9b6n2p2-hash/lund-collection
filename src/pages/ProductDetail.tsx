@@ -9,6 +9,7 @@ import {
   Truck,
 } from "lucide-react";
 import { formatSek, getProduct } from "@/data/products";
+import { PaymentMethods } from "@/components/PaymentMethods";
 import { ProductStructuredData } from "@/components/ProductStructuredData";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { useStorefront } from "@/components/StorefrontLayout";
@@ -52,7 +53,7 @@ export default function ProductDetail() {
         </p>
         <Link
           to="/shop"
-          className="eyebrow mt-8 flex h-12 items-center gap-2 bg-ink px-6 text-bone transition-colors hover:bg-gold hover:text-ink"
+          className="eyebrow mt-8 flex h-12 items-center gap-2 rounded-xl bg-ink px-6 text-bone transition-colors hover:bg-gold hover:text-ink"
         >
           <ArrowLeft className="size-3.5" />
           Till kollektionen
@@ -180,20 +181,37 @@ export default function ProductDetail() {
             <button
               type="button"
               onClick={() => handleAdd(product.id)}
-              className="eyebrow mt-7 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone"
+              className="group mt-7 flex min-h-14 w-full items-center justify-between gap-3 rounded-2xl bg-gold px-4 py-3 text-ink shadow-[0_16px_34px_-22px_rgba(201,161,90,0.9)] transition-all hover:-translate-y-0.5 hover:bg-ink hover:text-bone"
             >
-              Förbeställ hoodien
-              <Plus className="size-4" strokeWidth={1.8} />
+              <span className="text-left">
+                <span className="block text-[9px] font-semibold uppercase tracking-[0.18em] opacity-55">
+                  Lokal pre-order
+                </span>
+                <span className="mt-0.5 block text-sm font-semibold">
+                  Förbeställ hoodien · {formatSek(product.price)}
+                </span>
+              </span>
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-ink/10 bg-white/20">
+                <Plus className="size-4" strokeWidth={1.8} />
+              </span>
             </button>
             <Link
               to="/#juldroppet"
-              className="eyebrow mt-3 flex h-12 w-full items-center justify-center gap-2 border border-ink/15 text-ink transition-colors hover:border-gold hover:text-gold-deep"
+              className="group mt-2.5 flex min-h-14 w-full items-center justify-between gap-3 rounded-2xl border border-ink/15 bg-white/40 px-4 py-3 text-ink transition-all hover:-translate-y-0.5 hover:border-ink/30 hover:bg-white/80"
             >
-              Få förtur &amp; skicka idé
-              <ArrowUpRight className="size-3.5" />
+              <span className="text-left">
+                <span className="block text-sm font-semibold">
+                  Få förtur &amp; skicka idé
+                </span>
+                <span className="mt-0.5 block text-[11px] text-muted-foreground">
+                  Kostnadsfritt · vi hör av oss
+                </span>
+              </span>
+              <ArrowUpRight className="size-4 shrink-0 text-ink/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
+            <PaymentMethods className="mt-4" />
             <p className="mt-3 text-center text-[10px] leading-5 text-muted-foreground">
-              Kort eller betalningsfri pre-order i kassan
+              Klarna, kort, Amazon Pay eller Apple Pay i kassan · eller helt utan betalning
             </p>
 
             <div className="mt-8 border-t border-ink/10 pt-6">

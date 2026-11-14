@@ -58,7 +58,7 @@ export default function Contact() {
               href={INSTAGRAM_DM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="eyebrow group inline-flex h-14 items-center gap-2.5 bg-gold px-7 text-ink transition-colors hover:bg-bone"
+              className="eyebrow group inline-flex h-14 items-center gap-2.5 rounded-2xl bg-gold px-7 text-ink shadow-[0_16px_34px_-22px_rgba(201,161,90,0.9)] transition-all hover:-translate-y-0.5 hover:bg-bone"
             >
               <Instagram className="size-4" strokeWidth={1.8} />
               Skicka DM på Instagram

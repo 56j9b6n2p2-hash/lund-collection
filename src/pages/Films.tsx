@@ -191,7 +191,7 @@ export default function Films() {
           >
             <Link
               to="/shop/domkyrkan-hoodie"
-              className="eyebrow group inline-flex h-12 items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-bone"
+              className="eyebrow group inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-gold px-6 text-ink transition-colors hover:bg-bone"
             >
               Se Lund hoodien
               <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
