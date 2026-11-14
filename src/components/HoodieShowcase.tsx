@@ -1,6 +1,6 @@
 import { useReducedMotion } from "framer-motion";
 import { Link } from "react-router";
-import { ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/utils";
@@ -349,13 +349,25 @@ export function HoodieShowcase() {
                 </div>
               </div>
 
-              <a
-                href="#juldroppet"
-                className="eyebrow mt-auto inline-flex h-12 items-center justify-center gap-2 bg-gold px-4 text-center text-ink transition-colors hover:bg-bone"
-              >
-                Få förtur &amp; skicka idé
-                <ArrowRight className="size-3.5" />
-              </a>
+              <div className="mt-auto grid gap-2">
+                <Link
+                  to="/shop/domkyrkan-hoodie"
+                  className="eyebrow inline-flex h-12 items-center justify-center gap-2 bg-gold px-4 text-center text-ink transition-colors hover:bg-bone"
+                >
+                  Köp preorder
+                  <ArrowRight className="size-3.5" />
+                </Link>
+                <a
+                  href="#juldroppet"
+                  className="eyebrow inline-flex h-12 items-center justify-center gap-2 border border-bone/25 px-4 text-center text-bone/75 transition-colors hover:border-bone/60 hover:text-bone"
+                >
+                  Skriv upp dig för förtur
+                  <ArrowDown className="size-3.5" />
+                </a>
+                <p className="text-center text-[10px] leading-5 text-bone/45">
+                  Förtur är kostnadsfri · Betala med Swish i kassan
+                </p>
+              </div>
             </div>
 
             <div className="border-t border-bone/15 pt-5 lg:col-span-12">
