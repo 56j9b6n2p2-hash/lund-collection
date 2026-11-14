@@ -33,7 +33,8 @@ const SWISH_MESSAGE = "Lund Merch";
 function buildSwishUrl(amount: number) {
   const params = [
     `sw=${SWISH_NUMBER}`,
-    `amt=${amount.toFixed(1)}`,
+    `amt=${amount}`,
+    "cur=SEK",
     `msg=${encodeURIComponent(SWISH_MESSAGE)}`,
   ].join("&");
 
