@@ -21,18 +21,18 @@ type Colorway = {
 const colorways: Colorway[] = [
   {
     id: "vit",
-    label: "Vintervit",
-    hex: "#dcd7c1",
+    label: "Kräm",
+    hex: "#d8c8b2",
     views: [
       {
         src: "/media/hoodie/domkyrkan-vit-1.jpg",
         label: "Fram",
-        alt: "Vintervit hoodie med inramat Domkyrkan-motiv på bröstet",
+        alt: "Kräm hoodie med inramat Domkyrkan-motiv på bröstet",
       },
       {
         src: "/media/hoodie/domkyrkan-vit-2.jpg",
         label: "Bak",
-        alt: "Vintervit hoodie med slät rygg",
+        alt: "Kräm hoodie med slät rygg",
       },
     ],
   },
@@ -72,35 +72,35 @@ const colorways: Colorway[] = [
   },
   {
     id: "sand",
-    label: "Sand",
-    hex: "#d2c6b0",
+    label: "Ljusgrå",
+    hex: "#b7b5b2",
     views: [
       {
         src: "/media/hoodie/domkyrkan-sand-1.jpg",
         label: "Fram",
-        alt: "Sandfärgad hoodie med inramat Domkyrkan-motiv på bröstet",
+        alt: "Ljusgrå hoodie med inramat Domkyrkan-motiv på bröstet",
       },
       {
         src: "/media/hoodie/domkyrkan-sand-2.jpg",
         label: "Bak",
-        alt: "Sandfärgad hoodie med slät rygg",
+        alt: "Ljusgrå hoodie med slät rygg",
       },
     ],
   },
   {
     id: "rod",
-    label: "Vinröd",
-    hex: "#6e303a",
+    label: "Bordeaux",
+    hex: "#5e2430",
     views: [
       {
         src: "/media/hoodie/domkyrkan-rod-1.jpg",
         label: "Fram",
-        alt: "Vinröd hoodie med inramat Domkyrkan-motiv på bröstet",
+        alt: "Bordeaux hoodie med inramat Domkyrkan-motiv på bröstet",
       },
       {
         src: "/media/hoodie/domkyrkan-rod-2.jpg",
         label: "Bak",
-        alt: "Vinröd hoodie med slät rygg",
+        alt: "Bordeaux hoodie med slät rygg",
       },
     ],
   },

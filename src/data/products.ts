@@ -28,9 +28,9 @@ export const products: Product[] = [
     price: 679,
     image: "/media/hoodie/domkyrkan-vit-1.jpg",
     imageAlt:
-      "Vintervit Lund hoodie med inramat Domkyrkan-motiv på bröstet och slät rygg",
-    colorName: "Vintervit",
-    colorHex: "#dcd7c1",
+      "Kräm Lund hoodie med inramat Domkyrkan-motiv på bröstet och slät rygg",
+    colorName: "Kräm",
+    colorHex: "#d8c8b2",
     material: "Unisex · 271 g/m² · 50/50 bomull/polyester",
     badge: "Lokal pre-order",
     description:
@@ -52,7 +52,7 @@ export const products: Product[] = [
       "katedral",
       "katedraltryck",
       "julmarknad",
-      "vintervit",
+      "kräm",
       "stortorget",
       "lund merch",
       "merch lund",

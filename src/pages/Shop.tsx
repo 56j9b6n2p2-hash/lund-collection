@@ -17,7 +17,7 @@ export default function Shop() {
       "Lund merch och julkläder från Lund. Domkyrkan Hoodie för 679 kr i lokal pre-order – en julklapp Lund 2026 med egen hemleverans innan jul. 046 merch inför droppet 1 december.",
     path: "/shop",
     image: "/media/hoodie/domkyrkan-vit-1.jpg",
-    imageAlt: "Vintervit Lund hoodie — Domkyrkan Hoodie",
+    imageAlt: "Kräm Lund hoodie — Domkyrkan Hoodie",
     imageWidth: 1200,
     imageHeight: 1200,
   });
