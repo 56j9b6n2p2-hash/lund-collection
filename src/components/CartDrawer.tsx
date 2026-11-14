@@ -27,14 +27,13 @@ import type { CartApi, PlacedOrder } from "@/hooks/use-cart";
 type Mode = "cart" | "checkout" | "done" | "swish";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SWISH_NUMBER = "0730281619";
+const SWISH_NUMBER = "46730281619";
 const SWISH_MESSAGE = "Lund Merch";
 
 function buildSwishUrl(amount: number) {
   const params = [
     `sw=${SWISH_NUMBER}`,
-    `amt=${amount}`,
-    "cur=SEK",
+    `amt=${amount.toFixed(1)}`,
     `msg=${encodeURIComponent(SWISH_MESSAGE)}`,
   ].join("&");
 
