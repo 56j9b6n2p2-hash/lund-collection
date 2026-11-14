@@ -9,7 +9,9 @@ import {
   Minus,
   Plus,
   ShoppingBag,
+  Smartphone,
   Trash2,
+  ArrowUpRight,
 } from "lucide-react";
 import { api } from "@/convex/_generated/api";
 import {
@@ -22,9 +24,22 @@ import {
 import { formatSek } from "@/data/products";
 import type { CartApi, PlacedOrder } from "@/hooks/use-cart";
 
-type Mode = "cart" | "checkout" | "done";
+type Mode = "cart" | "checkout" | "done" | "swish";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const SWISH_NUMBER = "0730281619";
+const SWISH_MESSAGE = "Lund Merch";
+
+function buildSwishUrl(amount: number) {
+  const params = [
+    `sw=${SWISH_NUMBER}`,
+    `amt=${amount}`,
+    "cur=SEK",
+    `msg=${encodeURIComponent(SWISH_MESSAGE)}`,
+  ].join("&");
+
+  return `https://app.swish.nu/1/p/sw/?${params}`;
+}
 
 export function CartDrawer({
   open,
@@ -41,6 +56,7 @@ export function CartDrawer({
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [placed, setPlaced] = useState<PlacedOrder | null>(null);
+  const [swishUrl, setSwishUrl] = useState<string | null>(null);
   const createOrder = useMutation(api.orders.createOrder);
 
   const itemLabel = cart.count === 1 ? "vara" : "varor";
@@ -49,6 +65,7 @@ export function CartDrawer({
     setMode("cart");
     setError(null);
     setPlaced(null);
+    setSwishUrl(null);
     setCustomerName("");
     setEmail("");
   }
@@ -60,8 +77,7 @@ export function CartDrawer({
     }
   }
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function placeOrder(payWithSwish: boolean) {
     setError(null);
 
     if (customerName.trim().length < 2) {
@@ -96,14 +112,24 @@ export function CartDrawer({
         })),
       });
 
-      setPlaced({
+      const order = {
         reference: `LUN-${String(orderId).slice(-6).toUpperCase()}`,
         email: orderSummary.email,
         total: orderSummary.total,
         itemCount: orderSummary.itemCount,
-      });
+      };
+
       cart.clear();
-      setMode("done");
+      setPlaced(order);
+
+      if (payWithSwish) {
+        const url = buildSwishUrl(orderSummary.total);
+        setSwishUrl(url);
+        setMode("swish");
+        window.location.assign(url);
+      } else {
+        setMode("done");
+      }
     } catch {
       setError(
         "Pre-ordern kunde inte skickas just nu. Försök igen eller skicka ett DM på Instagram.",
@@ -111,6 +137,15 @@ export function CartDrawer({
     } finally {
       setSubmitting(false);
     }
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    void placeOrder(true);
+  }
+
+  function handlePreorder() {
+    void placeOrder(false);
   }
 
   const firstName = customerName.trim().split(" ")[0] || "";
@@ -123,7 +158,11 @@ export function CartDrawer({
       >
         <SheetHeader className="shrink-0 border-b border-sand px-6 py-6 pr-14 text-left">
           <p className="eyebrow mb-2 text-gold-deep">
-            {mode === "done" ? "Pre-order mottagen" : "Kollektionen av Lund"}
+            {mode === "done"
+              ? "Pre-order mottagen"
+              : mode === "swish"
+                ? "Betalning via Swish"
+                : "Kollektionen av Lund"}
           </p>
           <SheetTitle asChild>
             <h2 className="font-display text-3xl uppercase leading-none text-ink">
@@ -131,15 +170,19 @@ export function CartDrawer({
                 ? "Din varukorg"
                 : mode === "checkout"
                   ? "Pre-order"
-                  : "Tack"}
+                  : mode === "swish"
+                    ? "Swish"
+                    : "Tack"}
             </h2>
           </SheetTitle>
           <SheetDescription className="mt-2 text-sm text-muted-foreground">
             {mode === "cart"
-              ? `${cart.count} ${itemLabel} · Kostnadsfri pre-order`
+              ? `${cart.count} ${itemLabel} · Swish eller betalningsfri pre-order`
               : mode === "checkout"
-                ? "Ingen betalning dras nu. Vi producerar samlat efter 1 december och kör hem den i Lund innan jul."
-                : `Din pre-order är registrerad, ${firstName}.`}
+                ? "Betala med Swish eller skicka en betalningsfri pre-order. Vi producerar samlat efter 1 december och kör hem den i Lund innan jul."
+                : mode === "swish"
+                  ? "Swish öppnas med belopp och meddelande ifyllt."
+                  : `Din pre-order är registrerad, ${firstName}.`}
           </SheetDescription>
         </SheetHeader>
 
@@ -181,6 +224,57 @@ export function CartDrawer({
               type="button"
               onClick={() => handleOpenChange(false)}
               className="eyebrow mt-8 flex h-12 items-center justify-center gap-2 bg-ink px-6 text-bone transition-colors hover:bg-gold hover:text-ink"
+            >
+              Stäng
+            </button>
+          </div>
+        ) : mode === "swish" && placed && swishUrl ? (
+          <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-6 py-8">
+            <div className="flex size-14 items-center justify-center rounded-full border border-gold/40 bg-gold/15 text-gold">
+              <Smartphone className="size-6" strokeWidth={1.8} />
+            </div>
+            <h3 className="mt-6 font-display text-2xl uppercase leading-none text-ink">
+              Öppnar Swish.
+            </h3>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              Vi öppnar Swish med{" "}
+              <span className="font-semibold text-ink">
+                {formatSek(placed.total)}
+              </span>{" "}
+              och meddelandet{" "}
+              <span className="font-semibold text-ink">Lund Merch</span>. Slutför
+              betalningen i appen.
+            </p>
+            <dl className="mt-8 divide-y divide-sand border-y border-sand text-sm">
+              <div className="flex items-center justify-between py-3">
+                <dt className="text-muted-foreground">Ordernummer</dt>
+                <dd className="font-semibold tracking-wide">
+                  {placed.reference}
+                </dd>
+              </div>
+              <div className="flex items-center justify-between py-3">
+                <dt className="text-muted-foreground">Belopp</dt>
+                <dd className="font-semibold">{formatSek(placed.total)}</dd>
+              </div>
+              <div className="flex items-center justify-between py-3">
+                <dt className="text-muted-foreground">Meddelande</dt>
+                <dd>Lund Merch</dd>
+              </div>
+            </dl>
+            <a
+              href={swishUrl}
+              className="eyebrow mt-8 flex h-12 items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone"
+            >
+              Öppna Swish
+              <ArrowUpRight className="size-3.5" />
+            </a>
+            <p className="mt-3 text-center text-[11px] leading-5 text-muted-foreground">
+              Om Swish inte öppnas automatiskt kan du använda knappen ovan.
+            </p>
+            <button
+              type="button"
+              onClick={() => handleOpenChange(false)}
+              className="mt-3 flex items-center justify-center gap-2 py-2 text-xs text-muted-foreground transition-colors hover:text-ink"
             >
               Stäng
             </button>
@@ -286,15 +380,15 @@ export function CartDrawer({
                 </span>
               </div>
               <p className="mt-2 text-[11px] leading-5 text-muted-foreground">
-                Egen hemleverans i Lund. Pre-ordern är kostnadsfri och ingen
-                betalning dras nu.
+                Egen hemleverans i Lund. Betala med Swish eller skicka en
+                betalningsfri pre-order.
               </p>
               <button
                 type="button"
                 onClick={() => setMode("checkout")}
                 className="eyebrow mt-5 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone"
               >
-                Till pre-ordern
+                Till kassan
                 <ArrowRight className="size-3.5" />
               </button>
               <button
@@ -364,6 +458,10 @@ export function CartDrawer({
                 <span className="text-muted-foreground">Hemleverans</span>
                 <span className="text-muted-foreground">I Lund</span>
               </div>
+              <div className="mt-2 flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">Betalning</span>
+                <span className="text-ink">Swish · {SWISH_MESSAGE}</span>
+              </div>
             </div>
 
             {error ? (
@@ -387,11 +485,23 @@ export function CartDrawer({
                 </>
               ) : (
                 <>
-                  Skicka pre-order
-                  <ArrowRight className="size-3.5" />
+                  <Smartphone className="size-4" strokeWidth={1.8} />
+                  Betala med Swish
+                  <ArrowUpRight className="size-3.5" />
                 </>
               )}
             </button>
+            <button
+              type="button"
+              onClick={handlePreorder}
+              disabled={submitting}
+              className="mt-2 flex h-11 w-full items-center justify-center gap-2 border border-ink/15 px-6 text-xs uppercase tracking-[0.14em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bone disabled:cursor-wait disabled:opacity-70"
+            >
+              Skicka pre-order utan betalning
+            </button>
+            <p className="mt-3 text-center text-[10px] leading-5 text-muted-foreground">
+              Swish öppnas med belopp och meddelandet Lund Merch ifyllt.
+            </p>
             <button
               type="button"
               onClick={() => {
@@ -403,8 +513,8 @@ export function CartDrawer({
               <ArrowLeft className="size-3.5" />
               Tillbaka till varukorgen
             </button>
-            <p className="mt-5 text-center text-[11px] leading-5 text-muted-foreground">
-              Kostnadsfri pre-order · Designat i Lund, Sverige
+            <p className="mt-4 text-center text-[11px] leading-5 text-muted-foreground">
+              Swish eller betalningsfri pre-order · Designat i Lund, Sverige
             </p>
           </form>
         )}

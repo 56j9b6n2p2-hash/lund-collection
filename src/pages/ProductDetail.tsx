@@ -193,7 +193,7 @@ export default function ProductDetail() {
               <ArrowUpRight className="size-3.5" />
             </Link>
             <p className="mt-3 text-center text-[10px] leading-5 text-muted-foreground">
-              Kostnadsfri pre-order · Ingen betalning dras nu
+              Swish eller betalningsfri pre-order i kassan
             </p>
 
             <div className="mt-8 border-t border-ink/10 pt-6">
