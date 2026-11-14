@@ -80,6 +80,23 @@ const methods = [
   { name: "Apple Pay", mark: <ApplePayMark /> },
 ];
 
+export function PaymentLogos({ className }: { className?: string }) {
+  return (
+    <ul className={cn("flex flex-wrap items-center gap-1.5", className)}>
+      {methods.map((method) => (
+        <li
+          key={method.name}
+          title={method.name}
+          className="flex h-9 items-center justify-center rounded-lg border border-ink/10 bg-white px-2.5 shadow-[0_1px_2px_rgba(16,24,32,0.04)]"
+        >
+          {method.mark}
+          <span className="sr-only">{method.name}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function PaymentMethods({ className }: { className?: string }) {
   return (
     <div

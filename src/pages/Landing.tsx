@@ -12,6 +12,7 @@ import {
   Sparkles,
   Star,
   TramFront,
+  Truck,
 } from "lucide-react";
 import { ChristmasStar } from "@/components/ChristmasStar";
 import { CinematicVideo } from "@/components/CinematicVideo";
@@ -21,6 +22,7 @@ import {
 } from "@/components/CinematicVideoPlaylist";
 import { DropSignupForm } from "@/components/DropSignupForm";
 import { HoodieShowcase } from "@/components/HoodieShowcase";
+import { PaymentLogos } from "@/components/PaymentMethods";
 import { Reveal } from "@/components/Reveal";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { cn } from "@/lib/utils";
@@ -263,6 +265,34 @@ export default function Landing() {
                 </span>
                 <span className="mt-2 h-16 w-px bg-gradient-to-b from-bone/40 to-transparent" />
               </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Trygghet & betalning */}
+        <section
+          aria-label="Personlig leverans och säker betalning"
+          className="border-b border-sand bg-[#f8f3e9]"
+        >
+          <div className="container-site grid gap-4 py-5 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-8">
+            <div className="flex items-center gap-3">
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/15 text-gold-deep">
+                <Truck className="size-4" strokeWidth={1.7} />
+              </span>
+              <div>
+                <p className="eyebrow text-[9px] text-gold-deep">
+                  Personlig leverans av ägarna
+                </p>
+                <p className="mt-1 text-xs leading-5 text-ink/60">
+                  Vi kör eller cyklar hem din hoodie i Lund innan jul.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+              <p className="eyebrow shrink-0 text-[9px] text-ink/50">
+                Säker betalning
+              </p>
+              <PaymentLogos />
             </div>
           </div>
         </section>
