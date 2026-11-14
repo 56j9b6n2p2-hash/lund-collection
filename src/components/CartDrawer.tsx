@@ -27,7 +27,8 @@ import type { CartApi, PlacedOrder } from "@/hooks/use-cart";
 type Mode = "cart" | "checkout" | "done" | "swish";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SWISH_NUMBER = "0730281619";
+const SWISH_NUMBER = "46730281619";
+const SWISH_APP_NUMBER = "0730281619";
 const SWISH_MESSAGE = "Lund Merch";
 
 function buildSwishUrl(amount: number) {
@@ -45,7 +46,7 @@ function buildSwishUrl(amount: number) {
 function buildSwishAppUrl(amount: number) {
   const payload = {
     version: 1,
-    payee: { value: SWISH_NUMBER },
+    payee: { value: SWISH_APP_NUMBER },
     amount: { value: amount },
     message: { value: SWISH_MESSAGE },
   };
@@ -135,10 +136,11 @@ export function CartDrawer({
       setPlaced(order);
 
       if (payWithSwish) {
-        const url = buildSwishUrl(orderSummary.total);
-        setSwishUrl(url);
+        const webUrl = buildSwishUrl(orderSummary.total);
+        const appUrl = buildSwishAppUrl(orderSummary.total);
+        setSwishUrl(webUrl);
         setMode("swish");
-        window.location.assign(url);
+        window.location.assign(appUrl);
       } else {
         setMode("done");
       }
@@ -288,6 +290,14 @@ export function CartDrawer({
             </a>
             <p className="mt-3 text-center text-[11px] leading-5 text-muted-foreground">
               Om Swish inte öppnas automatiskt kan du använda knapparna ovan.
+            </p>
+            <p className="mt-4 border-t border-sand pt-4 text-center text-[11px] leading-5 text-muted-foreground">
+              Fungerar länken inte? Swisha manuellt till{" "}
+              <span className="font-semibold text-ink">0730 28 16 19</span>{" "}
+              med beloppet{" "}
+              <span className="font-semibold text-ink">{formatSek(placed.total)}</span>{" "}
+              och meddelandet{" "}
+              <span className="font-semibold text-ink">Lund Merch</span>.
             </p>
             <button
               type="button"
