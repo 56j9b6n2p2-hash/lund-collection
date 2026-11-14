@@ -27,31 +27,17 @@ import type { CartApi, PlacedOrder } from "@/hooks/use-cart";
 type Mode = "cart" | "checkout" | "done" | "swish";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SWISH_NUMBER = "46730281619";
-const SWISH_APP_NUMBER = "0730281619";
+const SWISH_NUMBER = "0730281619";
 const SWISH_MESSAGE = "Lund Merch";
 
 function buildSwishUrl(amount: number) {
   const params = [
     `sw=${SWISH_NUMBER}`,
-    `amt=${amount}`,
-    "cur=SEK",
+    `amt=${amount.toFixed(1)}`,
     `msg=${encodeURIComponent(SWISH_MESSAGE)}`,
-    "src=qr",
   ].join("&");
 
   return `https://app.swish.nu/1/p/sw/?${params}`;
-}
-
-function buildSwishAppUrl(amount: number) {
-  const payload = {
-    version: 1,
-    payee: { value: SWISH_APP_NUMBER },
-    amount: { value: amount },
-    message: { value: SWISH_MESSAGE },
-  };
-
-  return `swish://payment?data=${encodeURIComponent(JSON.stringify(payload))}`;
 }
 
 export function CartDrawer({
@@ -136,11 +122,10 @@ export function CartDrawer({
       setPlaced(order);
 
       if (payWithSwish) {
-        const webUrl = buildSwishUrl(orderSummary.total);
-        const appUrl = buildSwishAppUrl(orderSummary.total);
-        setSwishUrl(webUrl);
+        const url = buildSwishUrl(orderSummary.total);
+        setSwishUrl(url);
         setMode("swish");
-        window.location.assign(appUrl);
+        window.location.assign(url);
       } else {
         setMode("done");
       }
@@ -281,12 +266,6 @@ export function CartDrawer({
             >
               Öppna Swish
               <ArrowUpRight className="size-3.5" />
-            </a>
-            <a
-              href={buildSwishAppUrl(placed.total)}
-              className="eyebrow mt-2 flex h-11 items-center justify-center gap-2 border border-ink/15 px-6 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bone"
-            >
-              Öppna direkt i Swish-appen
             </a>
             <p className="mt-3 text-center text-[11px] leading-5 text-muted-foreground">
               Om Swish inte öppnas automatiskt kan du använda knapparna ovan.
