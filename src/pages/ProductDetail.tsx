@@ -23,7 +23,7 @@ export default function ProductDetail() {
       ? `${product.name} — Lund hoodie | Kollektionen av Lund`
       : "Plagget hittades inte — Kollektionen av Lund",
     description: product
-      ? `Lund hoodie i ${product.colorName.toLowerCase()} med julmarknaden på bröstet och Lunds domkyrka på ryggen. Tung, borstad bomullsblandning, unisex S–XXL. 679 kr i lokal pre-order med egen hemleverans i Lund innan jul.`
+      ? `Lund hoodie i ${product.colorName.toLowerCase()} med ett inramat Domkyrkan-motiv på bröstet och en ren rygg. Tung, borstad bomullsblandning, unisex S–XXL. 679 kr i lokal pre-order med egen hemleverans i Lund innan jul.`
       : "Plagget finns inte i julkollektionen. Utforska hela kollektionen från Kollektionen av Lund.",
     path: `/shop/${id ?? ""}`,
     image: product?.image ?? "/media/video/posters/winter-drone.jpg",

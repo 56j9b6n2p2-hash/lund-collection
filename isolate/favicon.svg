@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Kollektionen av Lund">
-  <rect width="64" height="64" rx="12" fill="#101820"/>
-  <path d="M18 14h8v14.4L38.2 14H48L34.6 29.6 48.8 50H38.8L28.4 35.2 26 37.9V50h-8V14Z" fill="#C9A15A"/>
-  <path d="M16 54h32" stroke="#C9A15A" stroke-opacity=".55" stroke-width="1.5"/>
-</svg>

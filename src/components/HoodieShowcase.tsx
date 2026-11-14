@@ -27,12 +27,12 @@ const colorways: Colorway[] = [
       {
         src: "/media/hoodie/domkyrkan-vit-1.jpg",
         label: "Fram",
-        alt: "Vintervit hoodie med julmarknaden på bröstet",
+        alt: "Vintervit hoodie med inramat Domkyrkan-motiv på bröstet",
       },
       {
         src: "/media/hoodie/domkyrkan-vit-2.jpg",
         label: "Bak",
-        alt: "Vintervit hoodie med Lunds domkyrka på ryggen",
+        alt: "Vintervit hoodie med slät rygg",
       },
     ],
   },
@@ -44,12 +44,12 @@ const colorways: Colorway[] = [
       {
         src: "/media/hoodie/domkyrkan-gra-1.jpg",
         label: "Fram",
-        alt: "Olivgrön hoodie med julmarknaden på bröstet",
+        alt: "Olivgrön hoodie med inramat Domkyrkan-motiv på bröstet",
       },
       {
         src: "/media/hoodie/domkyrkan-gra-2.jpg",
         label: "Bak",
-        alt: "Olivgrön hoodie med Lunds domkyrka på ryggen",
+        alt: "Olivgrön hoodie med slät rygg",
       },
     ],
   },
@@ -61,12 +61,12 @@ const colorways: Colorway[] = [
       {
         src: "/media/hoodie/domkyrkan-svart-1.jpg",
         label: "Fram",
-        alt: "Svart hoodie med julmarknaden på bröstet",
+        alt: "Svart hoodie med inramat Domkyrkan-motiv på bröstet",
       },
       {
         src: "/media/hoodie/domkyrkan-svart-2.jpg",
         label: "Bak",
-        alt: "Svart hoodie med Lunds domkyrka på ryggen",
+        alt: "Svart hoodie med slät rygg",
       },
     ],
   },
@@ -78,12 +78,12 @@ const colorways: Colorway[] = [
       {
         src: "/media/hoodie/domkyrkan-sand-1.jpg",
         label: "Fram",
-        alt: "Sandfärgad hoodie med julmarknaden på bröstet",
+        alt: "Sandfärgad hoodie med inramat Domkyrkan-motiv på bröstet",
       },
       {
         src: "/media/hoodie/domkyrkan-sand-2.jpg",
         label: "Bak",
-        alt: "Sandfärgad hoodie med Lunds domkyrka på ryggen",
+        alt: "Sandfärgad hoodie med slät rygg",
       },
     ],
   },
@@ -95,12 +95,12 @@ const colorways: Colorway[] = [
       {
         src: "/media/hoodie/domkyrkan-rod-1.jpg",
         label: "Fram",
-        alt: "Vinröd hoodie med julmarknaden på bröstet",
+        alt: "Vinröd hoodie med inramat Domkyrkan-motiv på bröstet",
       },
       {
         src: "/media/hoodie/domkyrkan-rod-2.jpg",
         label: "Bak",
-        alt: "Vinröd hoodie med Lunds domkyrka på ryggen",
+        alt: "Vinröd hoodie med slät rygg",
       },
     ],
   },
@@ -221,13 +221,13 @@ export function HoodieShowcase() {
                   Domkyrkan
                 </h3>
                 <p className="mt-8 max-w-sm text-sm leading-8 text-bone/75">
-                  Julmarknaden på bröstet och Domkyrkan i kvällsljus på ryggen.
-                  Två motiv från samma vinterkväll i Lund.
+                  Ett inramat Domkyrkan-motiv på bröstet och en ren rygg.
+                  Ett motiv från en vinterkväll i Lund.
                 </p>
                 <p className="mt-6 max-w-sm text-sm leading-8 text-bone/55">
-                  Ett inramat julmotiv över bröstet och katedralen över ryggen.
-                  Tung fleece, mjuk insida och en passform som rymmer både tjock
-                  tröja och vinterluft.
+                  Katedralen i vinterljus, inramad i guld över bröstet. Tung
+                  fleece, mjuk insida och en passform som rymmer både tjock tröja
+                  och vinterluft.
                 </p>
               </div>
 
