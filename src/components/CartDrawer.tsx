@@ -9,7 +9,7 @@ import {
   Minus,
   Plus,
   ShoppingBag,
-  Smartphone,
+  CreditCard,
   Trash2,
   ArrowUpRight,
 } from "lucide-react";
@@ -24,21 +24,20 @@ import {
 import { formatSek } from "@/data/products";
 import type { CartApi, PlacedOrder } from "@/hooks/use-cart";
 
-type Mode = "cart" | "checkout" | "done" | "swish";
+type Mode = "cart" | "checkout" | "done" | "stripe";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SWISH_NUMBER = "0730281619";
-const SWISH_MESSAGE = "Lund Merch";
+const STRIPE_PAYMENT_LINK =
+  "https://buy.stripe.com/bJe3cw2Fig0U7yi8rOeEo00";
 
-function buildSwishUrl(amount: number) {
-  const params = [
-    `sw=${SWISH_NUMBER}`,
-    `amt=${amount}`,
-    "cur=SEK",
-    `msg=${encodeURIComponent(SWISH_MESSAGE)}`,
-  ].join("&");
+function buildStripeUrl(reference: string, email: string) {
+  const params = new URLSearchParams({
+    client_reference_id: reference,
+    prefilled_email: email,
+    locale: "sv",
+  });
 
-  return `https://app.swish.nu/1/p/sw/?${params}`;
+  return `${STRIPE_PAYMENT_LINK}?${params.toString()}`;
 }
 
 export function CartDrawer({
@@ -56,7 +55,7 @@ export function CartDrawer({
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [placed, setPlaced] = useState<PlacedOrder | null>(null);
-  const [swishUrl, setSwishUrl] = useState<string | null>(null);
+  const [stripeUrl, setStripeUrl] = useState<string | null>(null);
   const createOrder = useMutation(api.orders.createOrder);
 
   const itemLabel = cart.count === 1 ? "vara" : "varor";
@@ -65,7 +64,7 @@ export function CartDrawer({
     setMode("cart");
     setError(null);
     setPlaced(null);
-    setSwishUrl(null);
+    setStripeUrl(null);
     setCustomerName("");
     setEmail("");
   }
@@ -77,7 +76,7 @@ export function CartDrawer({
     }
   }
 
-  async function placeOrder(payWithSwish: boolean) {
+  async function placeOrder(payWithStripe: boolean) {
     setError(null);
 
     if (customerName.trim().length < 2) {
@@ -90,6 +89,12 @@ export function CartDrawer({
     }
     if (cart.detailed.length === 0) {
       setError("Varukorgen är tom.");
+      return;
+    }
+    if (payWithStripe && cart.count > 1) {
+      setError(
+        "Kortbetalningen gäller ett plagg i taget. Skicka en betalningsfri pre-order för fler plagg, så fakturerar vi.",
+      );
       return;
     }
 
@@ -122,10 +127,10 @@ export function CartDrawer({
       cart.clear();
       setPlaced(order);
 
-      if (payWithSwish) {
-        const url = buildSwishUrl(orderSummary.total);
-        setSwishUrl(url);
-        setMode("swish");
+      if (payWithStripe) {
+        const url = buildStripeUrl(order.reference, order.email);
+        setStripeUrl(url);
+        setMode("stripe");
         window.location.assign(url);
       } else {
         setMode("done");
@@ -160,8 +165,8 @@ export function CartDrawer({
           <p className="eyebrow mb-2 text-gold-deep">
             {mode === "done"
               ? "Pre-order mottagen"
-              : mode === "swish"
-                ? "Betalning via Swish"
+              : mode === "stripe"
+                ? "Betalning via Stripe"
                 : "Kollektionen av Lund"}
           </p>
           <SheetTitle asChild>
@@ -170,18 +175,18 @@ export function CartDrawer({
                 ? "Din varukorg"
                 : mode === "checkout"
                   ? "Pre-order"
-                  : mode === "swish"
-                    ? "Swish"
+                  : mode === "stripe"
+                    ? "Betalning"
                     : "Tack"}
             </h2>
           </SheetTitle>
           <SheetDescription className="mt-2 text-sm text-muted-foreground">
             {mode === "cart"
-              ? `${cart.count} ${itemLabel} · Swish eller betalningsfri pre-order`
+              ? `${cart.count} ${itemLabel} · Kort eller betalningsfri pre-order`
               : mode === "checkout"
-                ? "Betala med Swish eller skicka en betalningsfri pre-order. Vi producerar samlat efter 1 december och kör hem den i Lund innan jul."
-                : mode === "swish"
-                  ? "Swish öppnas med belopp och meddelande ifyllt."
+                ? "Betala med kort via Stripe eller skicka en betalningsfri pre-order. Vi producerar samlat efter 1 december och kör hem den i Lund innan jul."
+                : mode === "stripe"
+                  ? "Stripe öppnas med din e-post och orderreferens ifyllda."
                   : `Din pre-order är registrerad, ${firstName}.`}
           </SheetDescription>
         </SheetHeader>
@@ -228,22 +233,20 @@ export function CartDrawer({
               Stäng
             </button>
           </div>
-        ) : mode === "swish" && placed && swishUrl ? (
+        ) : mode === "stripe" && placed && stripeUrl ? (
           <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-6 py-8">
             <div className="flex size-14 items-center justify-center rounded-full border border-gold/40 bg-gold/15 text-gold">
-              <Smartphone className="size-6" strokeWidth={1.8} />
+              <CreditCard className="size-6" strokeWidth={1.8} />
             </div>
             <h3 className="mt-6 font-display text-2xl uppercase leading-none text-ink">
-              Öppnar Swish.
+              Öppnar Stripe.
             </h3>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">
-              Vi öppnar Swish med{" "}
+              Vi öppnar Stripes säkra betalning med{" "}
               <span className="font-semibold text-ink">
                 {formatSek(placed.total)}
               </span>{" "}
-              och meddelandet{" "}
-              <span className="font-semibold text-ink">Lund Merch</span>. Slutför
-              betalningen i appen.
+              och din e-post ifylld. Slutför betalningen där.
             </p>
             <dl className="mt-8 divide-y divide-sand border-y border-sand text-sm">
               <div className="flex items-center justify-between py-3">
@@ -257,32 +260,24 @@ export function CartDrawer({
                 <dd className="font-semibold">{formatSek(placed.total)}</dd>
               </div>
               <div className="flex items-center justify-between py-3">
-                <dt className="text-muted-foreground">Meddelande</dt>
-                <dd>Lund Merch</dd>
+                <dt className="text-muted-foreground">Betalning</dt>
+                <dd>Kort · Stripe</dd>
               </div>
             </dl>
             <a
-              href={swishUrl}
+              href={stripeUrl}
               className="eyebrow mt-8 flex h-12 items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone"
             >
-              Öppna Swish
+              Öppna Stripe
               <ArrowUpRight className="size-3.5" />
             </a>
             <p className="mt-3 text-center text-[11px] leading-5 text-muted-foreground">
-              Om Swish inte öppnas automatiskt kan du använda knapparna ovan.
-            </p>
-            <p className="mt-4 border-t border-sand pt-4 text-center text-[11px] leading-5 text-muted-foreground">
-              Fungerar länken inte? Swisha manuellt till{" "}
-              <span className="font-semibold text-ink">0730 28 16 19</span>{" "}
-              med beloppet{" "}
-              <span className="font-semibold text-ink">{formatSek(placed.total)}</span>{" "}
-              och meddelandet{" "}
-              <span className="font-semibold text-ink">Lund Merch</span>.
+              Om Stripe inte öppnas automatiskt kan du använda knappen ovan.
             </p>
             <button
               type="button"
               onClick={() => handleOpenChange(false)}
-              className="mt-3 flex items-center justify-center gap-2 py-2 text-xs text-muted-foreground transition-colors hover:text-ink"
+              className="mt-4 flex items-center justify-center gap-2 py-2 text-xs text-muted-foreground transition-colors hover:text-ink"
             >
               Stäng
             </button>
@@ -388,7 +383,7 @@ export function CartDrawer({
                 </span>
               </div>
               <p className="mt-2 text-[11px] leading-5 text-muted-foreground">
-                Egen hemleverans i Lund. Betala med Swish eller skicka en
+                Egen hemleverans i Lund. Betala med kort eller skicka en
                 betalningsfri pre-order.
               </p>
               <button
@@ -468,7 +463,7 @@ export function CartDrawer({
               </div>
               <div className="mt-2 flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Betalning</span>
-                <span className="text-ink">Swish · {SWISH_MESSAGE}</span>
+                <span className="text-ink">Kort · Stripe</span>
               </div>
             </div>
 
@@ -483,8 +478,8 @@ export function CartDrawer({
 
             <button
               type="submit"
-              disabled={submitting}
-              className="eyebrow mt-6 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone disabled:cursor-wait disabled:opacity-70"
+              disabled={submitting || cart.count > 1}
+              className="eyebrow mt-6 flex h-12 w-full items-center justify-center gap-2 bg-gold px-6 text-ink transition-colors hover:bg-ink hover:text-bone disabled:cursor-not-allowed disabled:opacity-50"
             >
               {submitting ? (
                 <>
@@ -493,12 +488,18 @@ export function CartDrawer({
                 </>
               ) : (
                 <>
-                  <Smartphone className="size-4" strokeWidth={1.8} />
-                  Betala med Swish
+                  <CreditCard className="size-4" strokeWidth={1.8} />
+                  Betala med kort
                   <ArrowUpRight className="size-3.5" />
                 </>
               )}
             </button>
+            {cart.count > 1 ? (
+              <p className="mt-2 text-center text-[10px] leading-5 text-muted-foreground">
+                Kortbetalning gäller ett plagg i taget. Skicka en
+                betalningsfri pre-order för fler plagg, så fakturerar vi.
+              </p>
+            ) : null}
             <button
               type="button"
               onClick={handlePreorder}
@@ -508,7 +509,7 @@ export function CartDrawer({
               Skicka pre-order utan betalning
             </button>
             <p className="mt-3 text-center text-[10px] leading-5 text-muted-foreground">
-              Swish öppnas med belopp och meddelandet Lund Merch ifyllt.
+              Du skickas till Stripes säkra kortbetalning.
             </p>
             <button
               type="button"
@@ -522,7 +523,7 @@ export function CartDrawer({
               Tillbaka till varukorgen
             </button>
             <p className="mt-4 text-center text-[11px] leading-5 text-muted-foreground">
-              Swish eller betalningsfri pre-order · Designat i Lund, Sverige
+              Kort eller betalningsfri pre-order · Designat i Lund, Sverige
             </p>
           </form>
         )}

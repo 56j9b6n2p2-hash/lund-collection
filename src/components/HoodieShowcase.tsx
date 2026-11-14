@@ -365,7 +365,7 @@ export function HoodieShowcase() {
                   <ArrowDown className="size-3.5" />
                 </a>
                 <p className="text-center text-[10px] leading-5 text-bone/45">
-                  Förtur är kostnadsfri · Betala med Swish i kassan
+                  Förtur är kostnadsfri · Betala med kort i kassan
                 </p>
               </div>
             </div>
