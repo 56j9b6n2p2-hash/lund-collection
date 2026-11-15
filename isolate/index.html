@@ -15,19 +15,36 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
     <link rel="manifest" href="/manifest.webmanifest?v=3" />
 
-    <title>Lund merch, julklappar &amp; hoodie | Kollektionen av Lund</title>
+    <title>Lund Merch, Lund Hoodie &amp; Julklappar | Kollektionen av Lund</title>
     <meta
       name="description"
-      content="Lund merch och Lund kläder från Kollektionen av Lund. Domkyrkan Hoodie för 529 kr i lokal pre-order – en julklapp i Lund 2026 med egen hemleverans. 046 merch inför juldroppet 1 december."
+      content="Lund merch och Lund hoodie från Kollektionen av Lund. En tung Domkyrkan-hoodie för 529 kr – en unik julklapp med Lund-motiv och hemleverans i Lund."
     />
     <meta
       name="keywords"
-      content="Lund merch, 046 merch, Lund kläder, julklapp Lund, årets julklapp Lund 2026, julkläder Lund, Domkyrkan, Mårtenstorget, Klostergården, Linero, Norra Fäladen, tuna, Lundsnation, LTH"
+      content="Lund merch, Lund hoodie, Lund tröja, Lund kläder, kläder med Lund-motiv, Lund sweatshirt, Lund merch Sverige, julklapp Lund, julklapp med Lund-motiv, unik julklapp Lund, Lund jultröja"
     />
+    <meta name="author" content="Kollektionen av Lund" />
     <meta name="theme-color" content="#101820" />
-    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://kollektionenavlund.se/" />
+    <link
+      rel="alternate"
+      hreflang="sv-SE"
+      href="https://kollektionenavlund.se/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://kollektionenavlund.se/"
+    />
     <meta name="geo.region" content="SE-M" />
     <meta name="geo.placename" content="Lund" />
+    <meta name="geo.position" content="55.7047;13.1910" />
+    <meta name="ICBM" content="55.7047, 13.1910" />
     <!-- Canonical sätts av usePageMeta per route så att /film och watch-sidor
          inte ärver startsidans canonical innan React har renderat. -->
 
@@ -36,17 +53,22 @@
     <meta property="og:site_name" content="Kollektionen av Lund" />
     <meta
       property="og:title"
-      content="Lund merch, julklappar &amp; hoodie | Kollektionen av Lund"
+      content="Lund Merch, Lund Hoodie &amp; Julklappar | Kollektionen av Lund"
     />
     <meta
       property="og:description"
-      content="Lund merch och Lund kläder från Kollektionen av Lund. Domkyrkan Hoodie för 529 kr i lokal pre-order – en julklapp i Lund 2026 med egen hemleverans. 046 merch inför juldroppet 1 december."
+      content="Lund merch och Lund hoodie från Kollektionen av Lund. En tung Domkyrkan-hoodie för 529 kr – en unik julklapp med Lund-motiv och hemleverans i Lund."
     />
     <meta property="og:url" content="https://kollektionenavlund.se/" />
     <meta
       property="og:image"
       content="https://kollektionenavlund.se/media/video/posters/winter-drone.jpg"
     />
+    <meta
+      property="og:image:secure_url"
+      content="https://kollektionenavlund.se/media/video/posters/winter-drone.jpg"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta
       property="og:image:alt"
       content="Drönarvy över ett snötäckt Lund i vinterljus"
@@ -56,11 +78,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Lund merch, julklappar &amp; hoodie | Kollektionen av Lund"
+      content="Lund Merch, Lund Hoodie &amp; Julklappar | Kollektionen av Lund"
     />
     <meta
       name="twitter:description"
-      content="Lund merch och Lund kläder från Kollektionen av Lund. Domkyrkan Hoodie för 529 kr i lokal pre-order – en julklapp i Lund 2026 med egen hemleverans. 046 merch inför juldroppet 1 december."
+      content="Lund merch och Lund hoodie från Kollektionen av Lund. En tung Domkyrkan-hoodie för 529 kr – en unik julklapp med Lund-motiv och hemleverans i Lund."
     />
     <meta
       name="twitter:image"
@@ -89,17 +111,52 @@
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "Organization",
+            "@id": "https://kollektionenavlund.se/#organization",
+            "name": "Kollektionen av Lund",
+            "alternateName": ["Lund Merch", "Kollektionen av Lund 046"],
+            "description": "Ett klädmärke dedikerat till Lund. Kollektionen av Lund skapar Lund merch, Lund hoodies och julklappar med Lund-motiv – startat av två 18-åringar i staden.",
+            "url": "https://kollektionenavlund.se/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://kollektionenavlund.se/logo.svg"
+            },
+            "image": "https://kollektionenavlund.se/media/video/posters/winter-drone.jpg",
+            "sameAs": [
+              "https://www.instagram.com/kollektionenavlund.se/"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Stortorget 7",
+              "postalCode": "222 23",
+              "addressLocality": "Lund",
+              "addressRegion": "Skåne",
+              "addressCountry": "SE"
+            },
+            "areaServed": ["Lund", "Skåne", "Sverige"]
+          },
+          {
             "@type": "WebSite",
             "@id": "https://kollektionenavlund.se/#website",
             "url": "https://kollektionenavlund.se/",
             "name": "Kollektionen av Lund",
+            "alternateName": ["Lund Merch", "Lund Hoodie"],
+            "description": "Lund merch, Lund hoodie och julklappar med Lund-motiv. Lokal pre-order med personlig hemleverans i Lund.",
             "inLanguage": "sv-SE",
-            "publisher": { "@id": "https://kollektionenavlund.se/#store" }
+            "publisher": {
+              "@id": "https://kollektionenavlund.se/#organization"
+            },
+            "about": {
+              "@id": "https://kollektionenavlund.se/#store"
+            }
           },
           {
             "@type": "ClothingStore",
             "@id": "https://kollektionenavlund.se/#store",
             "name": "Kollektionen av Lund",
+            "parentOrganization": {
+              "@id": "https://kollektionenavlund.se/#organization"
+            },
             "description": "Lund merch och Lund kläder från Kollektionen av Lund: en tung Lund hoodie inspirerad av Domkyrkan och vinterkvällarna i Lund. Lokal pre-order, 529 kr och egen hemleverans i Lund.",
             "slogan": "En stad. Ett riktnummer. 046.",
             "url": "https://kollektionenavlund.se/",
@@ -107,6 +164,7 @@
             "logo": "https://kollektionenavlund.se/logo.svg",
             "priceRange": "529 SEK",
             "currenciesAccepted": "SEK",
+            "paymentAccepted": "Klarna, Kort, Amazon Pay, Apple Pay",
             "sameAs": [
               "https://www.instagram.com/kollektionenavlund.se/"
             ],
@@ -149,12 +207,12 @@
         ]
       }
     </script>
-    <script type="module" crossorigin src="/assets/index-BBho2T6x.js"></script>
+    <script type="module" crossorigin src="/assets/index-BP7QG7sr.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-vendor-CVS2H6go.js">
     <link rel="modulepreload" crossorigin href="/assets/radix-ui-B5rcE5_W.js">
     <link rel="modulepreload" crossorigin href="/assets/charts-D7QqoUUt.js">
     <link rel="modulepreload" crossorigin href="/assets/framer-motion-B68nNE1W.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-Ddd4CG7h.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-CNhO5kPO.css">
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 

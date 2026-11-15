@@ -3,6 +3,7 @@ Allow: /
 
 Disallow: /auth
 Disallow: /dashboard
+Disallow: /admin
 Disallow: /api/
 
 Sitemap: https://kollektionenavlund.se/sitemap.xml

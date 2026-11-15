@@ -5,73 +5,113 @@
 >
   <url>
     <loc>https://kollektionenavlund.se/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://kollektionenavlund.se/media/video/posters/winter-drone.jpg</image:loc>
-      <image:title>Vinter i Lund — Kollektionen av Lund</image:title>
-      <image:caption>Drönarvy över ett snötäckt Lund i vinterljus.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kollektionenavlund.se/om-oss</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://kollektionenavlund.se/media/lund/winter-about.jpg</image:loc>
-      <image:title>Två 18-åringar. En stad. Något eget.</image:title>
-      <image:caption>Om Kollektionen av Lund och julkollektionen 2026.</image:caption>
+      <image:title>Lund merch och Lund hoodie – vinter över Lund</image:title>
+      <image:caption>Drönarvy över ett snötäckt Lund i vinterljus. Kollektionen av Lund gör Lund merch och julklappar med Lund-motiv.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://kollektionenavlund.se/shop</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://kollektionenavlund.se/media/hoodie/domkyrkan-vit-1.jpg</image:loc>
-      <image:title>Domkyrkan Hoodie — Kräm</image:title>
-      <image:caption>Kräm hoodie med inramat Domkyrkan-motiv på bröstet.</image:caption>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-kram-fram.jpg</image:loc>
+      <image:title>Lund hoodie – Lund merch och Lund tröja</image:title>
+      <image:caption>Kräm Lund hoodie med inramat Domkyrkan-motiv på bröstet. Lund kläder online för 529 kr.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://kollektionenavlund.se/shop/domkyrkan-hoodie</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://kollektionenavlund.se/media/hoodie/domkyrkan-vit-1.jpg</image:loc>
-      <image:title>Domkyrkan Hoodie — Kräm</image:title>
-      <image:caption>Kräm hoodie med inramat Domkyrkan-motiv på bröstet och slät rygg.</image:caption>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-kram-fram.jpg</image:loc>
+      <image:title>Lund hoodie i kräm – Lund merch</image:title>
+      <image:caption>Kräm Lund hoodie med inramat Domkyrkan-motiv – en unik julklapp med Lund-motiv.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://kollektionenavlund.se/media/hoodie/domkyrkan-svart-1.jpg</image:loc>
-      <image:title>Domkyrkan Hoodie — Svart</image:title>
-      <image:caption>Svart hoodie med inramat Domkyrkan-motiv på bröstet.</image:caption>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-kram-bak.jpg</image:loc>
+      <image:title>Lund hoodie kräm – baksida</image:title>
+      <image:caption>Baksidan av den krämfärgade Lund hoodien med slät rygg.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-oliv-fram.jpg</image:loc>
+      <image:title>Lund hoodie i olivgrön – Lund tröja</image:title>
+      <image:caption>Olivgrön Lund hoodie med Domkyrkan-motiv – Lund kläder med stadsmotiv.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-oliv-bak.jpg</image:loc>
+      <image:title>Lund hoodie olivgrön – baksida</image:title>
+      <image:caption>Olivgrön Lund sweatshirt med slät rygg från Kollektionen av Lund.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-svart-fram.jpg</image:loc>
+      <image:title>Lund hoodie i svart – Lund merch</image:title>
+      <image:caption>Svart Lund hoodie med inramat Domkyrkan-motiv – julklapp med Lund-motiv.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-svart-bak.jpg</image:loc>
+      <image:title>Lund hoodie svart – baksida</image:title>
+      <image:caption>Baksidan av den svarta Lund tröjan med ren rygg.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-ljusgra-fram.jpg</image:loc>
+      <image:title>Lund hoodie i ljusgrå – Lund kläder</image:title>
+      <image:caption>Ljusgrå Lund hoodie med Domkyrkan-motiv – Lund kläder online.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-ljusgra-bak.jpg</image:loc>
+      <image:title>Lund hoodie ljusgrå – baksida</image:title>
+      <image:caption>Ljusgrå Lund sweatshirt med slät rygg från Kollektionen av Lund.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-bordeaux-fram.jpg</image:loc>
+      <image:title>Lund hoodie i bordeaux – unik julklapp från Lund</image:title>
+      <image:caption>Bordeauxfärgad Lund hoodie med Domkyrkan-motiv – present till någon som älskar Lund.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/hoodie/lund-hoodie-domkyrkan-bordeaux-bak.jpg</image:loc>
+      <image:title>Lund hoodie bordeaux – baksida</image:title>
+      <image:caption>Baksidan av den bordeauxfärgade Lund hoodien med slät rygg.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kollektionenavlund.se/om-oss</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://kollektionenavlund.se/media/lund/winter-about.jpg</image:loc>
+      <image:title>Om Kollektionen av Lund – Lund merch av två 18-åringar</image:title>
+      <image:caption>Snötäckt kullerstensgata i Lund. Läs om Lund merch-projektet och julkollektionen 2026.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://kollektionenavlund.se/film</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
     <image:image>
       <image:loc>https://kollektionenavlund.se/media/video/posters/winter-drone.jpg</image:loc>
-      <image:title>Vinter över Lund — en sammanhängande film</image:title>
-      <image:caption>En sammanhängande vinterfilm över Lund.</image:caption>
+      <image:title>Vinter över Lund – film om Lund</image:title>
+      <image:caption>En sammanhängande vinterfilm över Lund med Domkyrkan, spårvagnen och snöfallet.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://kollektionenavlund.se/kontakt</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
       <image:loc>https://kollektionenavlund.se/media/lund/winter-contact.jpg</image:loc>
-      <image:title>Kontakt — Kollektionen av Lund</image:title>
-      <image:caption>Säg hej på Instagram.</image:caption>
+      <image:title>Kontakt – Kollektionen av Lund</image:title>
+      <image:caption>Frågor om Lund merch, Lund hoodie och personlig hemleverans i Lund? Kontakta oss.</image:caption>
     </image:image>
   </url>
 </urlset>
