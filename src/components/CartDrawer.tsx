@@ -24,6 +24,7 @@ import {
 import { PaymentMethods } from "@/components/PaymentMethods";
 import { formatSek } from "@/data/products";
 import type { CartApi, PlacedOrder } from "@/hooks/use-cart";
+import { trackGoogleAdsConversion } from "@/lib/google-ads";
 
 type Mode = "cart" | "checkout" | "done" | "stripe";
 
@@ -135,6 +136,12 @@ export function CartDrawer({
         itemCount: orderSummary.itemCount,
       };
 
+      trackGoogleAdsConversion("purchase", {
+        transaction_id: order.reference,
+        value: order.total,
+        currency: "SEK",
+      });
+
       cart.clear();
       setPlaced(order);
 
@@ -142,7 +149,8 @@ export function CartDrawer({
         const url = buildStripeUrl(order.reference, order.email);
         setStripeUrl(url);
         setMode("stripe");
-        window.location.assign(url);
+        // Give gtag a moment to send the conversion before Stripe takes over.
+        window.setTimeout(() => window.location.assign(url), 350);
       } else {
         setMode("done");
       }
@@ -162,6 +170,14 @@ export function CartDrawer({
 
   function handlePreorder() {
     void placeOrder(false);
+  }
+
+  function handleGoToCheckout() {
+    trackGoogleAdsConversion("beginCheckout", {
+      value: cart.subtotal,
+      currency: "SEK",
+    });
+    setMode("checkout");
   }
 
   const firstName = customerName.trim().split(" ")[0] || "";
@@ -417,7 +433,7 @@ export function CartDrawer({
               </p>
               <button
                 type="button"
-                onClick={() => setMode("checkout")}
+                onClick={handleGoToCheckout}
                 className="group mt-5 flex min-h-14 w-full items-center justify-between gap-3 rounded-2xl bg-gold px-4 py-3 text-ink shadow-[0_16px_34px_-22px_rgba(201,161,90,0.9)] transition-all hover:-translate-y-0.5 hover:bg-ink hover:text-bone"
               >
                 <span className="text-sm font-semibold">Till kassan</span>

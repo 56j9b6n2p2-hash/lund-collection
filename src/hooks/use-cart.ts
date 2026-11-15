@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { getProduct, products } from "@/data/products";
+import { trackGoogleAdsConversion } from "@/lib/google-ads";
 
 export type CartLine = { id: string; qty: number };
 export type PlacedOrder = {
@@ -49,17 +50,25 @@ export function useCart() {
   }, [lines]);
 
   const addItem = useCallback((id: string, qty = 1) => {
-    if (!getProduct(id)) return;
+    const product = getProduct(id);
+    if (!product) return;
+
+    const quantity = Math.min(MAX_QTY, Math.max(1, Math.floor(qty)));
     setLines((current) => {
       const existing = current.find((line) => line.id === id);
       if (existing) {
         return current.map((line) =>
           line.id === id
-            ? { ...line, qty: Math.min(MAX_QTY, line.qty + qty) }
+            ? { ...line, qty: Math.min(MAX_QTY, line.qty + quantity) }
             : line,
         );
       }
-      return [...current, { id, qty: Math.min(MAX_QTY, Math.max(1, qty)) }];
+      return [...current, { id, qty: quantity }];
+    });
+
+    trackGoogleAdsConversion("addToCart", {
+      value: product.price * quantity,
+      currency: "SEK",
     });
   }, []);
 
