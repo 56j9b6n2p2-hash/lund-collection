@@ -359,7 +359,7 @@ export function CartDrawer({
                       width={76}
                       height={95}
                       loading="lazy"
-                      className="h-[95px] w-[76px] shrink-0 rounded-md bg-sand object-cover grayscale-[0.35]"
+                      className="h-[95px] w-[76px] shrink-0 rounded-md bg-sand object-cover"
                     />
                     <div className="flex min-w-0 flex-1 flex-col">
                       <div className="flex items-start justify-between gap-3">
