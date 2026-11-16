@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { ArrowDown, ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
+import { hoodieColors } from "@/data/products";
 import { cn } from "@/lib/utils";
 
 type HoodieView = {
@@ -18,100 +19,22 @@ type Colorway = {
   views: HoodieView[];
 };
 
-const colorways: Colorway[] = [
-  {
-    id: "vit",
-    label: "Kräm",
-    hex: "#d8c8b2",
-    views: [
-      {
-        src: "/media/hoodie/lund-hoodie-domkyrkan-kram-fram.jpg",
-        label: "Fram",
-        alt: "Kräm Lund hoodie med inramat Domkyrkan-motiv – Lund merch från Kollektionen av Lund",
-      },
-      {
-        src: "/media/hoodie/lund-hoodie-domkyrkan-kram-bak.jpg",
-        label: "Bak",
-        alt: "Kräm Lund hoodie med slät rygg – baksidan av Lund merch-hoodien",
-      },
-    ],
-  },
-  {
-    id: "oliv",
-    label: "Olivgrön",
-    hex: "#5c6048",
-    views: [
-      {
-        src: "/media/hoodie/lund-hoodie-domkyrkan-oliv-fram.jpg",
-        label: "Fram",
-        alt: "Olivgrön Lund hoodie med inramat Domkyrkan-motiv – Lund kläder med stadsmotiv",
-      },
-      {
-        src: "/media/hoodie/lund-hoodie-domkyrkan-oliv-bak.jpg",
-        label: "Bak",
-        alt: "Olivgrön Lund hoodie med slät rygg – Lund tröja från Kollektionen av Lund",
-      },
-    ],
-  },
-  {
-    id: "svart",
-    label: "Svart",
-    hex: "#24221f",
-    views: [
-      {
-        src: "/media/hoodie/lund-hoodie-domkyrkan-svart-fram.jpg",
-        label: "Fram",
-        alt: "Svart Lund hoodie med inramat Domkyrkan-motiv – Lund merch och julklapp med Lund-motiv",
-      },
-      {
-        src: "/media/hoodie/lund-hoodie-domkyrkan-svart-bak.jpg",
-        label: "Bak",
-        alt: "Svart Lund hoodie med slät rygg – baksidan av Lund tröjan",
-      },
-    ],
-  },
-  {
-    id: "sand",
-    label: "Ljusgrå",
-    hex: "#b7b5b2",
-    views: [
-      {
-        src: "/media/hoodie/lund-hoodie-domkyrkan-ljusgra-fram.jpg",
-        label: "Fram",
-        alt: "Ljusgrå Lund hoodie med inramat Domkyrkan-motiv – Lund kläder online",
-      },
-      {
-        src: "/media/hoodie/lund-hoodie-domkyrkan-ljusgra-bak.jpg",
-        label: "Bak",
-        alt: "Ljusgrå Lund hoodie med slät rygg – Lund sweatshirt från Kollektionen av Lund",
-      },
-    ],
-  },
-  {
-    id: "rod",
-    label: "Bordeaux",
-    hex: "#5e2430",
-    views: [
-      {
-        src: "/media/hoodie/lund-hoodie-domkyrkan-bordeaux-fram.jpg",
-        label: "Fram",
-        alt: "Bordeaux Lund hoodie med inramat Domkyrkan-motiv – unik julklapp från Lund",
-      },
-      {
-        src: "/media/hoodie/lund-hoodie-domkyrkan-bordeaux-bak.jpg",
-        label: "Bak",
-        alt: "Bordeaux Lund hoodie med slät rygg – Lund tröja för vintern",
-      },
-    ],
-  },
-];
+const colorways: Colorway[] = hoodieColors.map((color) => ({
+  id: color.id,
+  label: color.name,
+  hex: color.hex,
+  views: [
+    { src: color.image, label: "Fram", alt: color.alt },
+    { src: color.backImage, label: "Bak", alt: color.backAlt },
+  ],
+}));
 
 const sizes = ["S", "M", "L", "XL", "XXL"];
 
 const details = [
   {
     title: "Material & passform",
-    copy: "Gildan Heavy Blend 18500 i 271 g/m². 50% bomull, 50% polyester och en mjukt borstad insida. Klassisk unisex regular fit med dubbelfodrad huva och känguruficka.",
+    copy: "Gildan Heavy Blend 18500 i 271 g/m². 50% bomull, 50% polyester och en mjukt borstad insida. Klassisk unisex regular fit med dubbelfodrad huva, känguruficka samt ribbade muddar och nederkant.",
   },
   {
     title: "Storleksguide",
@@ -204,7 +127,7 @@ export function HoodieShowcase() {
               1 december · 529 kr
               <span className="mt-3 block font-sans text-[11px] normal-case leading-6 tracking-normal text-bone/50">
                 Lokal pre-order med egen hemleverans i Lund innan jul. En
-                hoodie. Fem färger. Byggd för kalla promenader mellan Stortorget
+                hoodie. Sex färger. Byggd för kalla promenader mellan Stortorget
                 och Domkyrkan.
               </span>
             </p>
@@ -242,13 +165,13 @@ export function HoodieShowcase() {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="relative aspect-square overflow-hidden bg-bone/10">
+              <div className="relative aspect-[4/5] overflow-hidden bg-bone/10">
                 <img
                   key={activeView.src}
                   src={activeView.src}
                   alt={activeView.alt}
                   width={1200}
-                  height={1200}
+                  height={1500}
                   loading="lazy"
                   decoding="async"
                   sizes="(min-width: 1024px) 42vw, 100vw"
@@ -354,7 +277,7 @@ export function HoodieShowcase() {
 
               <div className="mt-auto grid gap-2">
                 <Link
-                  to="/shop/domkyrkan-hoodie"
+                  to={`/shop/domkyrkan-hoodie?color=${activeColor.id}`}
                   className="group flex min-h-14 items-center justify-between gap-3 rounded-2xl bg-gold px-4 py-3 text-ink shadow-[0_16px_34px_-22px_rgba(201,161,90,0.9)] transition-all hover:-translate-y-0.5 hover:bg-bone"
                 >
                   <span className="text-left">

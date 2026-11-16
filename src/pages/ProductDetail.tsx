@@ -1,4 +1,5 @@
-import { Link, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useParams, useSearchParams } from "react-router";
 import {
   ArrowLeft,
   ArrowRight,
@@ -19,6 +20,26 @@ export default function ProductDetail() {
   const { id } = useParams();
   const product = id ? getProduct(id) : undefined;
   const { cart, openCart } = useStorefront();
+  const [searchParams] = useSearchParams();
+  const requestedColor = searchParams.get("color");
+  const [selectedColorId, setSelectedColorId] = useState(
+    product?.defaultColorId ?? "",
+  );
+  const [view, setView] = useState<"front" | "back">("front");
+
+  useEffect(() => {
+    if (!product) return;
+    const nextColor =
+      product.colors.find((color) => color.id === requestedColor)?.id ??
+      product.defaultColorId;
+    setSelectedColorId(nextColor);
+    setView("front");
+  }, [product, requestedColor]);
+
+  const activeColor =
+    product?.colors.find((color) => color.id === selectedColorId) ??
+    product?.colors.find((color) => color.id === product.defaultColorId) ??
+    product?.colors[0];
 
   usePageMeta({
     title: product
@@ -28,10 +49,10 @@ export default function ProductDetail() {
       ? "Upptäck Lund Merch – en hoodie inspirerad av Lund. Den perfekta julklappen för dig som älskar Lund eller vill bära med dig stadens identitet."
       : "Plagget finns inte i julkollektionen. Utforska hela kollektionen från Kollektionen av Lund.",
     path: `/shop/${id ?? ""}`,
-    image: product?.image ?? "/media/video/posters/winter-drone.jpg",
-    imageAlt: product?.imageAlt ?? "Vinter i Lund",
+    image: activeColor?.image ?? product?.image ?? "/media/video/posters/winter-drone.jpg",
+    imageAlt: activeColor?.alt ?? product?.imageAlt ?? "Vinter i Lund",
     imageWidth: product ? 1200 : 1440,
-    imageHeight: product ? 1200 : 810,
+    imageHeight: product ? 1500 : 810,
     type: "product",
     noindex: !product,
   });
@@ -63,7 +84,8 @@ export default function ProductDetail() {
     );
   }
 
-  const isSquareProduct = product.id === "domkyrkan-hoodie";
+  const color = activeColor ?? product.colors[0];
+  const isBackView = view === "back";
 
   return (
     <>
@@ -95,22 +117,45 @@ export default function ProductDetail() {
 
         <section className="container-site grid gap-10 py-10 md:grid-cols-12 md:gap-12 md:py-14">
           <div className="md:col-span-7">
-            <div className="overflow-hidden rounded-2xl bg-sand">
+            <div className="relative overflow-hidden rounded-2xl bg-sand">
               <img
-                src={product.image}
-                alt={product.imageAlt}
-                width={isSquareProduct ? 1200 : 900}
-                height={isSquareProduct ? 1200 : 1125}
+                key={`${color.id}-${view}`}
+                src={isBackView ? color.backImage : color.image}
+                alt={isBackView ? color.backAlt : color.alt}
+                width={1200}
+                height={1500}
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
                 sizes="(min-width: 768px) 58vw, 100vw"
-                className={`h-full w-full object-cover ${
-                  isSquareProduct
-                    ? "aspect-square"
-                    : "aspect-[4/5] grayscale-[0.25]"
-                }`}
+                className="aspect-[4/5] h-full w-full object-cover"
               />
+              <div
+                className="absolute bottom-3 left-3 flex gap-1.5"
+                role="group"
+                aria-label="Välj vy"
+              >
+                {(
+                  [
+                    { value: "front", label: "Fram" },
+                    { value: "back", label: "Bak" },
+                  ] as const
+                ).map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => setView(option.value)}
+                    aria-pressed={view === option.value}
+                    className={`h-9 rounded-full px-3 text-[10px] font-semibold uppercase tracking-[0.14em] backdrop-blur transition-colors ${
+                      view === option.value
+                        ? "bg-ink text-bone"
+                        : "bg-bone/85 text-ink/70 hover:bg-bone hover:text-ink"
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -165,21 +210,43 @@ export default function ProductDetail() {
               {product.description}
             </p>
 
-            <div className="mt-6 flex flex-col gap-2 text-xs text-muted-foreground sm:flex-row sm:flex-wrap sm:items-center sm:gap-2.5">
-              <span className="flex items-center gap-2.5">
-                <span
-                  aria-hidden="true"
-                  className="inline-block size-3.5 shrink-0 rounded-full border border-ink/10"
-                  style={{ backgroundColor: product.colorHex }}
-                />
-                <span>
-                  Färg: <span className="text-ink">{product.colorName}</span>
-                </span>
-              </span>
-              <span aria-hidden="true" className="hidden text-ink/20 sm:inline">
-                ·
-              </span>
-              <span className="break-words">{product.material}</span>
+            <div className="mt-6">
+              <p className="text-xs text-muted-foreground">
+                Färg: <span className="font-semibold text-ink">{color.name}</span>
+              </p>
+              <div
+                className="mt-3 flex flex-wrap gap-2"
+                role="group"
+                aria-label="Välj färg"
+              >
+                {product.colors.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => {
+                      setSelectedColorId(option.id);
+                      setView("front");
+                    }}
+                    aria-pressed={option.id === color.id}
+                    aria-label={`Välj ${option.name}`}
+                    className={`flex h-10 items-center gap-2 rounded-full border px-3 text-[10px] font-semibold uppercase tracking-[0.12em] transition-colors ${
+                      option.id === color.id
+                        ? "border-ink bg-ink text-bone"
+                        : "border-ink/15 bg-white/40 text-ink/65 hover:border-ink/40 hover:text-ink"
+                    }`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="size-4 shrink-0 rounded-full border border-black/20"
+                      style={{ backgroundColor: option.hex }}
+                    />
+                    {option.name}
+                  </button>
+                ))}
+              </div>
+              <p className="mt-3 break-words text-xs text-muted-foreground">
+                {product.material}
+              </p>
             </div>
 
             <button

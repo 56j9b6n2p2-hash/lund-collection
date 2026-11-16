@@ -33,7 +33,7 @@ export function ProductStructuredData({ product }: { product: Product }) {
             name: "Kollektionen av Lund",
             url: SITE_URL,
           },
-          color: product.colorName,
+          color: product.colors.map((color) => color.name),
           material: product.material,
           audience: {
             "@type": "PeopleAudience",

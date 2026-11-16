@@ -20,13 +20,13 @@ export default function Shop() {
   usePageMeta({
     title: "Lund Merch – Hoodies & Julklappar | Kollektionen av Lund",
     description:
-      "Lund merch och Lund kläder online. Köp Lund hoodie i fem färger för 529 kr – en unik julklapp med Lund-motiv och personlig hemleverans i Lund.",
+      "Lund merch och Lund kläder online. Köp Lund hoodie i sex färger för 529 kr – en unik julklapp med Lund-motiv och personlig hemleverans i Lund.",
     path: "/shop",
-    image: "/media/hoodie/lund-hoodie-domkyrkan-kram-fram.jpg",
+    image: "/media/hoodie/lund-hoodie-domkyrkan-kram-fram.jpg?v=4",
     imageAlt:
-      "Kräm Lund hoodie med Domkyrkan-motiv – Lund merch och Lund tröja från Kollektionen av Lund",
+      "Stone Lund hoodie med Domkyrkan-motiv – Lund merch och Lund tröja från Kollektionen av Lund",
     imageWidth: 1200,
-    imageHeight: 1200,
+    imageHeight: 1500,
   });
 
   const filtered = useMemo(() => {
@@ -216,7 +216,7 @@ export default function Shop() {
               Lund, oavsett om du är student, Lundabo eller har staden i hjärtat.
             </p>
             <p className="mt-4 text-sm leading-7 text-ink/70">
-              Lund hoodien finns i fem färger och storlekarna S–XXL för 529 kr.
+              Lund hoodien finns i sex färger och storlekarna S–XXL för 529 kr.
               Beställ i lokal pre-order och få den levererad till dörren i Lund
               innan jul – från Klostergården och Linero till Norra Fäladen och
               tuna.
