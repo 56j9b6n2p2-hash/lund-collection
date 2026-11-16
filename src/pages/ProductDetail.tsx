@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router";
+import { Link, useParams } from "react-router";
 import {
   ArrowLeft,
   ArrowRight,
@@ -20,31 +19,6 @@ export default function ProductDetail() {
   const { id } = useParams();
   const product = id ? getProduct(id) : undefined;
   const { cart, openCart } = useStorefront();
-  const [searchParams] = useSearchParams();
-  const requestedColor = searchParams.get("color");
-  const [selectedColorId, setSelectedColorId] = useState<string | null>(() => {
-    if (!product) return null;
-    return requestedColor &&
-      product.colors.some((color) => color.id === requestedColor)
-      ? requestedColor
-      : product.defaultColorId;
-  });
-  const [view, setView] = useState<"front" | "back">("front");
-
-  useEffect(() => {
-    if (!product) return;
-    const nextColor =
-      requestedColor && product.colors.some((color) => color.id === requestedColor)
-        ? requestedColor
-        : product.defaultColorId;
-    setSelectedColorId(nextColor);
-    setView("front");
-  }, [product, requestedColor]);
-
-  const activeColor = product
-    ? product.colors.find((color) => color.id === selectedColorId) ??
-      product.colors[0]
-    : undefined;
 
   usePageMeta({
     title: product
@@ -57,7 +31,7 @@ export default function ProductDetail() {
     image: product?.image ?? "/media/video/posters/winter-drone.jpg",
     imageAlt: product?.imageAlt ?? "Vinter i Lund",
     imageWidth: product ? 1200 : 1440,
-    imageHeight: product ? 1500 : 810,
+    imageHeight: product ? 1200 : 810,
     type: "product",
     noindex: !product,
   });
@@ -89,8 +63,7 @@ export default function ProductDetail() {
     );
   }
 
-  const color = activeColor ?? product.colors[0];
-  const isBackView = view === "back";
+  const isSquareProduct = product.id === "domkyrkan-hoodie";
 
   return (
     <>
@@ -122,45 +95,22 @@ export default function ProductDetail() {
 
         <section className="container-site grid gap-10 py-10 md:grid-cols-12 md:gap-12 md:py-14">
           <div className="md:col-span-7">
-            <div className="relative overflow-hidden rounded-2xl bg-sand">
+            <div className="overflow-hidden rounded-2xl bg-sand">
               <img
-                key={`${color.id}-${view}`}
-                src={isBackView ? color.backImage : color.image}
-                alt={isBackView ? color.backAlt : color.alt}
-                width={900}
-                height={1125}
+                src={product.image}
+                alt={product.imageAlt}
+                width={isSquareProduct ? 1200 : 900}
+                height={isSquareProduct ? 1200 : 1125}
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
                 sizes="(min-width: 768px) 58vw, 100vw"
-                className="aspect-[4/5] h-full w-full object-cover"
+                className={`h-full w-full object-cover ${
+                  isSquareProduct
+                    ? "aspect-square"
+                    : "aspect-[4/5] grayscale-[0.25]"
+                }`}
               />
-              <div
-                className="absolute bottom-3 left-3 flex gap-1.5"
-                role="group"
-                aria-label="Välj vy"
-              >
-                {(
-                  [
-                    { value: "front", label: "Fram" },
-                    { value: "back", label: "Bak" },
-                  ] as const
-                ).map((option) => (
-                  <button
-                    key={option.value}
-                    type="button"
-                    onClick={() => setView(option.value)}
-                    aria-pressed={view === option.value}
-                    className={`h-9 rounded-full px-3 text-[10px] font-semibold uppercase tracking-[0.14em] backdrop-blur transition-colors ${
-                      view === option.value
-                        ? "bg-ink text-bone"
-                        : "bg-bone/85 text-ink/70 hover:bg-bone hover:text-ink"
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
             </div>
 
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -211,46 +161,6 @@ export default function ProductDetail() {
               {formatSek(product.price)}
             </p>
 
-            <div className="mt-6">
-              <div className="flex items-baseline justify-between gap-4">
-                <p className="eyebrow text-ink/55">Färg</p>
-                <p className="text-xs font-medium text-ink">{color.name}</p>
-              </div>
-              <div
-                className="mt-3 flex flex-wrap gap-2"
-                role="group"
-                aria-label="Välj färg"
-              >
-                {product.colors.map((option) => {
-                  const isSelected = option.id === color.id;
-                  return (
-                    <button
-                      key={option.id}
-                      type="button"
-                      onClick={() => {
-                        setSelectedColorId(option.id);
-                        setView("front");
-                      }}
-                      aria-pressed={isSelected}
-                      aria-label={`Välj ${option.name}`}
-                      className={`flex h-11 items-center gap-2 rounded-full border px-3 text-[11px] font-medium transition-colors ${
-                        isSelected
-                          ? "border-ink bg-ink text-bone"
-                          : "border-ink/15 bg-white/50 text-ink/70 hover:border-ink/40 hover:text-ink"
-                      }`}
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="size-4 shrink-0 rounded-full border border-ink/15"
-                        style={{ backgroundColor: option.hex }}
-                      />
-                      {option.name}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
             <p className="mt-6 text-sm leading-7 text-ink/70">
               {product.description}
             </p>
@@ -260,10 +170,10 @@ export default function ProductDetail() {
                 <span
                   aria-hidden="true"
                   className="inline-block size-3.5 shrink-0 rounded-full border border-ink/10"
-                  style={{ backgroundColor: color.hex }}
+                  style={{ backgroundColor: product.colorHex }}
                 />
                 <span>
-                  Färg: <span className="text-ink">{color.name}</span>
+                  Färg: <span className="text-ink">{product.colorName}</span>
                 </span>
               </span>
               <span aria-hidden="true" className="hidden text-ink/20 sm:inline">
