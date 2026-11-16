@@ -57,7 +57,7 @@ export default function ProductDetail() {
     image: product?.image ?? "/media/video/posters/winter-drone.jpg",
     imageAlt: product?.imageAlt ?? "Vinter i Lund",
     imageWidth: product ? 1200 : 1440,
-    imageHeight: product ? 1200 : 810,
+    imageHeight: product ? 1500 : 810,
     type: "product",
     noindex: !product,
   });
@@ -89,7 +89,6 @@ export default function ProductDetail() {
     );
   }
 
-  const isSquareProduct = product.id === "domkyrkan-hoodie";
   const color = activeColor ?? product.colors[0];
   const isBackView = view === "back";
 
@@ -128,15 +127,13 @@ export default function ProductDetail() {
                 key={`${color.id}-${view}`}
                 src={isBackView ? color.backImage : color.image}
                 alt={isBackView ? color.backAlt : color.alt}
-                width={isSquareProduct ? 1200 : 900}
-                height={isSquareProduct ? 1200 : 1125}
+                width={900}
+                height={1125}
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
                 sizes="(min-width: 768px) 58vw, 100vw"
-                className={`h-full w-full object-cover ${
-                  isSquareProduct ? "aspect-square" : "aspect-[4/5]"
-                }`}
+                className="aspect-[4/5] h-full w-full object-cover"
               />
               <div
                 className="absolute bottom-3 left-3 flex gap-1.5"
