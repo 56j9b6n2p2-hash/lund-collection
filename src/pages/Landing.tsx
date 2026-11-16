@@ -140,7 +140,7 @@ export default function Landing() {
         {/* Hero */}
         <section
           aria-labelledby="hero-title"
-          className="relative flex h-[100svh] min-h-[620px] items-end overflow-hidden bg-ink text-bone"
+          className="relative flex min-h-[100svh] w-full items-end overflow-hidden bg-ink text-bone lg:min-h-[100dvh]"
         >
           <CinematicVideoPlaylist
             priority
